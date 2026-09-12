@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leon sai songs 💙</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{--blue:#08a9ef;--cream:#fff0b8;--orange:#ff5a00;--green:#16f43b}
+  body{margin:0;min-height:100vh;font-family:Arial,'Noto Sans Myanmar',sans-serif;background:linear-gradient(135deg,#a6ffff,#79eaf5);overflow-x:hidden;color:#111}
+  button{font:inherit;border:0;cursor:pointer;touch-action:manipulation}
+  .page{min-height:100vh;display:none;position:relative;overflow:hidden}
+  .page.active{display:flex;flex-direction:column;align-items:center;justify-content:center;animation:pageIn .55s ease both}
+  @keyframes pageIn{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:scale(1)}}
+  .sparkles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+  .sparkles span{position:absolute;font-size:18px;animation:float 7s linear infinite;opacity:.75}
+  @keyframes float{0%{transform:translateY(110vh) rotate(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-15vh) rotate(360deg);opacity:0}}
+
+  /* PAGE 1 */
+  #home{background:linear-gradient(145deg,#a8ffff,#8ceff5)}
+  .upload-card{width:min(76vw,285px);min-height:210px;background:#fff;padding:22px 20px 15px;border-radius:2px;box-shadow:0 12px 35px #3acbd455;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;position:relative;z-index:2}
+  .plus{font-size:24px;font-weight:900;line-height:1}
+  .file-text{font-size:16px;font-weight:800}
+  .choose{background:#fff8e9;border-radius:12px;padding:10px 28px;font-size:14px;font-weight:800;box-shadow:0 4px 12px #e9c76a22}
+  .choose:active{transform:scale(.96)}
+  .main-actions{display:flex;gap:7px;position:relative;z-index:3;margin-top:4px}
+  .start,.out{height:50px;border-radius:17px;color:#fff;font-weight:900;font-size:18px;text-shadow:1px 2px 0 #777;box-shadow:0 7px 0 #0001,0 12px 24px #0001;transition:.25s}
+  .start{width:96px;background:linear-gradient(135deg,#0bff35,#16e63c)}
+  .out{width:58px;background:linear-gradient(135deg,#ff3434,#ed2828)}
+  .start.big{transform:scale(1.22);box-shadow:0 0 0 8px #ffffff55,0 0 35px #0dff70aa}
+  .start:active,.out:active{transform:translateY(3px)}
+  .start.big:active{transform:scale(1.18) translateY(3px)}
+  .choice{font-size:14px;font-weight:900;color:#555;min-height:18px}
+  .choice.warning{color:#ff3b3b;animation:pulse .8s infinite alternate}
+  @keyframes pulse{to{transform:scale(1.08)}}
+
+  /* COUNTDOWN */
+  #countdown{background:#10a9ed;color:#fff}
+  .count-number{font-size:clamp(150px,45vw,290px);font-weight:900;line-height:1;text-shadow:7px 9px 0 #087eb3;animation:numberPop 1s ease both}
+  @keyframes numberPop{from{transform:scale(1.4);opacity:0}to{transform:scale(1);opacity:1}}
+  .count-label{font-weight:800;font-size:18px;letter-spacing:1px}
+
+  /* SONG PAGE */
+  #songs{background:#fff;justify-content:flex-start}
+  .topbar{width:100%;height:67px;background:linear-gradient(90deg,#ffd37f,#ffd98d);display:flex;align-items:center;position:relative;z-index:2;box-shadow:0 3px 12px #c68e3922}
+  .back{background:transparent;color:#fff;font-size:54px;line-height:1;margin-left:22px;font-weight:900;text-shadow:1px 2px 0 #777;display:flex;align-items:center;gap:8px}
+  .back small{font-size:24px;color:#111;text-shadow:none;margin-top:3px}
+  .title{position:absolute;left:50%;transform:translateX(-50%);font-size:clamp(25px,5.7vw,39px);font-weight:900;color:#fff;text-shadow:2px 2px 0 #777;white-space:nowrap}
+  .song-grid{width:min(92%,520px);display:grid;grid-template-columns:repeat(3,1fr);gap:75px 38px;margin:50px auto 0;position:relative;z-index:1}
+  .song-btn{min-height:80px;border-radius:26px;background:linear-gradient(145deg,#fff3bd,#ffeaa2);font-size:32px;font-weight:900;box-shadow:0 8px 0 #e5cf80,0 12px 22px #e5cf8033;transition:.2s;position:relative;overflow:hidden}
+  .song-btn.name{font-size:16px;padding:8px}
+  .song-btn:before{content:"";position:absolute;inset:-40%;background:linear-gradient(120deg,transparent,#fff9,transparent);transform:translateX(-100%) rotate(20deg);transition:.5s}
+  .song-btn:active{transform:translateY(5px) scale(.97);box-shadow:0 3px 0 #e5cf80}
+  .song-btn:active:before{transform:translateX(100%) rotate(20deg)}
+  .bottom-actions{display:flex;gap:54px;margin-top:78px;position:relative;z-index:1}
+  .heart-btn{width:111px;height:94px;border-radius:27px;font-size:34px;box-shadow:0 8px 0 #00bd49;transition:.2s}
+  .heart-btn.green{background:#00f34b}.heart-btn.orange{background:#ff5a00;box-shadow:0 8px 0 #c83e00}
+  .heart-btn:active{transform:translateY(5px);box-shadow:0 3px 0 #00bd49}
+
+  /* VIDEO MODAL */
+  .modal{position:absolute;inset:0;background:linear-gradient(135deg,#061c3dcc,#073f7eee);display:none;align-items:center;justify-content:center;padding:22px;z-index:10;backdrop-filter:blur(7px)}
+  .modal.show{display:flex;animation:pageIn .3s ease both}
+  .video-box{width:min(94vw,560px);background:#fff;border-radius:25px;padding:14px;box-shadow:0 20px 70px #0008;position:relative}
+  .video-box video{display:block;width:100%;max-height:70vh;background:#111;border-radius:17px;object-fit:contain}
+  .video-close{position:absolute;right:8px;top:-48px;width:40px;height:40px;border-radius:50%;background:#ff3d55;color:#fff;font-size:25px;font-weight:900}
+  .video-caption{text-align:center;font-weight:900;margin:10px 0 2px;color:#333}
+  .video-error{display:none;text-align:center;color:#d33;font-size:13px;padding:8px}
+  .video-box video:not([src=""]){outline:none}
+
+  @media(max-width:430px){
+    .song-grid{gap:55px 18px;margin-top:42px}
+    .song-btn{min-height:77px;border-radius:24px}
+    .bottom-actions{gap:45px;margin-top:65px}
+    .heart-btn{width:110px;height:91px}
+    .back{margin-left:13px;font-size:48px}
+    .back small{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<section id="home" class="page active">
+  <div class="sparkles" id="sparkles1"></div>
+  <div class="upload-card">
+    <div class="plus">+</div>
+    <div class="file-text">add file 1</div>
+    <button class="choose" onclick="showChoice()">choice 😊</button>
+    <div class="choice" id="choiceText"></div>
+  </div>
+  <div class="main-actions">
+    <button class="start" id="startBtn" onclick="startPressed()">start</button>
+    <button class="out" onclick="outPressed()">out</button>
+  </div>
+</section>
+
+<section id="countdown" class="page">
+  <div class="sparkles" id="sparkles2"></div>
+  <div class="count-number" id="countNumber">3</div>
+  <div class="count-label">please wait...</div>
+</section>
+
+<section id="songs" class="page">
+  <div class="topbar">
+    <button class="back" onclick="goHome()">← <small>out</small></button>
+    <div class="title">Leon sai songs</div>
+  </div>
+  <div class="song-grid">
+    <button class="song-btn name" onclick="openVideo('video.c','လုယွၼ်ႉၵဝ်')">လုယွၼ်ႉၵဝ်</button>
+    <button class="song-btn" onclick="openVideo('video.c','Song 2')">?</button>
+    <button class="song-btn" onclick="openVideo('video.c','Song 3')">?</button>
+    <button class="song-btn" onclick="openVideo('video.c','Song 4')">?</button>
+    <button class="song-btn" onclick="openVideo('video.c','Song 5')">?</button>
+    <button class="song-btn" onclick="openVideo('video.c','Song 6')">?</button>
+  </div>
+  <div class="bottom-actions">
+    <button class="heart-btn green" onclick="openVideo('video.c','💖')">❤️</button>
+    <button class="heart-btn orange" onclick="openVideo('video.c','💔')">💔</button>
+  </div>
+  <div class="modal" id="videoModal">
+    <div class="video-box">
+      <button class="video-close" onclick="closeVideo()">×</button>
+      <video id="songVideo" controls playsinline preload="metadata">
+        <source src="video.c" type="video/mp4">
+        Your browser does not support video.
+      </video>
+      <div class="video-caption" id="videoCaption">လုယွၼ်ႉၵဝ်</div>
+      <div class="video-error" id="videoError">video.c ကို မတွေ့ပါ။ ကိုယ့် video ဖိုင်ကို ဒီ HTML နဲ့ folder တစ်ခုထဲ ထည့်ပါ။</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let outCount=0;
+  let choiceShown=false;
+  let timer=null;
+
+  function makeSparkles(id){
+    const el=document.getElementById(id);
+    const symbols=['✨','💙','⭐','🌟','💫','😊'];
+    for(let i=0;i<22;i++){
+      const s=document.createElement('span');
+      s.textContent=symbols[i%symbols.length];
+      s.style.left=(Math.random()*100)+'%';
+      s.style.animationDelay=(Math.random()*7)+'s';
+      s.style.animationDuration=(5+Math.random()*5)+'s';
+      el.appendChild(s);
+    }
+  }
+  makeSparkles('sparkles1');makeSparkles('sparkles2');
+
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+  function showChoice(){
+    const t=document.getElementById('choiceText');
+    t.textContent='are you sure?';
+    t.classList.add('warning');
+    choiceShown=true;
+  }
+  function outPressed(){
+    outCount++;
+    const btn=document.getElementById('startBtn');
+    const t=document.getElementById('choiceText');
+    if(outCount<3){
+      btn.classList.add('big');
+      t.textContent='are you sure?';
+      t.classList.add('warning');
+      btn.textContent='start';
+      setTimeout(()=>btn.classList.remove('big'),650);
+    }else{
+      outCount=0;
+      goHome();
+    }
+  }
+  function startPressed(){
+    outCount=0;
+    showPage('countdown');
+    let n=3;
+    document.getElementById('countNumber').textContent=n;
+    clearInterval(timer);
+    timer=setInterval(()=>{
+      n--;
+      if(n>0){
+        const num=document.getElementById('countNumber');
+        num.textContent=n;
+        num.style.animation='none';
+        void num.offsetWidth;
+        num.style.animation='numberPop 1s ease both';
+      }else{
+        clearInterval(timer);
+        showPage('songs');
+      }
+    },1000);
+  }
+  function goHome(){
+    clearInterval(timer);
+    closeVideo();
+    outCount=0;
+    document.getElementById('choiceText').textContent='';
+    document.getElementById('choiceText').classList.remove('warning');
+    document.getElementById('startBtn').classList.remove('big');
+    showPage('home');
+  }
+  function openVideo(file,title){
+    const modal=document.getElementById('videoModal');
+    const video=document.getElementById('songVideo');
+    document.getElementById('videoCaption').textContent=title;
+    document.getElementById('videoError').style.display='none';
+    video.src=file;
+    modal.classList.add('show');
+    video.load();
+    const playPromise=video.play();
+    if(playPromise&&playPromise.catch)playPromise.catch(()=>{});
+    video.onerror=()=>document.getElementById('videoError').style.display='block';
+  }
+  function closeVideo(){
+    const modal=document.getElementById('videoModal');
+    const video=document.getElementById('songVideo');
+    if(!modal)return;
+    modal.classList.remove('show');
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+  }
+</script>
+</body>
+</html>
