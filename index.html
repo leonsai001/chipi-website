@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chipi Cute 💙</title>
+
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;min-height:100%;font-family:Arial,"Noto Sans Myanmar",sans-serif}
+body{
+  overflow-x:hidden;
+  background:linear-gradient(135deg,#9ee7ff,#dff8ff,#a9d8ff);
+}
+.page{
+  min-height:100vh;
+  display:none;
+  position:relative;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:30px 18px;
+}
+.page.active{display:flex}
+
+.emoji{
+  position:fixed;
+  top:-30px;
+  font-size:22px;
+  opacity:.8;
+  animation:fall linear infinite;
+  pointer-events:none;
+}
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg)}
+}
+
+.card{
+  width:min(92vw,430px);
+  padding:30px 20px;
+  border-radius:28px;
+  background:rgba(255,255,255,.55);
+  box-shadow:0 18px 45px rgba(0,90,150,.18);
+  backdrop-filter:blur(8px);
+}
+
+.won-photo{
+  width:190px;
+  height:190px;
+  border-radius:50%;
+  overflow:hidden;
+  margin:0 auto 22px;
+  background:#fff;
+  border:7px solid rgba(255,255,255,.9);
+  box-shadow:0 15px 30px rgba(0,0,0,.18);
+  animation:photoFloat 2.2s ease-in-out infinite;
+}
+.won-photo img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+@keyframes photoFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+h1{margin:8px 0 12px;font-size:30px;color:#17658b}
+p{color:#356b80;font-size:18px}
+
+.buttons{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  margin-top:22px;
+  flex-wrap:wrap;
+}
+button{
+  border:0;
+  padding:14px 22px;
+  border-radius:18px;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+  transition:.2s;
+}
+button:active{transform:scale(.94)}
+.hello{background:#55c878;color:white}
+.nohello{background:#fff;color:#777}
+
+.big{
+  font-size:34px;
+  color:#25739b;
+  margin:8px 0;
+}
+.wait{font-size:22px}
+.poop{
+  font-size:70px;
+  animation:boom .7s ease-out infinite alternate;
+}
+@keyframes boom{
+  from{transform:scale(.85) rotate(-6deg)}
+  to{transform:scale(1.12) rotate(6deg)}
+}
+
+.hearts{font-size:38px;letter-spacing:8px;animation:heart 1s ease-in-out infinite alternate}
+@keyframes heart{to{transform:scale(1.12)}}
+
+.back{
+  margin-top:20px;
+  background:rgba(255,255,255,.8);
+  color:#27708e;
+}
+
+@media(max-width:500px){
+  .won-photo{width:160px;height:160px}
+  h1{font-size:26px}
+  .big{font-size:29px}
+}
+</style>
+</head>
+
+<body>
+
+<div id="home" class="page active">
+  <div class="emoji" style="left:5%;animation-duration:7s">😂</div>
+  <div class="emoji" style="left:15%;animation-duration:9s;animation-delay:1s">🤣</div>
+  <div class="emoji" style="left:28%;animation-duration:6s;animation-delay:2s">😂</div>
+  <div class="emoji" style="left:42%;animation-duration:10s">🤣</div>
+  <div class="emoji" style="left:58%;animation-duration:8s;animation-delay:1s">😂</div>
+  <div class="emoji" style="left:72%;animation-duration:7s;animation-delay:3s">🤣</div>
+  <div class="emoji" style="left:88%;animation-duration:9s">😂</div>
+
+  <div class="card">
+    <div class="won-photo">
+      <img src="wonphoto.jpg" alt="Won Photo"
+           onerror="this.style.display='none';this.parentElement.innerHTML='<div style=&quot;font-size:75px;padding-top:45px&quot;>📷</div>';">
+    </div>
+
+    <h1>Hello ငယ်ချင်း 💙</h1>
+    <p>ဒီမှာ ဘာလုပ်မလဲ? 😆</p>
+
+    <div class="buttons">
+      <button class="nohello" onclick="showNo()">No Hello 😭</button>
+      <button class="hello" onclick="showHello()">Hello 💚</button>
+    </div>
+  </div>
+</div>
+
+<div id="no" class="page">
+  <div class="card">
+    <div class="wait">ခဏလေးစောင့်နော်... 😌</div>
+    <div class="big">Impossible 😭</div>
+    <div class="poop">💩</div>
+    <p>🎵 Impossible... Impossible... 🎵</p>
+    <button class="back" onclick="goHome()">ပြန်သွားမယ် ↩️</button>
+  </div>
+</div>
+
+<div id="yes" class="page">
+  <div class="card">
+    <div class="hearts">💖 💕 💗</div>
+    <div class="big">ပျော်ရွှင်ပါစေ 💖✨</div>
+    <p>အမြဲတမ်း ပြုံးနိုင်ပါစေ 😄</p>
+    <div class="hearts">💗 💕 💖</div>
+    <button class="back" onclick="goHome()">ပြန်သွားမယ် ↩️</button>
+  </div>
+</div>
+
+<!-- MP4 ကို အသံဖွင့်ရန် အသုံးပြုထားသည် -->
+<video id="player" preload="auto" playsinline style="display:none">
+  <source src="impossible.mp4" type="video/mp4">
+</video>
+
+<script>
+const pages = ["home","no","yes"];
+
+function showPage(id){
+  pages.forEach(p => document.getElementById(p).classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+function showNo(){
+  showPage("no");
+  const player = document.getElementById("player");
+  player.currentTime = 0;
+  setTimeout(() => {
+    player.play().catch(() => {});
+  }, 300);
+}
+
+function showHello(){
+  showPage("yes");
+  const player = document.getElementById("player");
+  player.pause();
+  player.currentTime = 0;
+}
+
+function goHome(){
+  const player = document.getElementById("player");
+  player.pause();
+  player.currentTime = 0;
+  showPage("home");
+}
+</script>
+
+</body>
+</html>
