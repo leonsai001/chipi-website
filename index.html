@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🛡️ Leon Sai Songs 🎵</title>
+<title>Leon Sai Songs 🎵</title>
 
 <style>
 *{
@@ -14,368 +14,290 @@
 html,body{
   margin:0;
   width:100%;
-  min-height:100%;
+  height:100%;
   font-family:Arial,sans-serif;
-}
-
-body{
   overflow:hidden;
 }
 
-/* =====================================
-   HOME
-===================================== */
+/* ================= HOME ================= */
 
 #home{
   width:100%;
   height:100vh;
-  position:relative;
-  overflow:hidden;
-
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-
-  background:
-    radial-gradient(circle at 20% 20%,
-      rgba(255,255,255,.25),
-      transparent 25%),
-    linear-gradient(135deg,
-      #8ff8f5,
-      #38cbdc,
-      #66e9ed);
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#a8ffff,#45dce8,#82f4ef);
 }
 
-/* floating decorations */
+/* Floating decorations */
 
 .float{
   position:absolute;
   pointer-events:none;
   font-size:25px;
-  opacity:.7;
-  animation:float 6s linear infinite;
+  animation:floatUp 6s linear infinite;
+  opacity:0;
 }
 
-.f1{
-  left:8%;
-  animation-delay:0s;
-}
+.f1{left:7%;animation-delay:0s}
+.f2{left:23%;animation-delay:1.3s}
+.f3{left:45%;animation-delay:2.5s}
+.f4{left:68%;animation-delay:.7s}
+.f5{left:88%;animation-delay:2s}
 
-.f2{
-  left:25%;
-  animation-delay:1.2s;
-}
-
-.f3{
-  left:45%;
-  animation-delay:2.4s;
-}
-
-.f4{
-  left:67%;
-  animation-delay:.8s;
-}
-
-.f5{
-  left:87%;
-  animation-delay:2s;
-}
-
-@keyframes float{
-
+@keyframes floatUp{
   0%{
-    transform:
-      translateY(110vh)
-      rotate(0deg);
+    transform:translateY(110vh) rotate(0deg);
     opacity:0;
   }
-
-  15%{
-    opacity:.8;
-  }
-
+  15%{opacity:.8}
   100%{
-    transform:
-      translateY(-20vh)
-      rotate(360deg);
+    transform:translateY(-20vh) rotate(360deg);
     opacity:0;
   }
 }
 
+/* ================= VIDEO STICKER ================= */
 
-/* =====================================
-   VIDEO STICKER BOX
-===================================== */
-
-.file-box{
-  width:320px;
-  height:360px;
-
-  padding:14px;
-
-  border-radius:25px;
-
-  background:rgba(255,255,255,.96);
-
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.2);
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-
+.sticker{
+  width:210px;
+  height:210px;
+  padding:7px;
   position:relative;
   z-index:5;
 
-  animation:appear .8s ease;
+  background:white;
+
+  border-radius:42% 58% 55% 45% / 48% 42% 58% 52%;
+
+  box-shadow:
+    0 15px 35px rgba(0,0,0,.20),
+    0 0 0 5px rgba(255,255,255,.65);
+
+  transform:rotate(-3deg);
+
+  animation:
+    stickerIn .8s ease,
+    stickerFloat 3s ease-in-out infinite;
 }
 
-@keyframes appear{
-
+@keyframes stickerIn{
   from{
     opacity:0;
-    transform:scale(.7);
+    transform:scale(.4) rotate(-15deg);
   }
-
   to{
     opacity:1;
-    transform:scale(1);
+    transform:scale(1) rotate(-3deg);
   }
 }
 
+@keyframes stickerFloat{
+  0%,100%{
+    margin-top:0;
+  }
+  50%{
+    margin-top:-10px;
+  }
+}
 
-/* =====================================
-   VIDEO.B
-
-   No controls
-   Autoplay
-   Muted
-   Loop
-===================================== */
+/* Video itself */
 
 #firstVideo{
   width:100%;
-  height:245px;
+  height:100%;
 
   display:block;
 
   object-fit:cover;
 
+  border-radius:
+    38% 62% 50% 50% /
+    50% 42% 58% 50%;
+
   background:#111;
 
-  border-radius:18px;
+  border:0;
 
-  box-shadow:
-    0 8px 20px rgba(0,0,0,.18);
+  outline:none;
 
+  /* no controls interaction */
   pointer-events:none;
+
   user-select:none;
 }
 
+/* little sticker shine */
 
-/* label */
+.sticker::after{
+  content:"✨";
 
-.file-name{
-  margin-top:10px;
+  position:absolute;
 
-  color:#222;
+  right:-12px;
+  top:-16px;
 
-  font-size:18px;
-  font-weight:bold;
+  font-size:32px;
+
+  animation:sparkle 1.5s infinite;
+}
+
+@keyframes sparkle{
+  0%,100%{
+    transform:scale(.8) rotate(0deg);
+    opacity:.5;
+  }
+  50%{
+    transform:scale(1.25) rotate(15deg);
+    opacity:1;
+  }
 }
 
 
-/* =====================================
-   CHOICE
-===================================== */
+/* ================= ADD FILE TEXT ================= */
+
+.file-name{
+  margin-top:18px;
+  font-size:18px;
+  font-weight:bold;
+  color:#222;
+  position:relative;
+  z-index:5;
+}
+
+
+/* ================= CHOICE ================= */
 
 .choice{
   width:145px;
   height:42px;
-
-  margin-top:10px;
+  margin-top:9px;
 
   border:0;
-  border-radius:15px;
+  border-radius:16px;
 
-  background:#fff3dc;
-
-  color:#222;
+  background:#fff3d8;
 
   font-size:17px;
   font-weight:bold;
 
-  box-shadow:
-    0 5px 15px rgba(0,0,0,.08);
+  cursor:pointer;
+
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
 
   transition:.3s;
 }
 
 .choice.sure{
-  background:#ffe09b;
-
+  background:#ffdc88;
   animation:pulse 1s infinite;
 }
 
 @keyframes pulse{
-
   50%{
     transform:scale(1.08);
-
-    box-shadow:
-      0 0 25px rgba(255,190,50,.5);
+    box-shadow:0 0 25px rgba(255,190,40,.55);
   }
 }
 
 
-/* =====================================
-   START / OUT
-===================================== */
+/* ================= BUTTONS ================= */
 
 .buttons{
   display:flex;
-
-  align-items:center;
-
   gap:7px;
-
   margin-top:7px;
-
-  position:relative;
-
   z-index:10;
 }
 
 .start-btn,
 .out-btn{
   border:0;
-
   color:white;
-
   font-weight:bold;
-
-  font-size:28px;
-
-  text-shadow:
-    1px 2px 2px rgba(0,0,0,.35);
-
+  font-size:27px;
+  text-shadow:1px 2px 2px rgba(0,0,0,.35);
   cursor:pointer;
 
   transition:
-    width .45s ease,
-    height .45s ease,
-    font-size .45s ease,
-    transform .25s ease,
-    box-shadow .3s ease;
+    .45s ease;
 }
 
 .start-btn{
   width:160px;
   height:68px;
-
   border-radius:22px;
-
-  background:#00f23d;
+  background:#00f13b;
 }
 
 .out-btn{
   width:85px;
   height:68px;
-
   border-radius:22px;
-
   background:#ff3038;
 }
 
 .start-btn:active,
-.out-btn:active,
-.choice:active{
+.out-btn:active{
   transform:scale(.88);
 }
 
 .start-btn.big{
   width:250px;
   height:115px;
-
   font-size:43px;
-
   border-radius:32px;
-
-  box-shadow:
-    0 0 40px rgba(0,255,70,.7);
+  box-shadow:0 0 40px rgba(0,255,70,.7);
 }
 
 
-/* =====================================
-   COUNTDOWN
-===================================== */
+/* ================= COUNTDOWN ================= */
 
 #countdown{
   display:none;
-
   width:100%;
   height:100vh;
-
   align-items:center;
   justify-content:center;
-
-  background:#0da9eb;
-
+  background:#0ca9eb;
   color:white;
 }
 
 #countNumber{
   font-size:190px;
-
   font-weight:900;
-
-  animation:numberPop .9s ease;
+  animation:countPop .8s ease;
 }
 
-@keyframes numberPop{
-
+@keyframes countPop{
   0%{
     transform:scale(1.7);
     opacity:0;
   }
-
-  60%{
-    transform:scale(.95);
-    opacity:1;
-  }
-
   100%{
     transform:scale(1);
+    opacity:1;
   }
 }
 
 
-/* =====================================
-   SONG PAGE
-===================================== */
+/* ================= SONG PAGE ================= */
 
 #songs{
   display:none;
-
   width:100%;
   height:100vh;
-
   background:white;
-
-  position:relative;
-
   overflow:hidden;
 }
 
-
-/* header */
-
 .header{
-  width:100%;
   height:67px;
-
+  width:100%;
   background:#ffd17b;
 
   display:flex;
@@ -383,61 +305,40 @@ body{
 
   position:relative;
 
-  box-shadow:
-    0 3px 12px rgba(0,0,0,.1);
+  box-shadow:0 3px 12px rgba(0,0,0,.1);
 }
 
 .back{
   border:0;
-
   background:transparent;
-
   color:white;
 
   font-size:50px;
-
   font-weight:bold;
 
   margin-left:18px;
 
   cursor:pointer;
 
-  text-shadow:
-    1px 2px 2px #777;
-
-  transition:.25s;
-}
-
-.back:active{
-  transform:scale(.8);
+  text-shadow:1px 2px 2px #777;
 }
 
 .out-word{
-  color:#111;
-
   font-size:24px;
-
   font-weight:bold;
-
+  color:#111;
   margin-left:3px;
-
-  text-shadow:
-    1px 1px white;
 }
 
 .title{
   position:absolute;
-
   left:50%;
-
   transform:translateX(-50%);
 
   white-space:nowrap;
 
   color:white;
-
   font-size:29px;
-
   font-weight:bold;
 
   text-shadow:
@@ -446,48 +347,32 @@ body{
 }
 
 
-/* =====================================
-   SONG BUTTONS
-===================================== */
+/* ================= SONG BUTTONS ================= */
 
 .song-grid{
-
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
+  grid-template-columns:repeat(3,1fr);
   gap:74px 42px;
-
   padding:51px 10%;
 }
 
 .song{
-
   height:80px;
 
   border:0;
-
   border-radius:25px;
 
   background:#fff0b8;
 
-  color:#111;
-
   font-size:20px;
-
   font-weight:bold;
 
   cursor:pointer;
 
   position:relative;
-
   overflow:hidden;
 
   transition:.3s;
-
-  box-shadow:
-    0 4px 12px rgba(255,200,80,.08);
 }
 
 .song:active{
@@ -495,73 +380,47 @@ body{
 }
 
 .song:hover{
-  transform:
-    translateY(-6px)
-    scale(1.03);
-
-  box-shadow:
-    0 12px 25px
-    rgba(255,190,50,.3);
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 12px 25px rgba(255,190,50,.3);
 }
 
-
-/* shine */
-
 .song::after{
-
   content:"";
 
   position:absolute;
-
-  top:0;
   left:-80px;
+  top:0;
 
   width:45px;
   height:100%;
 
-  background:
-    rgba(255,255,255,.55);
+  background:rgba(255,255,255,.6);
 
-  transform:
-    skewX(-20deg);
+  transform:skewX(-20deg);
 
   animation:shine 2.5s infinite;
 }
 
 @keyframes shine{
-
-  0%{
-    left:-80px;
-  }
-
-  100%{
-    left:120%;
-  }
+  from{left:-80px}
+  to{left:120%}
 }
 
 
-/* =====================================
-   HEART BUTTONS
-===================================== */
+/* ================= HEARTS ================= */
 
 .bottom-buttons{
-
   display:flex;
-
   justify-content:center;
-
   gap:53px;
-
   margin-top:2px;
 }
 
 .heart{
-
   width:110px;
   height:92px;
 
   border:0;
-
   border-radius:25px;
 
   font-size:30px;
@@ -580,12 +439,9 @@ body{
 }
 
 
-/* =====================================
-   VIDEO.C PAGE
-===================================== */
+/* ================= VIDEO.C PAGE ================= */
 
 #videoPage{
-
   display:none;
 
   width:100%;
@@ -594,85 +450,56 @@ body{
   padding:20px;
 
   background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(255,255,255,.25),
-      transparent 25%
-    ),
-    linear-gradient(
-      135deg,
-      #75f5f0,
-      #9e9aff
-    );
+    linear-gradient(135deg,#74f5ef,#a19aff);
 
   flex-direction:column;
 
   align-items:center;
-
   justify-content:center;
 
   gap:18px;
 }
 
 .video-title{
-
   color:white;
-
   font-size:25px;
-
   font-weight:bold;
-
-  text-shadow:
-    2px 2px 3px #666;
+  text-shadow:2px 2px 3px #666;
 }
 
 #songVideo{
-
   width:min(92vw,700px);
-
   max-height:72vh;
 
   background:#000;
 
   border-radius:24px;
 
-  box-shadow:
-    0 18px 50px rgba(0,0,0,.3);
+  box-shadow:0 18px 50px rgba(0,0,0,.3);
 }
 
 .video-back{
-
   border:0;
-
   background:white;
-
-  color:#222;
 
   padding:13px 27px;
 
   border-radius:20px;
 
   font-size:17px;
-
   font-weight:bold;
 
   cursor:pointer;
 }
 
 
-/* =====================================
-   MOBILE
-===================================== */
+/* ================= MOBILE ================= */
 
 @media(max-width:600px){
 
-  .file-box{
-    width:320px;
-    height:360px;
-  }
-
-  #firstVideo{
-    height:245px;
+  .sticker{
+    width:205px;
+    height:205px;
   }
 
   .song-grid{
@@ -692,10 +519,8 @@ body{
     font-size:180px;
   }
 }
-
 </style>
 </head>
-
 
 <body>
 
@@ -706,19 +531,22 @@ body{
 
 <section id="home">
 
-
-  <!-- decorations -->
-
   <div class="float f1">✨</div>
-  <div class="float f2">💙</div>
+  <div class="float f2">🎊</div>
   <div class="float f3">⭐</div>
   <div class="float f4">💫</div>
   <div class="float f5">💙</div>
 
 
-  <!-- VIDEO.B -->
+  <!--
+    video.b
+    Sticker ပုံစံ
+    Controls မပါ
+    Auto Play
+    Loop
+  -->
 
-  <div class="file-box">
+  <div class="sticker">
 
     <video
       id="firstVideo"
@@ -728,34 +556,26 @@ body{
       playsinline
       preload="auto">
 
-      <source
-        src="video.b"
-        type="video/mp4">
-
-      <source
-        src="video-b.mp4"
-        type="video/mp4">
+      <source src="video.b" type="video/mp4">
 
     </video>
-
-
-    <div class="file-name">
-      add file 1
-    </div>
-
-
-    <button
-      class="choice"
-      id="choiceBtn">
-
-      choice 😊
-
-    </button>
 
   </div>
 
 
-  <!-- buttons -->
+  <div class="file-name">
+  
+  </div>
+
+
+  <button
+    class="choice"
+    id="choiceBtn">
+
+    choice 😊
+
+  </button>
+
 
   <div class="buttons">
 
@@ -827,7 +647,6 @@ body{
   </div>
 
 
-
   <div class="song-grid">
 
 
@@ -840,52 +659,13 @@ body{
     </button>
 
 
-    <button
-      class="song"
-      onclick="openVideo()">
-
-      ?
-
-    </button>
-
-
-    <button
-      class="song"
-      onclick="openVideo()">
-
-      ?
-
-    </button>
-
-
-    <button
-      class="song"
-      onclick="openVideo()">
-
-      ?
-
-    </button>
-
-
-    <button
-      class="song"
-      onclick="openVideo()">
-
-      ?
-
-    </button>
-
-
-    <button
-      class="song"
-      onclick="openVideo()">
-
-      ?
-
-    </button>
+    <button class="song">?</button>
+    <button class="song">?</button>
+    <button class="song">?</button>
+    <button class="song">?</button>
+    <button class="song">?</button>
 
   </div>
-
 
 
   <div class="bottom-buttons">
@@ -919,11 +699,8 @@ body{
 
 <section id="videoPage">
 
-
   <div class="video-title">
-
     🎵 (လုယွၼ်ႉၵဝ်) 🎵
-
   </div>
 
 
@@ -935,10 +712,6 @@ body{
 
     <source
       src="video.c"
-      type="video/mp4">
-
-    <source
-      src="video-c.mp4"
       type="video/mp4">
 
   </video>
@@ -959,6 +732,41 @@ body{
 <script>
 
 /* ==========================================
+   FIRST VIDEO
+========================================== */
+
+const firstVideo =
+  document.getElementById("firstVideo");
+
+
+/*
+  Website ဝင်တာနဲ့
+  video.b ကို auto play
+*/
+
+window.addEventListener(
+  "load",
+  function(){
+
+    firstVideo.muted = true;
+
+    firstVideo.loop = true;
+
+    firstVideo.play().catch(
+      function(){
+
+        console.log(
+          "Browser blocked autoplay"
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* ==========================================
    ELEMENTS
 ========================================== */
 
@@ -974,12 +782,6 @@ const songs =
 const videoPage =
   document.getElementById("videoPage");
 
-const firstVideo =
-  document.getElementById("firstVideo");
-
-const songVideo =
-  document.getElementById("songVideo");
-
 const startBtn =
   document.getElementById("startBtn");
 
@@ -989,102 +791,15 @@ const choiceBtn =
 const countNumber =
   document.getElementById("countNumber");
 
-
-/* ==========================================
-   LOAD UNKNOWN VIDEO EXTENSION
-
-   video.b / video.c ကို
-   Browser အတွက် MP4 အဖြစ်ဖတ်ပေးမယ်။
-========================================== */
-
-async function loadVideoFile(filename, videoElement){
-
-  try{
-
-    const response =
-      await fetch(filename);
-
-    if(!response.ok){
-      throw new Error("Video not found");
-    }
-
-    const buffer =
-      await response.arrayBuffer();
-
-    const blob =
-      new Blob(
-        [buffer],
-        {type:"video/mp4"}
-      );
-
-    const url =
-      URL.createObjectURL(blob);
-
-    videoElement.src = url;
-
-    videoElement.load();
-
-    return true;
-
-  }catch(error){
-
-    console.log(
-      "Cannot load:",
-      filename,
-      error
-    );
-
-    return false;
-  }
-}
+const songVideo =
+  document.getElementById("songVideo");
 
 
 /* ==========================================
-   FIRST VIDEO
-
-   Website ဝင်တာနဲ့
-   autoplay + loop
-========================================== */
-
-async function startFirstVideo(){
-
-  const loaded =
-    await loadVideoFile(
-      "video.b",
-      firstVideo
-    );
-
-  if(loaded){
-
-    firstVideo.muted = true;
-
-    firstVideo.loop = true;
-
-    firstVideo.autoplay = true;
-
-    firstVideo.play().catch(
-      function(){
-        console.log(
-          "Autoplay blocked."
-        );
-      }
-    );
-  }
-}
-
-
-/* Start immediately */
-
-startFirstVideo();
-
-
-
-/* ==========================================
-   OUT BUTTON
+   OUT
 ========================================== */
 
 let outCount = 0;
-
 
 function pressOut(){
 
@@ -1100,9 +815,7 @@ function pressOut(){
     choiceBtn.innerHTML =
       "are you sure? 🤔";
 
-    popup(
-      "Are you sure? 😳"
-    );
+    popup("Are you sure? 💩");
 
   }
 
@@ -1112,11 +825,9 @@ function pressOut(){
     startBtn.classList.add("big");
 
     choiceBtn.innerHTML =
-      "ARE YOU SURE? 😳";
+      "ARE YOU SURE? 🥺😭";
 
-    popup(
-      "One more time... 😳"
-    );
+    popup("One more time... 😑");
 
   }
 
@@ -1124,7 +835,7 @@ function pressOut(){
   else if(outCount >= 3){
 
     document.body.style.transition =
-      "opacity .7s ease";
+      "opacity .7s";
 
     document.body.style.opacity =
       "0";
@@ -1139,9 +850,9 @@ function pressOut(){
       },
       700
     );
+
   }
 }
-
 
 
 /* ==========================================
@@ -1149,6 +860,8 @@ function pressOut(){
 ========================================== */
 
 function startWebsite(){
+
+  firstVideo.pause();
 
   home.style.display =
     "none";
@@ -1163,16 +876,7 @@ function startWebsite(){
     number;
 
 
-  countNumber.style.animation =
-    "none";
-
-  void countNumber.offsetWidth;
-
-  countNumber.style.animation =
-    "numberPop .9s ease";
-
-
-  const timer =
+  let timer =
     setInterval(
       function(){
 
@@ -1184,14 +888,13 @@ function startWebsite(){
           countNumber.innerHTML =
             number;
 
-
           countNumber.style.animation =
             "none";
 
           void countNumber.offsetWidth;
 
           countNumber.style.animation =
-            "numberPop .9s ease";
+            "countPop .8s ease";
 
         }
 
@@ -1214,9 +917,8 @@ function startWebsite(){
 }
 
 
-
 /* ==========================================
-   HOME
+   BACK HOME
 ========================================== */
 
 function goHome(){
@@ -1236,16 +938,9 @@ function goHome(){
 
   outCount = 0;
 
+  startBtn.classList.remove("big");
 
-  startBtn.classList.remove(
-    "big"
-  );
-
-
-  choiceBtn.classList.remove(
-    "sure"
-  );
-
+  choiceBtn.classList.remove("sure");
 
   choiceBtn.innerHTML =
     "choice 😊";
@@ -1260,12 +955,11 @@ function goHome(){
 }
 
 
-
 /* ==========================================
    VIDEO.C
 ========================================== */
 
-async function openVideo(){
+function openVideo(){
 
   songs.style.display =
     "none";
@@ -1273,41 +967,17 @@ async function openVideo(){
   videoPage.style.display =
     "flex";
 
+  songVideo.currentTime =
+    0;
 
-  songVideo.pause();
-
-  songVideo.removeAttribute(
-    "src"
+  songVideo.play().catch(
+    function(){}
   );
-
-
-  const loaded =
-    await loadVideoFile(
-      "video.c",
-      songVideo
-    );
-
-
-  if(loaded){
-
-    songVideo.currentTime = 0;
-
-    songVideo.play().catch(
-      function(){
-
-        console.log(
-          "Press play if autoplay is blocked."
-        );
-
-      }
-    );
-  }
 }
 
 
-
 /* ==========================================
-   CLOSE VIDEO.C
+   CLOSE VIDEO
 ========================================== */
 
 function closeVideo(){
@@ -1322,7 +992,6 @@ function closeVideo(){
 }
 
 
-
 /* ==========================================
    HEART EFFECT
 ========================================== */
@@ -1331,18 +1000,9 @@ function heartEffect(button){
 
   button.animate(
     [
-      {
-        transform:"scale(1)"
-      },
-
-      {
-        transform:
-          "scale(1.3) rotate(8deg)"
-      },
-
-      {
-        transform:"scale(1)"
-      }
+      {transform:"scale(1)"},
+      {transform:"scale(1.3) rotate(8deg)"},
+      {transform:"scale(1)"}
     ],
     {
       duration:400
@@ -1350,50 +1010,37 @@ function heartEffect(button){
   );
 
 
-  for(
-    let i=0;
-    i<8;
-    i++
-  ){
+  for(let i=0;i<8;i++){
 
     const heart =
       document.createElement("div");
 
-
     heart.innerHTML =
-      "💖";
-
+      "🖕";
 
     heart.style.position =
       "fixed";
 
-
     const rect =
       button.getBoundingClientRect();
 
-
     heart.style.left =
-      (
-        rect.left +
-        rect.width / 2
-      ) + "px";
-
+      rect.left +
+      rect.width / 2 +
+      "px";
 
     heart.style.top =
-      rect.top + "px";
-
+      rect.top +
+      "px";
 
     heart.style.fontSize =
       "22px";
 
-
     heart.style.zIndex =
       "9999";
 
-
     heart.style.pointerEvents =
       "none";
-
 
     document.body.appendChild(
       heart
@@ -1402,7 +1049,6 @@ function heartEffect(button){
 
     const x =
       (Math.random()-.5)*180;
-
 
     const y =
       -(Math.random()*180+50);
@@ -1435,9 +1081,9 @@ function heartEffect(button){
       },
       900
     );
+
   }
 }
-
 
 
 /* ==========================================
@@ -1449,58 +1095,44 @@ function popup(text){
   const box =
     document.createElement("div");
 
-
   box.innerHTML =
     text;
-
 
   box.style.position =
     "fixed";
 
-
   box.style.left =
     "50%";
-
 
   box.style.top =
     "15%";
 
-
   box.style.transform =
     "translateX(-50%) scale(.5)";
-
 
   box.style.padding =
     "14px 24px";
 
-
   box.style.borderRadius =
     "20px";
-
 
   box.style.background =
     "rgba(255,255,255,.95)";
 
-
   box.style.color =
     "#222";
-
 
   box.style.fontSize =
     "18px";
 
-
   box.style.fontWeight =
     "bold";
-
 
   box.style.zIndex =
     "10000";
 
-
   box.style.boxShadow =
     "0 10px 30px rgba(0,0,0,.2)";
-
 
   document.body.appendChild(
     box
