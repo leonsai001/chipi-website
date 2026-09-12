@@ -11,205 +11,286 @@
   -webkit-tap-highlight-color:transparent;
 }
 
-body{
+html,body{
   margin:0;
-  min-height:100vh;
+  width:100%;
+  min-height:100%;
   font-family:Arial,sans-serif;
+}
+
+body{
   overflow:hidden;
 }
 
-/* ================= HOME ================= */
+/* =========================
+   HOME PAGE
+========================= */
 
 #home{
+  width:100%;
   min-height:100vh;
-  background:linear-gradient(135deg,#a9ffff,#72efff);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   position:relative;
   overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.25),transparent 25%),
+    linear-gradient(135deg,#8ff8f5,#35c8dc,#65e9ed);
 }
 
-.spark{
+/* floating decorations */
+
+.float{
   position:absolute;
-  font-size:18px;
-  animation:float 4s linear infinite;
-  opacity:.7;
+  font-size:25px;
+  opacity:.6;
+  pointer-events:none;
+  animation:floatUp 6s linear infinite;
 }
 
-@keyframes float{
-  0%{transform:translateY(110vh) rotate(0deg);opacity:0}
-  20%{opacity:.8}
-  100%{transform:translateY(-20vh) rotate(360deg);opacity:0}
+.f1{left:8%;animation-delay:0s;}
+.f2{left:23%;animation-delay:1.5s;}
+.f3{left:43%;animation-delay:3s;}
+.f4{left:66%;animation-delay:.8s;}
+.f5{left:85%;animation-delay:2.2s;}
+
+@keyframes floatUp{
+  0%{
+    transform:translateY(110vh) rotate(0deg);
+    opacity:0;
+  }
+  15%{
+    opacity:.7;
+  }
+  100%{
+    transform:translateY(-20vh) rotate(360deg);
+    opacity:0;
+  }
 }
+
+/* main video box */
 
 .file-box{
-  width:150px;
-  height:163px;
-  background:white;
+  width:320px;
+  min-height:360px;
+  padding:14px;
+  border-radius:24px;
+  background:rgba(255,255,255,.96);
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.18),
+    inset 0 0 0 2px rgba(255,255,255,.5);
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  border-radius:0;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  animation:boxIn .7s ease;
-  z-index:2;
+  position:relative;
+  z-index:5;
+  animation:boxAppear .8s ease;
 }
 
-@keyframes boxIn{
-  from{transform:scale(.7);opacity:0}
-  to{transform:scale(1);opacity:1}
+@keyframes boxAppear{
+  from{
+    opacity:0;
+    transform:scale(.75) translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:scale(1) translateY(0);
+  }
 }
 
-.plus{
-  font-size:20px;
-  font-weight:bold;
+/* VIDEO.B */
+
+#firstVideo{
+  width:100%;
+  height:245px;
+  display:block;
+  object-fit:cover;
+  background:#111;
+  border-radius:17px;
+  box-shadow:0 8px 20px rgba(0,0,0,.18);
 }
+
+/* label */
 
 .file-name{
-  margin-top:8px;
-  font-size:14px;
+  margin-top:10px;
+  font-size:18px;
   font-weight:bold;
+  color:#222;
 }
 
+/* choice button */
+
 .choice{
-  margin-top:20px;
-  width:112px;
-  height:31px;
-  border:0;
-  border-radius:10px;
-  background:#fff8ed;
+  width:145px;
+  height:42px;
+  margin-top:10px;
+  border:none;
+  border-radius:15px;
+  background:#fff4dc;
+  color:#222;
+  font-size:17px;
   font-weight:bold;
   cursor:pointer;
+  box-shadow:0 5px 12px rgba(0,0,0,.08);
   transition:.3s;
 }
 
-.choice:hover{
-  transform:scale(1.08);
+.choice:active{
+  transform:scale(.9);
 }
+
+.choice.sure{
+  background:#ffe09b;
+  animation:choicePulse 1s infinite;
+}
+
+@keyframes choicePulse{
+  50%{
+    transform:scale(1.08);
+    box-shadow:0 0 25px rgba(255,190,50,.5);
+  }
+}
+
+/* buttons */
 
 .buttons{
   display:flex;
-  gap:4px;
-  margin-top:4px;
-  z-index:3;
+  align-items:center;
+  gap:7px;
+  margin-top:7px;
+  position:relative;
+  z-index:6;
 }
 
 .start-btn,
 .out-btn{
-  border:0;
+  border:none;
   color:white;
   font-weight:bold;
-  font-size:20px;
-  text-shadow:1px 1px 2px #777;
+  font-size:27px;
+  text-shadow:1px 2px 2px rgba(0,0,0,.35);
   cursor:pointer;
-  transition:.45s cubic-bezier(.2,1.5,.4,1);
+  transition:
+    width .45s ease,
+    height .45s ease,
+    font-size .45s ease,
+    transform .25s ease,
+    box-shadow .3s ease;
 }
 
 .start-btn{
-  width:96px;
-  height:49px;
-  border-radius:17px;
-  background:#0cff3c;
+  width:160px;
+  height:68px;
+  border-radius:22px;
+  background:#00f33c;
 }
 
 .out-btn{
-  width:57px;
-  height:49px;
-  border-radius:17px;
+  width:85px;
+  height:68px;
+  border-radius:22px;
   background:#ff3038;
 }
 
 .start-btn:active,
-.out-btn:active,
-.choice:active{
+.out-btn:active{
   transform:scale(.88);
 }
 
-.start-btn.big1{
-  width:135px;
-  height:70px;
-  font-size:27px;
+.start-btn.big{
+  width:250px;
+  height:115px;
+  font-size:43px;
+  border-radius:32px;
+  box-shadow:0 0 40px rgba(0,255,70,.7);
 }
 
-.start-btn.big2{
-  width:190px;
-  height:95px;
-  font-size:35px;
-  border-radius:28px;
-  box-shadow:0 0 35px rgba(0,255,60,.65);
-}
-
-.choice.sure{
-  width:145px;
-  background:#ffe2a5;
-  animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-  50%{transform:scale(1.08)}
-}
-
-/* ================= COUNTDOWN ================= */
+/* =========================
+   COUNTDOWN
+========================= */
 
 #countdown{
   display:none;
+  width:100%;
   min-height:100vh;
-  background:#0da9eb;
-  color:white;
   align-items:center;
   justify-content:center;
-  font-size:210px;
+  background:#10a9ed;
+  color:white;
+}
+
+#countNumber{
+  font-size:220px;
   font-weight:900;
+  animation:numberPop .9s ease;
+  text-shadow:0 8px 20px rgba(0,0,0,.1);
 }
 
-.count{
-  animation:countPop .8s ease;
+@keyframes numberPop{
+  0%{
+    transform:scale(1.7);
+    opacity:0;
+  }
+  60%{
+    transform:scale(.95);
+    opacity:1;
+  }
+  100%{
+    transform:scale(1);
+  }
 }
 
-@keyframes countPop{
-  0%{transform:scale(1.5);opacity:0}
-  100%{transform:scale(1);opacity:1}
-}
-
-/* ================= SONG PAGE ================= */
+/* =========================
+   SONG PAGE
+========================= */
 
 #songs{
   display:none;
+  width:100%;
   min-height:100vh;
-  background:#fff;
+  background:white;
   position:relative;
 }
 
+/* header */
+
 .header{
+  width:100%;
   height:67px;
-  background:#ffd27f;
+  background:#ffd17b;
   display:flex;
   align-items:center;
   position:relative;
-  box-shadow:0 3px 10px rgba(0,0,0,.08);
+  box-shadow:0 3px 12px rgba(0,0,0,.1);
 }
 
 .back{
-  border:0;
+  border:none;
   background:transparent;
   color:white;
-  font-size:45px;
-  font-weight:bold;
+  font-size:50px;
   line-height:1;
+  font-weight:bold;
+  margin-left:18px;
   cursor:pointer;
-  margin-left:20px;
-  text-shadow:1px 1px 2px #777;
+  text-shadow:1px 2px 2px #777;
+  transition:.25s;
 }
 
-.out-text{
+.back:active{
+  transform:scale(.8);
+}
+
+.out-word{
   color:#111;
   font-size:24px;
   font-weight:bold;
   margin-left:3px;
-  text-shadow:1px 1px 2px white;
+  text-shadow:1px 1px 0 white;
 }
 
 .title{
@@ -217,15 +298,18 @@ body{
   left:50%;
   transform:translateX(-50%);
   white-space:nowrap;
-  font-size:28px;
-  font-weight:bold;
   color:white;
+  font-size:29px;
+  font-weight:bold;
   text-shadow:
     2px 2px 0 #666,
     -1px -1px 0 #666;
 }
 
+/* songs */
+
 .song-grid{
+  width:100%;
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:74px 42px;
@@ -234,42 +318,48 @@ body{
 
 .song{
   height:80px;
-  border:0;
+  border:none;
   border-radius:25px;
   background:#fff0b8;
+  color:#111;
   font-size:20px;
   font-weight:bold;
   cursor:pointer;
-  transition:.35s;
   position:relative;
   overflow:hidden;
-}
-
-.song:hover{
-  transform:translateY(-7px) scale(1.04);
-  box-shadow:0 12px 25px rgba(255,190,60,.3);
+  transition:.3s;
+  box-shadow:0 4px 12px rgba(255,200,80,.08);
 }
 
 .song:active{
-  transform:scale(.9);
+  transform:scale(.88);
 }
+
+.song:hover{
+  transform:translateY(-6px) scale(1.03);
+  box-shadow:0 12px 25px rgba(255,190,50,.3);
+}
+
+/* shine animation */
 
 .song::after{
   content:"";
   position:absolute;
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  background:rgba(255,255,255,.7);
-  left:-30px;
-  top:50%;
+  top:0;
+  left:-80px;
+  width:45px;
+  height:100%;
+  background:rgba(255,255,255,.55);
+  transform:skewX(-20deg);
   animation:shine 2.5s infinite;
 }
 
 @keyframes shine{
-  0%{left:-30px}
-  100%{left:120%}
+  0%{left:-80px;}
+  100%{left:120%;}
 }
+
+/* bottom buttons */
 
 .bottom-buttons{
   display:flex;
@@ -281,7 +371,7 @@ body{
 .heart{
   width:110px;
   height:92px;
-  border:0;
+  border:none;
   border-radius:25px;
   font-size:30px;
   cursor:pointer;
@@ -296,60 +386,91 @@ body{
   background:#ff5a0a;
 }
 
-.heart:hover{
-  transform:translateY(-6px) rotate(-2deg);
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
+.heart:active{
+  transform:scale(.85);
 }
 
-/* ================= VIDEO ================= */
+/* =========================
+   VIDEO.C PAGE
+========================= */
 
 #videoPage{
   display:none;
+  width:100%;
   min-height:100vh;
-  background:linear-gradient(135deg,#7dfcff,#b6a5ff);
+  padding:20px;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,.25),transparent 25%),
+    linear-gradient(135deg,#75f5f0,#9e9aff);
+  flex-direction:column;
   align-items:center;
   justify-content:center;
-  flex-direction:column;
-  gap:20px;
-  padding:20px;
+  gap:18px;
 }
 
 .video-title{
+  color:white;
   font-size:25px;
   font-weight:bold;
-  color:white;
-  text-shadow:2px 2px 3px #777;
+  text-shadow:2px 2px 3px #666;
 }
 
 #songVideo{
   width:min(92vw,700px);
-  max-height:75vh;
-  border-radius:25px;
+  max-height:72vh;
   background:#000;
-  box-shadow:0 15px 45px rgba(0,0,0,.3);
+  border-radius:24px;
+  box-shadow:0 18px 50px rgba(0,0,0,.3);
 }
 
 .video-back{
-  border:0;
-  padding:12px 25px;
-  border-radius:20px;
+  border:none;
   background:white;
-  font-weight:bold;
+  color:#222;
+  padding:13px 27px;
+  border-radius:20px;
   font-size:17px;
+  font-weight:bold;
   cursor:pointer;
+  box-shadow:0 7px 20px rgba(0,0,0,.15);
 }
 
-/* ================= MOBILE ================= */
+.video-back:active{
+  transform:scale(.9);
+}
+
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:600px){
 
   .file-box{
-    width:150px;
-    height:163px;
+    width:320px;
+    min-height:360px;
   }
 
-  #countdown{
-    font-size:170px;
+  #firstVideo{
+    height:245px;
+  }
+
+  .start-btn{
+    width:160px;
+    height:68px;
+  }
+
+  .out-btn{
+    width:85px;
+    height:68px;
+  }
+
+  .start-btn.big{
+    width:250px;
+    height:115px;
+  }
+
+  #countNumber{
+    font-size:180px;
   }
 
   .title{
@@ -362,12 +483,7 @@ body{
   }
 
   .song{
-    height:80px;
     font-size:18px;
-  }
-
-  .bottom-buttons{
-    gap:53px;
   }
 }
 </style>
@@ -375,31 +491,48 @@ body{
 
 <body>
 
-<!-- ================= HOME ================= -->
+
+<!-- ==================================================
+     PAGE 1
+================================================== -->
 
 <section id="home">
 
-  <div class="spark" style="left:5%;animation-delay:0s">✨</div>
-  <div class="spark" style="left:18%;animation-delay:1s">💙</div>
-  <div class="spark" style="left:32%;animation-delay:2s">⭐</div>
-  <div class="spark" style="left:48%;animation-delay:.5s">✨</div>
-  <div class="spark" style="left:65%;animation-delay:1.5s">💫</div>
-  <div class="spark" style="left:82%;animation-delay:2.5s">💙</div>
-  <div class="spark" style="left:93%;animation-delay:3s">✨</div>
+  <div class="float f1">✨</div>
+  <div class="float f2">💙</div>
+  <div class="float f3">⭐</div>
+  <div class="float f4">💫</div>
+  <div class="float f5">💙</div>
+
+
+  <!-- video.b replaces add file 1 -->
 
   <div class="file-box">
 
-    <div class="plus">+</div>
+    <video
+      id="firstVideo"
+      controls
+      playsinline
+      preload="metadata">
+
+      <source src="video.b" type="video/mp4">
+      <source src="video-b.mp4" type="video/mp4">
+
+      Your browser does not support video.
+    </video>
 
     <div class="file-name">
       add file 1
     </div>
 
-    <button class="choice" id="choiceBtn">
+    <button
+      class="choice"
+      id="choiceBtn">
       choice 😊
     </button>
 
   </div>
+
 
   <div class="buttons">
 
@@ -418,33 +551,39 @@ body{
 
   </div>
 
-  <!-- video.b -->
-  <video
-    id="firstVideo"
-    preload="metadata"
-    playsinline
-    style="display:none">
-  </video>
-
 </section>
 
 
-<!-- ================= COUNTDOWN ================= -->
+<!-- ==================================================
+     PAGE 2 : COUNTDOWN
+================================================== -->
 
 <section id="countdown">
-  <div class="count" id="number">3</div>
+
+  <div id="countNumber">
+    3
+  </div>
+
 </section>
 
 
-<!-- ================= SONG PAGE ================= -->
+<!-- ==================================================
+     PAGE 3 : SONG LIST
+================================================== -->
 
 <section id="songs">
 
   <div class="header">
 
-    <button class="back" onclick="goHome()">←</button>
+    <button
+      class="back"
+      onclick="goHome()">
+      ←
+    </button>
 
-    <span class="out-text">out</span>
+    <span class="out-word">
+      out
+    </span>
 
     <div class="title">
       Leon sai songs
@@ -452,41 +591,59 @@ body{
 
   </div>
 
+
   <div class="song-grid">
 
-    <button class="song" onclick="openVideo()">
+    <button
+      class="song"
+      onclick="openVideo()">
       (လုယွၼ်ႉၵဝ်)
     </button>
 
-    <button class="song" onclick="openVideo()">
+    <button
+      class="song"
+      onclick="openVideo()">
       ?
     </button>
 
-    <button class="song" onclick="openVideo()">
+    <button
+      class="song"
+      onclick="openVideo()">
       ?
     </button>
 
-    <button class="song" onclick="openVideo()">
+    <button
+      class="song"
+      onclick="openVideo()">
       ?
     </button>
 
-    <button class="song" onclick="openVideo()">
+    <button
+      class="song"
+      onclick="openVideo()">
       ?
     </button>
 
-    <button class="song" onclick="openVideo()">
+    <button
+      class="song"
+      onclick="openVideo()">
       ?
     </button>
 
   </div>
 
+
   <div class="bottom-buttons">
 
-    <button class="heart" onclick="heartEffect(this)">
+    <button
+      class="heart"
+      onclick="heartEffect(this)">
       ❤️
     </button>
 
-    <button class="heart" onclick="heartEffect(this)">
+    <button
+      class="heart"
+      onclick="heartEffect(this)">
       💔
     </button>
 
@@ -495,7 +652,9 @@ body{
 </section>
 
 
-<!-- ================= VIDEO PAGE ================= -->
+<!-- ==================================================
+     PAGE 4 : VIDEO.C
+================================================== -->
 
 <section id="videoPage">
 
@@ -508,9 +667,16 @@ body{
     controls
     playsinline
     preload="metadata">
+
+    <source src="video.c" type="video/mp4">
+    <source src="video-c.mp4" type="video/mp4">
+
+    Your browser does not support video.
   </video>
 
-  <button class="video-back" onclick="closeVideo()">
+  <button
+    class="video-back"
+    onclick="closeVideo()">
     ← ပြန်သွားမယ်
   </button>
 
@@ -519,216 +685,303 @@ body{
 
 <script>
 
-/* ==========================================
-   VIDEO FILES
-
-   Put these two files in the same folder:
-   index.html
-   video.b
-   video.c
-========================================== */
-
-const firstVideo = document.getElementById("firstVideo");
-const songVideo = document.getElementById("songVideo");
-
-firstVideo.src = "video.b";
-songVideo.src = "video.c";
-
-
-/* ==========================================
-   OUT BUTTON
-========================================== */
+/* ==================================================
+   VARIABLES
+================================================== */
 
 let outCount = 0;
+
+const home =
+  document.getElementById("home");
+
+const countdown =
+  document.getElementById("countdown");
+
+const songs =
+  document.getElementById("songs");
+
+const videoPage =
+  document.getElementById("videoPage");
+
+const startBtn =
+  document.getElementById("startBtn");
+
+const choiceBtn =
+  document.getElementById("choiceBtn");
+
+const countNumber =
+  document.getElementById("countNumber");
+
+const firstVideo =
+  document.getElementById("firstVideo");
+
+const songVideo =
+  document.getElementById("songVideo");
+
+
+/* ==================================================
+   OUT BUTTON
+================================================== */
 
 function pressOut(){
 
   outCount++;
 
-  const start = document.getElementById("startBtn");
-  const choice = document.getElementById("choiceBtn");
-
   if(outCount === 1){
 
-    start.classList.remove("big2");
-    start.classList.add("big1");
+    startBtn.classList.add("big");
 
-    choice.classList.add("sure");
-    choice.innerHTML = "are you sure? 🤔";
+    choiceBtn.classList.add("sure");
 
-    showMessage("are you sure?");
+    choiceBtn.innerHTML =
+      "are you sure? 🤔";
+
+    message("Are you sure? 😳");
 
   }
 
   else if(outCount === 2){
 
-    start.classList.remove("big1");
-    start.classList.add("big2");
+    startBtn.classList.add("big");
 
-    choice.innerHTML = "ARE YOU SURE? 😳";
+    choiceBtn.innerHTML =
+      "ARE YOU SURE? 😳";
 
-    showMessage("One more time... 😳");
+    message("One more time... 😳");
 
   }
 
   else if(outCount >= 3){
 
-    document.body.style.transition = "1s";
+    /*
+      3 ကြိမ်နှိပ်မှ
+      အပြင်ထွက်ခွင့်ပေးမယ်
+    */
+
+    document.body.style.transition =
+      "opacity .7s ease";
+
     document.body.style.opacity = "0";
 
     setTimeout(function(){
-      window.location.href = "about:blank";
-    },1000);
 
+      window.location.href =
+        "about:blank";
+
+    },700);
   }
 }
 
 
-/* ==========================================
-   START
-========================================== */
+/* ==================================================
+   START BUTTON
+================================================== */
 
 function startWebsite(){
 
-  const home = document.getElementById("home");
-  const countdown = document.getElementById("countdown");
-  const number = document.getElementById("number");
-
   home.style.display = "none";
+
   countdown.style.display = "flex";
 
-  let n = 3;
+  let number = 3;
 
-  number.innerHTML = n;
+  countNumber.innerHTML = number;
 
-  let timer = setInterval(function(){
+  countNumber.style.animation = "none";
 
-    n--;
+  void countNumber.offsetWidth;
 
-    if(n > 0){
+  countNumber.style.animation =
+    "numberPop .9s ease";
 
-      number.innerHTML = n;
 
-      number.classList.remove("count");
-      void number.offsetWidth;
-      number.classList.add("count");
+  const timer =
+    setInterval(function(){
 
-    }
+      number--;
 
-    else{
+      if(number > 0){
 
-      clearInterval(timer);
+        countNumber.innerHTML =
+          number;
 
-      countdown.style.display = "none";
-      document.getElementById("songs").style.display = "block";
+        countNumber.style.animation =
+          "none";
 
-    }
+        void countNumber.offsetWidth;
 
-  },1000);
+        countNumber.style.animation =
+          "numberPop .9s ease";
+
+      }
+
+      else{
+
+        clearInterval(timer);
+
+        countdown.style.display =
+          "none";
+
+        songs.style.display =
+          "block";
+      }
+
+    },1000);
 }
 
 
-/* ==========================================
-   GO HOME
-========================================== */
+/* ==================================================
+   BACK TO HOME
+================================================== */
 
 function goHome(){
 
-  document.getElementById("songs").style.display = "none";
-  document.getElementById("videoPage").style.display = "none";
-  document.getElementById("home").style.display = "flex";
+  songs.style.display = "none";
+
+  videoPage.style.display = "none";
+
+  countdown.style.display = "none";
+
+  home.style.display = "flex";
 
   outCount = 0;
 
-  document.getElementById("startBtn").classList.remove("big1","big2");
+  startBtn.classList.remove("big");
 
-  const choice = document.getElementById("choiceBtn");
+  choiceBtn.classList.remove("sure");
 
-  choice.classList.remove("sure");
-  choice.innerHTML = "choice 😊";
+  choiceBtn.innerHTML =
+    "choice 😊";
+
+  songVideo.pause();
+
+  firstVideo.pause();
+
 }
 
 
-/* ==========================================
+/* ==================================================
    OPEN VIDEO.C
-========================================== */
+================================================== */
 
 function openVideo(){
 
-  document.getElementById("songs").style.display = "none";
+  songs.style.display =
+    "none";
 
-  document.getElementById("videoPage").style.display = "flex";
+  videoPage.style.display =
+    "flex";
 
   songVideo.currentTime = 0;
 
+  /*
+    Browser က autoplay ခွင့်ပြုရင်
+    တစ်ခါတည်း play မယ်။
+    မခွင့်ပြုရင် Video ရဲ့ Play ကို
+    နှိပ်ပြီးကြည့်လို့ရတယ်။
+  */
+
   songVideo.play().catch(function(){
 
-    /* Browser autoplay blocked.
-       User can press play. */
+    console.log(
+      "Autoplay blocked by browser."
+    );
 
   });
 }
 
 
-/* ==========================================
+/* ==================================================
    CLOSE VIDEO
-========================================== */
+================================================== */
 
 function closeVideo(){
 
   songVideo.pause();
 
-  document.getElementById("videoPage").style.display = "none";
-  document.getElementById("songs").style.display = "block";
+  videoPage.style.display =
+    "none";
+
+  songs.style.display =
+    "block";
 }
 
 
-/* ==========================================
+/* ==================================================
    HEART EFFECT
-========================================== */
+================================================== */
 
 function heartEffect(button){
 
-  button.style.transform = "scale(1.3) rotate(8deg)";
+  button.animate(
+    [
+      {
+        transform:"scale(1)"
+      },
+      {
+        transform:"scale(1.3) rotate(8deg)"
+      },
+      {
+        transform:"scale(1)"
+      }
+    ],
+    {
+      duration:400
+    }
+  );
 
-  setTimeout(function(){
-
-    button.style.transform = "";
-
-  },350);
 
   for(let i=0;i<8;i++){
 
-    const heart = document.createElement("div");
+    const heart =
+      document.createElement("div");
 
     heart.innerHTML = "💖";
 
-    heart.style.position = "fixed";
+    heart.style.position =
+      "fixed";
+
+    const rect =
+      button.getBoundingClientRect();
+
     heart.style.left =
-      (button.getBoundingClientRect().left +
-      button.offsetWidth/2) + "px";
+      (rect.left +
+      rect.width / 2) + "px";
 
     heart.style.top =
-      button.getBoundingClientRect().top + "px";
+      rect.top + "px";
 
-    heart.style.fontSize = "22px";
-    heart.style.pointerEvents = "none";
-    heart.style.zIndex = "9999";
+    heart.style.fontSize =
+      "22px";
 
-    document.body.appendChild(heart);
+    heart.style.zIndex =
+      "9999";
 
-    const x = (Math.random()-0.5)*180;
-    const y = -(Math.random()*180+50);
+    heart.style.pointerEvents =
+      "none";
+
+    document.body.appendChild(
+      heart
+    );
+
+
+    const x =
+      (Math.random() - .5) * 180;
+
+    const y =
+      -(Math.random() * 180 + 50);
+
 
     heart.animate(
       [
         {
-          transform:"translate(0,0) scale(1)",
+          transform:
+            "translate(0,0) scale(1)",
           opacity:1
         },
         {
           transform:
-            `translate(${x}px,${y}px) scale(.4)`,
+            `translate(${x}px,${y}px) scale(.3)`,
           opacity:0
         }
       ],
@@ -738,55 +991,102 @@ function heartEffect(button){
       }
     );
 
+
     setTimeout(function(){
+
       heart.remove();
+
     },900);
 
   }
 }
 
 
-/* ==========================================
-   MESSAGE EFFECT
-========================================== */
+/* ==================================================
+   POPUP MESSAGE
+================================================== */
 
-function showMessage(text){
+function message(text){
 
-  const msg = document.createElement("div");
+  const box =
+    document.createElement("div");
 
-  msg.innerHTML = text;
+  box.innerHTML = text;
 
-  msg.style.position = "fixed";
-  msg.style.left = "50%";
-  msg.style.top = "18%";
-  msg.style.transform = "translateX(-50%) scale(.5)";
-  msg.style.padding = "14px 25px";
-  msg.style.borderRadius = "20px";
-  msg.style.background = "rgba(255,255,255,.92)";
-  msg.style.color = "#333";
-  msg.style.fontWeight = "bold";
-  msg.style.fontSize = "18px";
-  msg.style.boxShadow = "0 10px 30px rgba(0,0,0,.15)";
-  msg.style.zIndex = "9999";
+  box.style.position =
+    "fixed";
 
-  document.body.appendChild(msg);
+  box.style.left =
+    "50%";
 
-  msg.animate(
+  box.style.top =
+    "15%";
+
+  box.style.transform =
+    "translateX(-50%) scale(.5)";
+
+  box.style.padding =
+    "14px 24px";
+
+  box.style.borderRadius =
+    "20px";
+
+  box.style.background =
+    "rgba(255,255,255,.95)";
+
+  box.style.color =
+    "#222";
+
+  box.style.fontSize =
+    "18px";
+
+  box.style.fontWeight =
+    "bold";
+
+  box.style.zIndex =
+    "10000";
+
+  box.style.boxShadow =
+    "0 10px 30px rgba(0,0,0,.2)";
+
+  document.body.appendChild(box);
+
+
+  box.animate(
     [
-      {transform:"translateX(-50%) scale(.5)",opacity:0},
-      {transform:"translateX(-50%) scale(1)",opacity:1},
-      {transform:"translateX(-50%) scale(1)",opacity:1},
-      {transform:"translateX(-50%) scale(.5)",opacity:0}
+      {
+        transform:
+          "translateX(-50%) scale(.5)",
+        opacity:0
+      },
+      {
+        transform:
+          "translateX(-50%) scale(1)",
+        opacity:1
+      },
+      {
+        transform:
+          "translateX(-50%) scale(1)",
+        opacity:1
+      },
+      {
+        transform:
+          "translateX(-50%) scale(.5)",
+        opacity:0
+      }
     ],
     {
-      duration:1800,
+      duration:1700,
       easing:"ease-in-out"
     }
   );
 
+
   setTimeout(function(){
-    msg.remove();
-  },1800);
+
+    box.remove();
+
+  },1700);
 }
 
 </script>
