@@ -9,36 +9,38 @@
 <style>
 *{
   box-sizing:border-box;
-  -webkit-tap-highlight-color:transparent;
 }
 
 html,body{
   margin:0;
+  padding:0;
   width:100%;
   height:100%;
-  font-family:Arial,sans-serif;
   overflow:hidden;
+  font-family:Arial,sans-serif;
 }
 
 /* ================= FIRST PAGE ================= */
 
 #home{
+  display:flex !important;
   width:100%;
   height:100vh;
+  min-height:600px;
+
   position:relative;
   overflow:hidden;
 
-  display:flex;
   flex-direction:column;
   align-items:center;
 
-  background:
-    radial-gradient(circle at 15% 20%,#ff45c8 0,transparent 25%),
-    radial-gradient(circle at 85% 30%,#356cff 0,transparent 27%),
-    radial-gradient(circle at 50% 100%,#8b26ff 0,transparent 35%),
-    linear-gradient(145deg,#05051b,#11104b,#060722);
-
   color:white;
+
+  background:
+    radial-gradient(circle at 15% 20%,#ff35c8 0%,transparent 25%),
+    radial-gradient(circle at 90% 25%,#345cff 0%,transparent 28%),
+    radial-gradient(circle at 50% 100%,#8d24ff 0%,transparent 35%),
+    linear-gradient(145deg,#05051b,#111044,#05051b);
 }
 
 /* stars */
@@ -46,23 +48,22 @@ html,body{
 .star{
   position:absolute;
   color:white;
-  font-size:14px;
-  opacity:.8;
-  animation:twinkle 2s ease-in-out infinite alternate;
+  font-size:18px;
+  animation:blink 1.8s infinite alternate;
 }
 
-.s1{top:8%;left:8%}
-.s2{top:17%;left:27%;animation-delay:.4s}
-.s3{top:11%;right:13%;animation-delay:.8s}
-.s4{top:42%;left:6%;animation-delay:1s}
-.s5{top:49%;right:7%;animation-delay:.2s}
-.s6{bottom:25%;left:18%;animation-delay:1.3s}
-.s7{bottom:17%;right:18%;animation-delay:.7s}
-.s8{top:30%;right:30%;animation-delay:1.5s}
+.star1{top:10%;left:8%}
+.star2{top:18%;left:28%;animation-delay:.4s}
+.star3{top:8%;right:15%;animation-delay:.8s}
+.star4{top:38%;left:5%;animation-delay:1s}
+.star5{top:43%;right:7%;animation-delay:.2s}
+.star6{bottom:25%;left:12%;animation-delay:1.2s}
+.star7{bottom:18%;right:16%;animation-delay:.5s}
+.star8{top:30%;right:28%;animation-delay:1.5s}
 
-@keyframes twinkle{
+@keyframes blink{
   from{
-    opacity:.25;
+    opacity:.2;
     transform:scale(.7);
   }
   to{
@@ -73,30 +74,31 @@ html,body{
 
 /* floating hearts */
 
-.heart{
+.float{
   position:absolute;
   font-size:22px;
-  animation:heartFloat 7s linear infinite;
+  animation:float 7s linear infinite;
   opacity:0;
 }
 
-.h1{left:8%;animation-delay:0s}
-.h2{left:25%;animation-delay:2s}
-.h3{right:18%;animation-delay:1s}
-.h4{right:5%;animation-delay:3s}
+.f1{left:5%;animation-delay:0s}
+.f2{left:22%;animation-delay:2s}
+.f3{right:20%;animation-delay:1s}
+.f4{right:5%;animation-delay:3s}
 
-@keyframes heartFloat{
+@keyframes float{
   0%{
-    transform:translateY(105vh) rotate(0);
+    bottom:-50px;
     opacity:0;
   }
 
   15%{
-    opacity:.8;
+    opacity:.9;
   }
 
   100%{
-    transform:translateY(-20vh) rotate(360deg);
+    bottom:105%;
+    transform:rotate(360deg);
     opacity:0;
   }
 }
@@ -105,121 +107,132 @@ html,body{
 
 .moon{
   position:absolute;
-  top:38px;
-  right:28px;
+  top:30px;
+  right:25px;
 
-  width:55px;
-  height:55px;
+  width:52px;
+  height:52px;
+
   border-radius:50%;
 
-  background:#fff5bd;
-  box-shadow:
-    0 0 20px #fff4a0,
-    0 0 50px #7a7cff;
+  background:#fff5b5;
 
-  overflow:hidden;
+  box-shadow:
+    0 0 15px #fff2a0,
+    0 0 40px #746dff;
 }
 
 .moon:after{
   content:"";
   position:absolute;
-  width:55px;
-  height:55px;
+
+  width:52px;
+  height:52px;
+
   border-radius:50%;
-  background:#08082a;
+
+  background:#080827;
+
   left:18px;
   top:-8px;
 }
 
-/* ================= TITLE ================= */
+/* ================= LOGO ================= */
 
 .logo{
-  margin-top:25px;
+  position:relative;
+  z-index:10;
+
   text-align:center;
-  z-index:5;
+
+  margin-top:18px;
 }
 
 .logo h1{
   margin:0;
 
-  font-size:clamp(38px,10vw,65px);
-  font-weight:900;
+  font-size:42px;
   font-style:italic;
-  letter-spacing:2px;
+  font-weight:900;
 
-  background:linear-gradient(
-    90deg,
-    #ff61d8,
-    #ffffff,
-    #55c8ff,
-    #ff61d8
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #ff55d8,
+      white,
+      #55cfff,
+      #ff55d8
+    );
 
-  background-size:300% auto;
+  background-size:300%;
 
   -webkit-background-clip:text;
-  background-clip:text;
   color:transparent;
 
-  animation:gradientMove 4s linear infinite;
+  animation:gradient 4s linear infinite;
 
   text-shadow:
-    0 0 15px rgba(255,70,220,.5);
+    0 0 20px rgba(255,70,220,.4);
 }
 
 .logo p{
-  margin:0;
-  font-size:15px;
-  letter-spacing:4px;
-  color:#ddd9ff;
+  margin:3px 0;
+
+  font-size:12px;
+  letter-spacing:3px;
+
+  color:#d6d3ff;
 }
 
-@keyframes gradientMove{
+@keyframes gradient{
   to{
-    background-position:300% center;
+    background-position:300%;
   }
 }
 
-/* ================= ANIME GIRL ================= */
+/* ================= ANIME ================= */
 
-.anime-box{
+.anime{
   position:relative;
-  width:245px;
-  height:265px;
-  margin-top:12px;
-  z-index:4;
 
-  animation:girlFloat 3.5s ease-in-out infinite;
+  width:220px;
+  height:245px;
+
+  margin-top:5px;
+
+  z-index:5;
+
+  animation:animeFloat 3s ease-in-out infinite;
 }
 
-@keyframes girlFloat{
+@keyframes animeFloat{
   0%,100%{
     transform:translateY(0);
   }
 
   50%{
-    transform:translateY(-9px);
+    transform:translateY(-8px);
   }
 }
 
-/* glow behind girl */
+/* glow */
 
-.anime-box:before{
-  content:"";
+.animeGlow{
   position:absolute;
+
   width:210px;
   height:210px;
 
-  left:17px;
-  top:25px;
+  left:5px;
+  top:15px;
 
   border-radius:50%;
 
-  background:
-    radial-gradient(circle,#ff66db,transparent 65%);
+  background:#ff3ed5;
 
-  filter:blur(25px);
-  opacity:.55;
+  filter:blur(55px);
+
+  opacity:.35;
 }
 
 /* hair */
@@ -227,53 +240,24 @@ html,body{
 .hair{
   position:absolute;
 
-  width:185px;
+  width:180px;
   height:190px;
 
-  left:30px;
-  top:27px;
+  left:20px;
+  top:28px;
 
   background:
     linear-gradient(
       135deg,
-      #15102e,
-      #39215f,
-      #171331
+      #120d27,
+      #48226c,
+      #17102d
     );
 
   border-radius:50% 50% 45% 45%;
 
   box-shadow:
-    0 0 25px rgba(130,90,255,.5);
-
-  z-index:1;
-}
-
-/* side hair */
-
-.hair:before,
-.hair:after{
-  content:"";
-  position:absolute;
-
-  width:55px;
-  height:145px;
-
-  background:#20153e;
-
-  top:80px;
-
-  border-radius:30px;
-}
-
-.hair:before{
-  left:-18px;
-  transform:rotate(12deg);
-}
-
-.hair:after{
-  right:-18px;
-  transform:rotate(-12deg);
+    0 0 25px rgba(145,80,255,.5);
 }
 
 /* face */
@@ -281,48 +265,45 @@ html,body{
 .face{
   position:absolute;
 
-  width:132px;
-  height:145px;
+  width:125px;
+  height:135px;
 
-  left:56px;
+  left:47px;
   top:58px;
 
-  background:#ffd9c7;
+  background:#ffd9c9;
 
-  border-radius:48% 48% 48% 48%;
+  border-radius:48% 48% 50% 50%;
 
-  z-index:3;
-
-  box-shadow:
-    inset 0 -5px 10px rgba(220,130,130,.15);
+  z-index:2;
 }
 
-/* fringe */
+/* hair front */
 
 .fringe{
   position:absolute;
 
   width:145px;
-  height:75px;
+  height:70px;
 
-  left:50px;
-  top:45px;
+  left:38px;
+  top:43px;
 
-  z-index:5;
+  background:#201235;
 
-  background:#20143c;
+  z-index:4;
 
-  border-radius:60% 60% 30% 35%;
+  border-radius:60% 60% 30% 30%;
 
   clip-path:polygon(
     0 0,
     100% 0,
-    92% 60%,
-    75% 45%,
-    62% 85%,
-    48% 48%,
-    32% 90%,
-    20% 50%,
+    90% 65%,
+    73% 48%,
+    60% 90%,
+    47% 50%,
+    32% 88%,
+    20% 48%,
     5% 70%
   );
 }
@@ -332,52 +313,1112 @@ html,body{
 .eye{
   position:absolute;
 
-  width:28px;
-  height:38px;
+  width:27px;
+  height:35px;
 
-  top:105px;
-
-  background:
-    radial-gradient(circle at 50% 35%,white 0 12%,#7e50ff 13% 48%,#17122c 50%);
+  top:103px;
 
   border-radius:50%;
 
-  z-index:6;
+  z-index:5;
 
-  box-shadow:0 0 8px #8e71ff;
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      white 0 12%,
+      #7354ff 13% 48%,
+      #17102d 50%
+    );
+
+  box-shadow:
+    0 0 10px #765cff;
+
+  animation:eyeBlink 4s infinite;
 }
 
-.eye.left{
-  left:75px;
+.eye1{
+  left:67px;
 }
 
-.eye.right{
-  left:143px;
+.eye2{
+  left:125px;
 }
 
-/* blink */
+@keyframes eyeBlink{
 
-@keyframes blink{
   0%,45%,48%,100%{
     transform:scaleY(1);
   }
 
   46%,47%{
-    transform:scaleY(.08);
+    transform:scaleY(.1);
   }
 }
 
-.eye{
-  animation:blink 4s infinite;
-}
-
-/* mouth */
+/* smile */
 
 .mouth{
   position:absolute;
 
-  width:25px;
-  height:13px;
+  left:94px;
+  top:148px;
 
-  left:110px;
- 
+  width:25px;
+  height:12px;
+
+  border-bottom:3px solid #d96988;
+
+  border-radius:0 0 50% 50%;
+
+  z-index:5;
+}
+
+/* blush */
+
+.blush{
+  position:absolute;
+
+  width:25px;
+  height:10px;
+
+  border-radius:50%;
+
+  background:#ff91a8;
+
+  opacity:.5;
+
+  z-index:5;
+
+  top:143px;
+}
+
+.blush1{left:54px}
+.blush2{left:140px}
+
+/* headphones */
+
+.headphones{
+  position:absolute;
+
+  width:195px;
+  height:160px;
+
+  left:12px;
+  top:54px;
+
+  border:8px solid #b24dff;
+
+  border-bottom:0;
+
+  border-radius:100px 100px 0 0;
+
+  z-index:6;
+
+  pointer-events:none;
+
+  box-shadow:
+    0 0 15px #a840ff;
+}
+
+.ear{
+  position:absolute;
+
+  width:34px;
+  height:58px;
+
+  top:108px;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff39d1,
+      #704cff
+    );
+
+  z-index:7;
+
+  box-shadow:
+    0 0 15px #ff39d1;
+}
+
+.ear1{
+  left:5px;
+}
+
+.ear2{
+  right:5px;
+}
+
+/* bow */
+
+.bow{
+  position:absolute;
+
+  right:12px;
+  top:42px;
+
+  font-size:36px;
+
+  z-index:10;
+
+  filter:
+    drop-shadow(0 0 8px #ff4edb);
+
+  animation:bow 2s infinite alternate;
+}
+
+@keyframes bow{
+  to{
+    transform:rotate(10deg) scale(1.1);
+  }
+}
+
+/* ================= TEXT ================= */
+
+.message{
+  position:relative;
+  z-index:10;
+
+  text-align:center;
+
+  margin-top:-5px;
+}
+
+.message h2{
+  margin:0;
+
+  font-size:21px;
+
+  color:#fff;
+
+  text-shadow:
+    0 0 10px #ff48d4,
+    0 0 20px #7c54ff;
+}
+
+.message p{
+  margin:5px 0 0;
+
+  font-size:11px;
+
+  letter-spacing:1.5px;
+
+  color:#bbb8df;
+}
+
+/* ================= CHOICE ================= */
+
+.choice{
+  position:relative;
+  z-index:10;
+
+  width:155px;
+  height:38px;
+
+  margin-top:8px;
+
+  border-radius:30px;
+
+  border:2px solid #ff5fdb;
+
+  background:rgba(255,255,255,.08);
+
+  color:white;
+
+  font-size:16px;
+  font-weight:bold;
+
+  box-shadow:
+    0 0 15px rgba(255,50,220,.5);
+
+  backdrop-filter:blur(8px);
+}
+
+.choice.sure{
+  transform:scale(1.08);
+
+  background:
+    rgba(255,70,190,.25);
+}
+
+/* ================= BUTTONS ================= */
+
+.buttons{
+  position:relative;
+  z-index:10;
+
+  display:flex;
+
+  gap:10px;
+
+  margin-top:8px;
+}
+
+.start{
+  width:155px;
+  height:58px;
+
+  border:2px solid rgba(255,255,255,.5);
+
+  border-radius:25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff38c7,
+      #963cff
+    );
+
+  color:white;
+
+  font-size:25px;
+  font-weight:900;
+
+  box-shadow:
+    0 0 25px #ff39ce;
+
+  animation:startGlow 2s infinite alternate;
+
+  cursor:pointer;
+}
+
+.out{
+  width:80px;
+  height:58px;
+
+  border:2px solid rgba(255,255,255,.4);
+
+  border-radius:25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #377cff,
+      #3d42cf
+    );
+
+  color:white;
+
+  font-size:22px;
+  font-weight:bold;
+
+  cursor:pointer;
+}
+
+.start:active,
+.out:active,
+.choice:active{
+  transform:scale(.9);
+}
+
+.start.big{
+  width:240px;
+  height:100px;
+  font-size:40px;
+}
+
+@keyframes startGlow{
+  from{
+    box-shadow:0 0 10px #ff39ce;
+  }
+
+  to{
+    box-shadow:
+      0 0 35px #ff39ce,
+      0 0 60px rgba(120,70,255,.5);
+  }
+}
+
+/* ================= COUNTDOWN ================= */
+
+#countdown{
+  display:none;
+
+  width:100%;
+  height:100vh;
+
+  align-items:center;
+  justify-content:center;
+
+  background:
+    radial-gradient(
+      circle,
+      #6333b5,
+      #09091d
+    );
+
+  color:white;
+}
+
+#number{
+  font-size:170px;
+  font-weight:900;
+
+  text-shadow:
+    0 0 20px #ff4edb,
+    0 0 60px #6351ff;
+
+  animation:numberPop .9s;
+}
+
+@keyframes numberPop{
+  from{
+    transform:scale(1.8);
+    opacity:0;
+  }
+
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
+}
+
+/* ================= SONG LIST ================= */
+
+#songs{
+  display:none;
+
+  width:100%;
+  height:100vh;
+
+  color:white;
+
+  background:
+    radial-gradient(circle at 20% 20%,#6e27b8,transparent 25%),
+    radial-gradient(circle at 90% 70%,#164fba,transparent 30%),
+    #080817;
+}
+
+.header{
+  width:100%;
+  height:68px;
+
+  display:flex;
+  align-items:center;
+
+  position:relative;
+
+  background:rgba(255,255,255,.08);
+
+  border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.back{
+  border:0;
+  background:none;
+
+  color:white;
+
+  font-size:42px;
+
+  margin-left:15px;
+}
+
+.outText{
+  font-weight:bold;
+  font-size:19px;
+}
+
+.pageTitle{
+  position:absolute;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  font-size:24px;
+  font-weight:900;
+
+  white-space:nowrap;
+
+  text-shadow:
+    0 0 15px #a74cff;
+}
+
+.songGrid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:30px 18px;
+
+  padding:50px 8%;
+}
+
+.song{
+  height:80px;
+
+  border-radius:24px;
+
+  border:1px solid rgba(255,255,255,.2);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,60,210,.25),
+      rgba(60,90,255,.3)
+    );
+
+  color:white;
+
+  font-size:17px;
+  font-weight:bold;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.3);
+
+  cursor:pointer;
+}
+
+.song:active{
+  transform:scale(.92);
+}
+
+/* ================= MUSIC ================= */
+
+#music{
+  display:none;
+
+  width:100%;
+  height:100vh;
+
+  align-items:center;
+  justify-content:center;
+
+  position:relative;
+
+  overflow:hidden;
+
+  color:white;
+
+  background:
+    radial-gradient(circle at 20% 20%,#8b32d5,transparent 30%),
+    radial-gradient(circle at 80% 80%,#126bc5,transparent 30%),
+    #050510;
+}
+
+.musicCard{
+  width:90%;
+  max-width:420px;
+
+  padding:30px 24px;
+
+  text-align:center;
+
+  border-radius:32px;
+
+  background:rgba(255,255,255,.08);
+
+  border:1px solid rgba(255,255,255,.18);
+
+  backdrop-filter:blur(15px);
+
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.5);
+}
+
+.musicBack{
+  position:absolute;
+
+  top:20px;
+  left:20px;
+
+  width:55px;
+  height:55px;
+
+  border:0;
+
+  border-radius:18px;
+
+  background:rgba(255,255,255,.1);
+
+  color:white;
+
+  font-size:30px;
+}
+
+.disc{
+  width:170px;
+  height:170px;
+
+  margin:auto;
+
+  border-radius:50%;
+
+  background:
+    repeating-radial-gradient(
+      circle,
+      #090909 0 5px,
+      #252525 6px 8px
+    );
+
+  box-shadow:
+    0 0 30px rgba(255,70,220,.45);
+
+  animation:spin 7s linear infinite;
+
+  animation-play-state:paused;
+}
+
+.disc.playing{
+  animation-play-state:running;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+.musicTitle{
+  margin-top:25px;
+
+  font-size:38px;
+  font-weight:900;
+
+  text-shadow:
+    0 0 15px #ff4edb,
+    0 0 35px #6950ff;
+}
+
+.artist{
+  margin:7px 0 20px;
+
+  color:#aaa7c9;
+}
+
+audio{
+  width:100%;
+}
+
+.play{
+  width:70px;
+  height:70px;
+
+  margin-top:20px;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff3ccf,
+      #664cff
+    );
+
+  color:white;
+
+  font-size:25px;
+
+  box-shadow:
+    0 0 30px rgba(255,60,210,.5);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+  .logo h1{
+    font-size:38px;
+  }
+
+  .logo p{
+    font-size:10px;
+  }
+
+  .anime{
+    transform:scale(.88);
+    margin-top:-2px;
+    margin-bottom:-15px;
+  }
+
+  .message h2{
+    font-size:19px;
+  }
+
+  .songGrid{
+    padding:45px 7%;
+    gap:30px 12px;
+  }
+
+  .song{
+    font-size:14px;
+  }
+
+  .pageTitle{
+    font-size:19px;
+  }
+
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- ================= HOME ================= -->
+
+<section id="home">
+
+  <div class="moon"></div>
+
+  <div class="star star1">✦</div>
+  <div class="star star2">✧</div>
+  <div class="star star3">✦</div>
+  <div class="star star4">✧</div>
+  <div class="star star5">✦</div>
+  <div class="star star6">✧</div>
+  <div class="star star7">✦</div>
+  <div class="star star8">✧</div>
+
+  <div class="float f1">💜</div>
+  <div class="float f2">💗</div>
+  <div class="float f3">💙</div>
+  <div class="float f4">💖</div>
+
+
+  <!-- LOGO -->
+
+  <div class="logo">
+
+    <h1>Leon Sai Songs ♫</h1>
+
+    <p>WELCOME TO MY MUSIC WORLD ✦</p>
+
+  </div>
+
+
+  <!-- ANIME GIRL -->
+
+  <div class="anime">
+
+    <div class="animeGlow"></div>
+
+    <div class="hair"></div>
+
+    <div class="face"></div>
+
+    <div class="fringe"></div>
+
+    <div class="eye eye1"></div>
+    <div class="eye eye2"></div>
+
+    <div class="blush blush1"></div>
+    <div class="blush blush2"></div>
+
+    <div class="mouth"></div>
+
+    <div class="headphones"></div>
+
+    <div class="ear ear1"></div>
+    <div class="ear ear2"></div>
+
+    <div class="bow">🎀</div>
+
+  </div>
+
+
+  <!-- TEXT -->
+
+  <div class="message">
+
+    <h2>Let's enjoy the music together ✨</h2>
+
+    <p>PRESS START TO ENTER THE MUSIC WORLD 🎧</p>
+
+  </div>
+
+
+  <!-- CHOICE -->
+
+  <button
+    class="choice"
+    id="choice">
+
+    choice 😊
+
+  </button>
+
+
+  <!-- BUTTONS -->
+
+  <div class="buttons">
+
+    <button
+      class="start"
+      id="start"
+      onclick="startSite()">
+
+      ▶ start
+
+    </button>
+
+    <button
+      class="out"
+      onclick="outClick()">
+
+      × out
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= COUNTDOWN ================= -->
+
+<section id="countdown">
+
+  <div id="number">3</div>
+
+</section>
+
+
+<!-- ================= SONG LIST ================= -->
+
+<section id="songs">
+
+  <div class="header">
+
+    <button
+      class="back"
+      onclick="home()">
+
+      ←
+
+    </button>
+
+    <span class="outText">
+      out
+    </span>
+
+    <div class="pageTitle">
+      Leon Sai Songs 🎵
+    </div>
+
+  </div>
+
+
+  <div class="songGrid">
+
+    <button
+      class="song"
+      onclick="openMusic()">
+
+      ၼူၵ်ႉပိၵ်ႉလႅဝ်
+
+    </button>
+
+    <button class="song">?</button>
+
+    <button class="song">?</button>
+
+    <button class="song">?</button>
+
+    <button class="song">?</button>
+
+    <button class="song">?</button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= MUSIC PAGE ================= -->
+
+<section id="music">
+
+  <button
+    class="musicBack"
+    onclick="closeMusic()">
+
+    ←
+
+  </button>
+
+
+  <div class="musicCard">
+
+    <div
+      class="disc"
+      id="disc">
+    </div>
+
+
+    <div class="musicTitle">
+      ၼူၵ်ႉပိၵ်ႉလႅဝ်
+    </div>
+
+
+    <div class="artist">
+      Leon Sai • Music 🎧
+    </div>
+
+
+    <!-- မင်းသီချင်းဖိုင်ကို song.mp3 လို့ထည့်ပါ -->
+
+    <audio id="audio">
+
+      <source
+        src="song.mp3"
+        type="audio/mpeg">
+
+    </audio>
+
+
+    <button
+      class="play"
+      id="play"
+      onclick="playMusic()">
+
+      ▶
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<script>
+
+/* ELEMENTS */
+
+const homePage =
+document.getElementById("home");
+
+const countdown =
+document.getElementById("countdown");
+
+const songs =
+document.getElementById("songs");
+
+const music =
+document.getElementById("music");
+
+const number =
+document.getElementById("number");
+
+const start =
+document.getElementById("start");
+
+const choice =
+document.getElementById("choice");
+
+const audio =
+document.getElementById("audio");
+
+const disc =
+document.getElementById("disc");
+
+const play =
+document.getElementById("play");
+
+
+/* OUT */
+
+let outCount = 0;
+
+function outClick(){
+
+  outCount++;
+
+  if(outCount === 1){
+
+    start.classList.add("big");
+
+    choice.classList.add("sure");
+
+    choice.innerHTML =
+      "are you sure? 🤔";
+
+  }
+
+  else if(outCount === 2){
+
+    choice.innerHTML =
+      "ARE YOU SURE? 😳";
+
+  }
+
+  else{
+
+    document.body.innerHTML = `
+
+      <div style="
+        width:100%;
+        height:100vh;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        background:#050510;
+        color:white;
+        font-family:Arial;
+        text-align:center;
+      ">
+
+        <div style="font-size:65px">
+          🌙✨
+        </div>
+
+        <h1>Goodbye</h1>
+
+        <p style="color:#aaa">
+          Thanks for visiting Leon Sai Songs 🎵
+        </p>
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* START */
+
+function startSite(){
+
+  homePage.style.display="none";
+
+  countdown.style.display="flex";
+
+  let n=3;
+
+  number.innerHTML=n;
+
+  let timer=setInterval(function(){
+
+    n--;
+
+    if(n>0){
+
+      number.innerHTML=n;
+
+    }
+
+    else{
+
+      clearInterval(timer);
+
+      countdown.style.display="none";
+
+      songs.style.display="block";
+
+    }
+
+  },1000);
+
+}
+
+
+/* HOME */
+
+function home(){
+
+  songs.style.display="none";
+
+  music.style.display="none";
+
+  homePage.style.display="flex";
+
+  outCount=0;
+
+  start.classList.remove("big");
+
+  choice.classList.remove("sure");
+
+  choice.innerHTML="choice 😊";
+
+}
+
+
+/* OPEN MUSIC */
+
+function openMusic(){
+
+  songs.style.display="none";
+
+  music.style.display="flex";
+
+}
+
+
+/* CLOSE MUSIC */
+
+function closeMusic(){
+
+  audio.pause();
+
+  disc.classList.remove("playing");
+
+  play.innerHTML="▶";
+
+  music.style.display="none";
+
+  songs.style.display="block";
+
+}
+
+
+/* MUSIC */
+
+function playMusic(){
+
+  if(audio.paused){
+
+    audio.play().then(function(){
+
+      play.innerHTML="Ⅱ";
+
+      disc.classList.add("playing");
+
+    }).catch(function(){
+
+      alert(
+        "song.mp3 ဖိုင်ကို GitHub ထဲထည့်ထားပါ 🎵"
+      );
+
+    });
+
+  }
+
+  else{
+
+    audio.pause();
+
+    play.innerHTML="▶";
+
+    disc.classList.remove("playing");
+
+  }
+
+}
+
+
+/* END */
+
+audio.addEventListener(
+  "ended",
+  function(){
+
+    play.innerHTML="▶";
+
+    disc.classList.remove("playing");
+
+  }
+);
+
+</script>
+
+</body>
+</html>
