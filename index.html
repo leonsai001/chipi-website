@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Leon Sai Songs 🎵</title>
 
 <style>
@@ -13,34 +12,35 @@
 
 html,body{
   margin:0;
-  padding:0;
   width:100%;
-  height:100%;
-  overflow:hidden;
+  min-height:100%;
   font-family:Arial,sans-serif;
 }
 
-/* ================= FIRST PAGE ================= */
+body{
+  background:#070719;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ================= HOME ================= */
 
 #home{
-  display:flex !important;
+  min-height:100vh;
   width:100%;
-  height:100vh;
-  min-height:600px;
-
-  position:relative;
-  overflow:hidden;
-
+  display:flex;
   flex-direction:column;
   align-items:center;
-
-  color:white;
+  justify-content:flex-start;
+  position:relative;
+  overflow:hidden;
+  padding:18px 15px 30px;
 
   background:
-    radial-gradient(circle at 15% 20%,#ff35c8 0%,transparent 25%),
-    radial-gradient(circle at 90% 25%,#345cff 0%,transparent 28%),
-    radial-gradient(circle at 50% 100%,#8d24ff 0%,transparent 35%),
-    linear-gradient(145deg,#05051b,#111044,#05051b);
+    radial-gradient(circle at 10% 10%,rgba(255,0,200,.35),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(0,130,255,.35),transparent 30%),
+    radial-gradient(circle at 50% 100%,rgba(130,30,255,.35),transparent 35%),
+    linear-gradient(145deg,#050514,#151044,#070719);
 }
 
 /* stars */
@@ -48,190 +48,130 @@ html,body{
 .star{
   position:absolute;
   color:white;
-  font-size:18px;
-  animation:blink 1.8s infinite alternate;
+  font-size:20px;
+  animation:twinkle 1.5s infinite alternate;
+  pointer-events:none;
 }
 
-.star1{top:10%;left:8%}
-.star2{top:18%;left:28%;animation-delay:.4s}
-.star3{top:8%;right:15%;animation-delay:.8s}
-.star4{top:38%;left:5%;animation-delay:1s}
-.star5{top:43%;right:7%;animation-delay:.2s}
-.star6{bottom:25%;left:12%;animation-delay:1.2s}
-.star7{bottom:18%;right:16%;animation-delay:.5s}
-.star8{top:30%;right:28%;animation-delay:1.5s}
+.s1{top:8%;left:8%}
+.s2{top:18%;left:25%;animation-delay:.3s}
+.s3{top:12%;right:18%;animation-delay:.7s}
+.s4{top:42%;left:5%;animation-delay:1s}
+.s5{top:48%;right:7%;animation-delay:.5s}
+.s6{bottom:20%;left:15%;animation-delay:.8s}
+.s7{bottom:13%;right:18%;animation-delay:1.2s}
+.s8{top:32%;right:30%;animation-delay:.2s}
 
-@keyframes blink{
+@keyframes twinkle{
   from{
-    opacity:.2;
+    opacity:.25;
     transform:scale(.7);
   }
   to{
     opacity:1;
-    transform:scale(1.5);
+    transform:scale(1.4);
   }
 }
 
 /* floating hearts */
 
-.float{
+.heart{
   position:absolute;
-  font-size:22px;
-  animation:float 7s linear infinite;
+  bottom:-50px;
+  font-size:20px;
+  animation:heartFloat 7s linear infinite;
   opacity:0;
 }
 
-.f1{left:5%;animation-delay:0s}
-.f2{left:22%;animation-delay:2s}
-.f3{right:20%;animation-delay:1s}
-.f4{right:5%;animation-delay:3s}
+.h1{left:8%;animation-delay:0s}
+.h2{left:30%;animation-delay:2s}
+.h3{right:25%;animation-delay:1s}
+.h4{right:7%;animation-delay:3s}
 
-@keyframes float{
+@keyframes heartFloat{
   0%{
     bottom:-50px;
     opacity:0;
   }
-
   15%{
-    opacity:.9;
+    opacity:.8;
   }
-
   100%{
-    bottom:105%;
+    bottom:110%;
     transform:rotate(360deg);
     opacity:0;
   }
 }
 
-/* moon */
+/* title */
 
-.moon{
-  position:absolute;
-  top:30px;
-  right:25px;
-
-  width:52px;
-  height:52px;
-
-  border-radius:50%;
-
-  background:#fff5b5;
-
-  box-shadow:
-    0 0 15px #fff2a0,
-    0 0 40px #746dff;
-}
-
-.moon:after{
-  content:"";
-  position:absolute;
-
-  width:52px;
-  height:52px;
-
-  border-radius:50%;
-
-  background:#080827;
-
-  left:18px;
-  top:-8px;
-}
-
-/* ================= LOGO ================= */
-
-.logo{
+.title{
   position:relative;
-  z-index:10;
-
+  z-index:5;
   text-align:center;
-
-  margin-top:18px;
 }
 
-.logo h1{
+.title h1{
   margin:0;
-
-  font-size:42px;
-  font-style:italic;
+  font-size:38px;
   font-weight:900;
+  font-style:italic;
 
-  background:
-    linear-gradient(
-      90deg,
-      #ff55d8,
-      white,
-      #55cfff,
-      #ff55d8
-    );
+  background:linear-gradient(
+    90deg,
+    #ff3bd4,
+    white,
+    #48c9ff,
+    #ff3bd4
+  );
 
   background-size:300%;
 
   -webkit-background-clip:text;
+  background-clip:text;
   color:transparent;
 
-  animation:gradient 4s linear infinite;
-
-  text-shadow:
-    0 0 20px rgba(255,70,220,.4);
+  animation:shine 4s linear infinite;
 }
 
-.logo p{
-  margin:3px 0;
-
-  font-size:12px;
+.title p{
+  margin:5px 0 0;
+  color:#c9c7e9;
+  font-size:11px;
   letter-spacing:3px;
-
-  color:#d6d3ff;
 }
 
-@keyframes gradient{
+@keyframes shine{
   to{
     background-position:300%;
   }
 }
 
-/* ================= ANIME ================= */
+/* ================= ANIME GIRL ================= */
 
 .anime{
-  position:relative;
-
-  width:220px;
+  width:230px;
   height:245px;
-
-  margin-top:5px;
-
+  position:relative;
+  margin-top:12px;
   z-index:5;
-
-  animation:animeFloat 3s ease-in-out infinite;
+  animation:breathe 3s ease-in-out infinite;
 }
 
-@keyframes animeFloat{
-  0%,100%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-8px);
-  }
+@keyframes breathe{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-9px)}
 }
 
-/* glow */
-
-.animeGlow{
+.glow{
   position:absolute;
-
-  width:210px;
-  height:210px;
-
-  left:5px;
-  top:15px;
-
+  width:190px;
+  height:190px;
+  left:20px;
+  top:30px;
   border-radius:50%;
-
-  background:#ff3ed5;
-
+  background:#ff35d0;
   filter:blur(55px);
-
   opacity:.35;
 }
 
@@ -239,70 +179,52 @@ html,body{
 
 .hair{
   position:absolute;
-
-  width:180px;
-  height:190px;
-
-  left:20px;
+  width:185px;
+  height:195px;
+  left:23px;
   top:28px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #120d27,
-      #48226c,
-      #17102d
-    );
-
   border-radius:50% 50% 45% 45%;
-
-  box-shadow:
-    0 0 25px rgba(145,80,255,.5);
+  background:linear-gradient(
+    135deg,
+    #171027,
+    #593078,
+    #171027
+  );
+  box-shadow:0 0 30px rgba(150,70,255,.6);
 }
 
 /* face */
 
 .face{
   position:absolute;
-
-  width:125px;
-  height:135px;
-
-  left:47px;
-  top:58px;
-
-  background:#ffd9c9;
-
-  border-radius:48% 48% 50% 50%;
-
   z-index:2;
+  width:126px;
+  height:137px;
+  left:52px;
+  top:60px;
+  border-radius:48% 48% 50% 50%;
+  background:#ffd9c9;
 }
 
-/* hair front */
+/* fringe */
 
 .fringe{
   position:absolute;
-
-  width:145px;
-  height:70px;
-
-  left:38px;
-  top:43px;
-
-  background:#201235;
-
   z-index:4;
-
+  width:150px;
+  height:75px;
+  left:42px;
+  top:45px;
+  background:#21152f;
   border-radius:60% 60% 30% 30%;
-
   clip-path:polygon(
     0 0,
     100% 0,
     90% 65%,
-    73% 48%,
-    60% 90%,
-    47% 50%,
-    32% 88%,
+    75% 48%,
+    61% 90%,
+    48% 50%,
+    33% 88%,
     20% 48%,
     5% 70%
   );
@@ -312,160 +234,104 @@ html,body{
 
 .eye{
   position:absolute;
-
-  width:27px;
-  height:35px;
-
-  top:103px;
-
-  border-radius:50%;
-
   z-index:5;
-
+  width:28px;
+  height:36px;
+  top:106px;
+  border-radius:50%;
   background:
     radial-gradient(
-      circle at 50% 35%,
+      circle at 50% 30%,
       white 0 12%,
-      #7354ff 13% 48%,
-      #17102d 50%
+      #7357ff 13% 48%,
+      #17102a 50%
     );
-
-  box-shadow:
-    0 0 10px #765cff;
-
-  animation:eyeBlink 4s infinite;
+  box-shadow:0 0 10px #765cff;
+  animation:blink 4s infinite;
 }
 
-.eye1{
-  left:67px;
-}
+.eye.left{left:72px}
+.eye.right{left:130px}
 
-.eye2{
-  left:125px;
-}
-
-@keyframes eyeBlink{
-
+@keyframes blink{
   0%,45%,48%,100%{
     transform:scaleY(1);
   }
-
   46%,47%{
     transform:scaleY(.1);
   }
-}
-
-/* smile */
-
-.mouth{
-  position:absolute;
-
-  left:94px;
-  top:148px;
-
-  width:25px;
-  height:12px;
-
-  border-bottom:3px solid #d96988;
-
-  border-radius:0 0 50% 50%;
-
-  z-index:5;
 }
 
 /* blush */
 
 .blush{
   position:absolute;
-
-  width:25px;
-  height:10px;
-
-  border-radius:50%;
-
-  background:#ff91a8;
-
-  opacity:.5;
-
   z-index:5;
-
-  top:143px;
+  top:144px;
+  width:26px;
+  height:11px;
+  border-radius:50%;
+  background:#ff779c;
+  opacity:.55;
 }
 
-.blush1{left:54px}
-.blush2{left:140px}
+.blush.left{left:60px}
+.blush.right{left:144px}
+
+/* mouth */
+
+.mouth{
+  position:absolute;
+  z-index:5;
+  top:151px;
+  left:101px;
+  width:27px;
+  height:13px;
+  border-bottom:3px solid #d66587;
+  border-radius:0 0 50% 50%;
+}
 
 /* headphones */
 
-.headphones{
+.headphone{
   position:absolute;
-
-  width:195px;
-  height:160px;
-
-  left:12px;
-  top:54px;
-
-  border:8px solid #b24dff;
-
-  border-bottom:0;
-
-  border-radius:100px 100px 0 0;
-
   z-index:6;
-
+  width:200px;
+  height:165px;
+  left:15px;
+  top:54px;
+  border:8px solid #a84cff;
+  border-bottom:0;
+  border-radius:110px 110px 0 0;
+  box-shadow:0 0 20px #9b3dff;
   pointer-events:none;
-
-  box-shadow:
-    0 0 15px #a840ff;
 }
 
 .ear{
   position:absolute;
-
-  width:34px;
-  height:58px;
-
-  top:108px;
-
-  border-radius:18px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff39d1,
-      #704cff
-    );
-
   z-index:7;
-
-  box-shadow:
-    0 0 15px #ff39d1;
+  top:111px;
+  width:37px;
+  height:58px;
+  border-radius:20px;
+  background:linear-gradient(
+    135deg,
+    #ff38d1,
+    #704cff
+  );
+  box-shadow:0 0 18px #ff38d1;
 }
 
-.ear1{
-  left:5px;
-}
-
-.ear2{
-  right:5px;
-}
-
-/* bow */
+.ear.left{left:4px}
+.ear.right{right:4px}
 
 .bow{
   position:absolute;
-
-  right:12px;
-  top:42px;
-
-  font-size:36px;
-
-  z-index:10;
-
-  filter:
-    drop-shadow(0 0 8px #ff4edb);
-
+  z-index:9;
+  top:35px;
+  right:5px;
+  font-size:40px;
+  filter:drop-shadow(0 0 10px #ff3fd5);
   animation:bow 2s infinite alternate;
 }
 
@@ -475,391 +341,251 @@ html,body{
   }
 }
 
-/* ================= TEXT ================= */
+/* welcome */
 
-.message{
+.welcome{
   position:relative;
   z-index:10;
-
   text-align:center;
-
   margin-top:-5px;
 }
 
-.message h2{
+.welcome h2{
   margin:0;
-
   font-size:21px;
-
-  color:#fff;
-
   text-shadow:
-    0 0 10px #ff48d4,
-    0 0 20px #7c54ff;
+    0 0 10px #ff43d5,
+    0 0 25px #7355ff;
 }
 
-.message p{
-  margin:5px 0 0;
-
+.welcome p{
+  margin:5px 0;
+  color:#aaa8cb;
   font-size:11px;
-
-  letter-spacing:1.5px;
-
-  color:#bbb8df;
 }
 
-/* ================= CHOICE ================= */
+/* choice */
 
-.choice{
+#choice{
   position:relative;
   z-index:10;
-
-  width:155px;
-  height:38px;
-
-  margin-top:8px;
-
-  border-radius:30px;
-
-  border:2px solid #ff5fdb;
-
+  margin-top:7px;
+  width:160px;
+  height:40px;
+  border-radius:25px;
+  border:2px solid #ff50d9;
   background:rgba(255,255,255,.08);
-
   color:white;
-
   font-size:16px;
   font-weight:bold;
-
-  box-shadow:
-    0 0 15px rgba(255,50,220,.5);
-
-  backdrop-filter:blur(8px);
+  box-shadow:0 0 18px rgba(255,50,210,.5);
 }
 
-.choice.sure{
+#choice.sure{
   transform:scale(1.08);
-
-  background:
-    rgba(255,70,190,.25);
+  background:rgba(255,50,200,.2);
 }
 
-/* ================= BUTTONS ================= */
+/* buttons */
 
 .buttons{
   position:relative;
   z-index:10;
-
   display:flex;
-
   gap:10px;
-
-  margin-top:8px;
+  margin-top:9px;
 }
 
-.start{
+#start{
   width:155px;
   height:58px;
-
-  border:2px solid rgba(255,255,255,.5);
-
+  border:0;
   border-radius:25px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff38c7,
-      #963cff
-    );
-
+  background:linear-gradient(135deg,#ff35c8,#7c42ff);
   color:white;
-
   font-size:25px;
   font-weight:900;
-
-  box-shadow:
-    0 0 25px #ff39ce;
-
-  animation:startGlow 2s infinite alternate;
-
-  cursor:pointer;
+  box-shadow:0 0 28px rgba(255,45,205,.7);
+  animation:startGlow 1.8s infinite alternate;
 }
 
-.out{
-  width:80px;
+#out{
+  width:82px;
   height:58px;
-
-  border:2px solid rgba(255,255,255,.4);
-
+  border:0;
   border-radius:25px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #377cff,
-      #3d42cf
-    );
-
+  background:linear-gradient(135deg,#367dff,#3942ce);
   color:white;
-
-  font-size:22px;
+  font-size:21px;
   font-weight:bold;
-
-  cursor:pointer;
 }
 
-.start:active,
-.out:active,
-.choice:active{
-  transform:scale(.9);
-}
-
-.start.big{
+#start.big{
   width:240px;
-  height:100px;
-  font-size:40px;
+  height:95px;
+  font-size:38px;
+}
+
+button{
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+button:active{
+  transform:scale(.92);
 }
 
 @keyframes startGlow{
   from{
-    box-shadow:0 0 10px #ff39ce;
+    box-shadow:0 0 12px #ff35c8;
   }
-
   to{
     box-shadow:
-      0 0 35px #ff39ce,
-      0 0 60px rgba(120,70,255,.5);
+      0 0 35px #ff35c8,
+      0 0 60px #704cff;
   }
 }
+
 
 /* ================= COUNTDOWN ================= */
 
 #countdown{
   display:none;
-
   width:100%;
   height:100vh;
-
   align-items:center;
   justify-content:center;
-
   background:
-    radial-gradient(
-      circle,
-      #6333b5,
-      #09091d
-    );
-
-  color:white;
+    radial-gradient(circle,#6e35bb,#070716);
 }
 
 #number{
-  font-size:170px;
+  font-size:150px;
   font-weight:900;
-
   text-shadow:
-    0 0 20px #ff4edb,
-    0 0 60px #6351ff;
-
-  animation:numberPop .9s;
+    0 0 25px #ff39d2,
+    0 0 60px #674dff;
 }
 
-@keyframes numberPop{
-  from{
-    transform:scale(1.8);
-    opacity:0;
-  }
 
-  to{
-    transform:scale(1);
-    opacity:1;
-  }
-}
-
-/* ================= SONG LIST ================= */
+/* ================= SONG PAGE ================= */
 
 #songs{
   display:none;
-
+  min-height:100vh;
   width:100%;
-  height:100vh;
-
-  color:white;
-
   background:
-    radial-gradient(circle at 20% 20%,#6e27b8,transparent 25%),
-    radial-gradient(circle at 90% 70%,#164fba,transparent 30%),
-    #080817;
+    radial-gradient(circle at 10% 20%,#7028a8,transparent 30%),
+    radial-gradient(circle at 90% 80%,#1649a8,transparent 30%),
+    #070716;
 }
 
 .header{
+  height:70px;
   width:100%;
-  height:68px;
-
   display:flex;
   align-items:center;
-
-  position:relative;
-
-  background:rgba(255,255,255,.08);
-
   border-bottom:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.07);
 }
 
 .back{
-  border:0;
   background:none;
-
+  border:0;
   color:white;
-
-  font-size:42px;
-
-  margin-left:15px;
+  font-size:40px;
+  margin-left:12px;
 }
 
 .outText{
+  font-size:18px;
   font-weight:bold;
-  font-size:19px;
 }
 
 .pageTitle{
   position:absolute;
-
   left:50%;
-
   transform:translateX(-50%);
-
-  font-size:24px;
+  font-size:22px;
   font-weight:900;
-
   white-space:nowrap;
-
-  text-shadow:
-    0 0 15px #a74cff;
 }
 
 .songGrid{
   display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:30px 18px;
-
-  padding:50px 8%;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px 14px;
+  padding:45px 7%;
 }
 
 .song{
-  height:80px;
-
-  border-radius:24px;
-
+  min-height:75px;
   border:1px solid rgba(255,255,255,.2);
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,60,210,.25),
-      rgba(60,90,255,.3)
-    );
-
+  border-radius:24px;
+  background:linear-gradient(
+    135deg,
+    rgba(255,50,210,.25),
+    rgba(60,80,255,.3)
+  );
   color:white;
-
-  font-size:17px;
+  font-size:16px;
   font-weight:bold;
-
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.3);
-
-  cursor:pointer;
+  box-shadow:0 8px 25px rgba(0,0,0,.35);
 }
 
-.song:active{
-  transform:scale(.92);
-}
 
 /* ================= MUSIC ================= */
 
 #music{
   display:none;
-
   width:100%;
-  height:100vh;
-
+  min-height:100vh;
   align-items:center;
   justify-content:center;
-
   position:relative;
-
-  overflow:hidden;
-
-  color:white;
-
   background:
-    radial-gradient(circle at 20% 20%,#8b32d5,transparent 30%),
-    radial-gradient(circle at 80% 80%,#126bc5,transparent 30%),
+    radial-gradient(circle at 20% 20%,#842bd1,transparent 30%),
+    radial-gradient(circle at 80% 80%,#125ec5,transparent 30%),
     #050510;
+}
+
+.musicBack{
+  position:absolute;
+  top:20px;
+  left:18px;
+  width:55px;
+  height:55px;
+  border:0;
+  border-radius:18px;
+  background:rgba(255,255,255,.1);
+  color:white;
+  font-size:30px;
 }
 
 .musicCard{
   width:90%;
   max-width:420px;
-
-  padding:30px 24px;
-
+  padding:30px 23px;
   text-align:center;
-
   border-radius:32px;
-
   background:rgba(255,255,255,.08);
-
   border:1px solid rgba(255,255,255,.18);
-
-  backdrop-filter:blur(15px);
-
-  box-shadow:
-    0 20px 70px rgba(0,0,0,.5);
-}
-
-.musicBack{
-  position:absolute;
-
-  top:20px;
-  left:20px;
-
-  width:55px;
-  height:55px;
-
-  border:0;
-
-  border-radius:18px;
-
-  background:rgba(255,255,255,.1);
-
-  color:white;
-
-  font-size:30px;
+  box-shadow:0 20px 70px rgba(0,0,0,.5);
 }
 
 .disc{
   width:170px;
   height:170px;
-
   margin:auto;
-
   border-radius:50%;
-
   background:
     repeating-radial-gradient(
       circle,
-      #090909 0 5px,
-      #252525 6px 8px
+      #080808 0 5px,
+      #292929 6px 8px
     );
-
-  box-shadow:
-    0 0 30px rgba(255,70,220,.45);
-
+  box-shadow:0 0 35px rgba(255,60,220,.5);
   animation:spin 7s linear infinite;
-
   animation-play-state:paused;
 }
 
@@ -875,19 +601,16 @@ html,body{
 
 .musicTitle{
   margin-top:25px;
-
-  font-size:38px;
+  font-size:36px;
   font-weight:900;
-
   text-shadow:
-    0 0 15px #ff4edb,
-    0 0 35px #6950ff;
+    0 0 15px #ff45d7,
+    0 0 30px #6650ff;
 }
 
 .artist{
+  color:#aaa7c8;
   margin:7px 0 20px;
-
-  color:#aaa7c9;
 }
 
 audio{
@@ -897,108 +620,77 @@ audio{
 .play{
   width:70px;
   height:70px;
-
-  margin-top:20px;
-
+  margin-top:18px;
   border:0;
-
   border-radius:50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff3ccf,
-      #664cff
-    );
-
+  background:linear-gradient(135deg,#ff36cb,#674bff);
   color:white;
-
   font-size:25px;
-
-  box-shadow:
-    0 0 30px rgba(255,60,210,.5);
+  box-shadow:0 0 30px rgba(255,50,210,.6);
 }
 
 
-/* ================= MOBILE ================= */
+/* mobile */
 
 @media(max-width:600px){
 
-  .logo h1{
-    font-size:38px;
-  }
-
-  .logo p{
-    font-size:10px;
+  .title h1{
+    font-size:35px;
   }
 
   .anime{
     transform:scale(.88);
-    margin-top:-2px;
-    margin-bottom:-15px;
+    margin-top:5px;
+    margin-bottom:-10px;
   }
 
-  .message h2{
+  .welcome h2{
     font-size:19px;
   }
 
-  .songGrid{
-    padding:45px 7%;
-    gap:30px 12px;
+  .pageTitle{
+    font-size:18px;
   }
 
   .song{
     font-size:14px;
   }
-
-  .pageTitle{
-    font-size:19px;
-  }
-
 }
 </style>
 </head>
 
-
 <body>
 
-<!-- ================= HOME ================= -->
+<!-- ================= FIRST PAGE ================= -->
 
-<section id="home">
+<div id="home">
 
-  <div class="moon"></div>
+  <div class="star s1">✦</div>
+  <div class="star s2">✧</div>
+  <div class="star s3">✦</div>
+  <div class="star s4">✧</div>
+  <div class="star s5">✦</div>
+  <div class="star s6">✧</div>
+  <div class="star s7">✦</div>
+  <div class="star s8">✧</div>
 
-  <div class="star star1">✦</div>
-  <div class="star star2">✧</div>
-  <div class="star star3">✦</div>
-  <div class="star star4">✧</div>
-  <div class="star star5">✦</div>
-  <div class="star star6">✧</div>
-  <div class="star star7">✦</div>
-  <div class="star star8">✧</div>
-
-  <div class="float f1">💜</div>
-  <div class="float f2">💗</div>
-  <div class="float f3">💙</div>
-  <div class="float f4">💖</div>
+  <div class="heart h1">💗</div>
+  <div class="heart h2">💜</div>
+  <div class="heart h3">💙</div>
+  <div class="heart h4">💖</div>
 
 
-  <!-- LOGO -->
-
-  <div class="logo">
-
-    <h1>Leon Sai Songs ♫</h1>
-
+  <div class="title">
+    <h1>Leon Sai Songs 🎵</h1>
     <p>WELCOME TO MY MUSIC WORLD ✦</p>
-
   </div>
 
 
-  <!-- ANIME GIRL -->
+  <!-- ANIME -->
 
   <div class="anime">
 
-    <div class="animeGlow"></div>
+    <div class="glow"></div>
 
     <div class="hair"></div>
 
@@ -1006,27 +698,25 @@ audio{
 
     <div class="fringe"></div>
 
-    <div class="eye eye1"></div>
-    <div class="eye eye2"></div>
+    <div class="eye left"></div>
+    <div class="eye right"></div>
 
-    <div class="blush blush1"></div>
-    <div class="blush blush2"></div>
+    <div class="blush left"></div>
+    <div class="blush right"></div>
 
     <div class="mouth"></div>
 
-    <div class="headphones"></div>
+    <div class="headphone"></div>
 
-    <div class="ear ear1"></div>
-    <div class="ear ear2"></div>
+    <div class="ear left"></div>
+    <div class="ear right"></div>
 
     <div class="bow">🎀</div>
 
   </div>
 
 
-  <!-- TEXT -->
-
-  <div class="message">
+  <div class="welcome">
 
     <h2>Let's enjoy the music together ✨</h2>
 
@@ -1035,64 +725,43 @@ audio{
   </div>
 
 
-  <!-- CHOICE -->
-
-  <button
-    class="choice"
-    id="choice">
-
+  <button id="choice">
     choice 😊
-
   </button>
 
 
-  <!-- BUTTONS -->
-
   <div class="buttons">
 
-    <button
-      class="start"
-      id="start"
-      onclick="startSite()">
-
-      ▶ start
-
+    <button id="start">
+      ▶ START
     </button>
 
-    <button
-      class="out"
-      onclick="outClick()">
-
-      × out
-
+    <button id="out">
+      × OUT
     </button>
 
   </div>
 
-</section>
+</div>
 
 
 <!-- ================= COUNTDOWN ================= -->
 
-<section id="countdown">
+<div id="countdown">
 
   <div id="number">3</div>
 
-</section>
+</div>
 
 
-<!-- ================= SONG LIST ================= -->
+<!-- ================= SONGS ================= -->
 
-<section id="songs">
+<div id="songs">
 
   <div class="header">
 
-    <button
-      class="back"
-      onclick="home()">
-
+    <button class="back" id="backHome">
       ←
-
     </button>
 
     <span class="outText">
@@ -1108,125 +777,112 @@ audio{
 
   <div class="songGrid">
 
-    <button
-      class="song"
-      onclick="openMusic()">
-
+    <button class="song" id="song1">
       ၼူၵ်ႉပိၵ်ႉလႅဝ်
-
     </button>
 
     <button class="song">?</button>
-
     <button class="song">?</button>
-
     <button class="song">?</button>
-
     <button class="song">?</button>
-
     <button class="song">?</button>
 
   </div>
 
-</section>
+</div>
 
 
-<!-- ================= MUSIC PAGE ================= -->
+<!-- ================= MUSIC ================= -->
 
-<section id="music">
+<div id="music">
 
-  <button
-    class="musicBack"
-    onclick="closeMusic()">
-
+  <button class="musicBack" id="musicBack">
     ←
-
   </button>
-
 
   <div class="musicCard">
 
-    <div
-      class="disc"
-      id="disc">
-    </div>
-
+    <div class="disc" id="disc"></div>
 
     <div class="musicTitle">
       ၼူၵ်ႉပိၵ်ႉလႅဝ်
     </div>
 
-
     <div class="artist">
       Leon Sai • Music 🎧
     </div>
 
+    <!-- နောက်မှ song.mp3 ဖိုင်ထည့်ပါ -->
 
-    <!-- မင်းသီချင်းဖိုင်ကို song.mp3 လို့ထည့်ပါ -->
-
-    <audio id="audio">
-
-      <source
-        src="song.mp3"
-        type="audio/mpeg">
-
+    <audio id="audio" controls>
+      <source src="song.mp3" type="audio/mpeg">
     </audio>
 
-
-    <button
-      class="play"
-      id="play"
-      onclick="playMusic()">
-
+    <button class="play" id="play">
       ▶
-
     </button>
 
   </div>
 
-</section>
+</div>
 
 
 <script>
 
-/* ELEMENTS */
+const home = document.getElementById("home");
+const countdown = document.getElementById("countdown");
+const songs = document.getElementById("songs");
+const music = document.getElementById("music");
 
-const homePage =
-document.getElementById("home");
+const start = document.getElementById("start");
+const out = document.getElementById("out");
+const choice = document.getElementById("choice");
 
-const countdown =
-document.getElementById("countdown");
+const number = document.getElementById("number");
 
-const songs =
-document.getElementById("songs");
+const audio = document.getElementById("audio");
+const disc = document.getElementById("disc");
+const play = document.getElementById("play");
 
-const music =
-document.getElementById("music");
+let outCount = 0;
 
-const number =
-document.getElementById("number");
 
-const start =
-document.getElementById("start");
+/* START */
 
-const choice =
-document.getElementById("choice");
+start.onclick = function(){
 
-const audio =
-document.getElementById("audio");
+  home.style.display = "none";
+  countdown.style.display = "flex";
 
-const disc =
-document.getElementById("disc");
+  let n = 3;
 
-const play =
-document.getElementById("play");
+  number.textContent = n;
+
+  const timer = setInterval(function(){
+
+    n--;
+
+    if(n > 0){
+
+      number.textContent = n;
+
+    }else{
+
+      clearInterval(timer);
+
+      countdown.style.display = "none";
+      songs.style.display = "block";
+
+    }
+
+  },1000);
+
+};
 
 
 /* OUT */
 
-let outCount = 0;
-
-function outClick(){
+out.onclick = function(){
 
   outCount++;
 
@@ -1236,14 +892,14 @@ function outClick(){
 
     choice.classList.add("sure");
 
-    choice.innerHTML =
+    choice.textContent =
       "are you sure? 🤔";
 
   }
 
   else if(outCount === 2){
 
-    choice.innerHTML =
+    choice.textContent =
       "ARE YOU SURE? 😳";
 
   }
@@ -1251,172 +907,92 @@ function outClick(){
   else{
 
     document.body.innerHTML = `
-
       <div style="
         width:100%;
-        height:100vh;
+        min-height:100vh;
         display:flex;
         flex-direction:column;
         align-items:center;
         justify-content:center;
         background:#050510;
         color:white;
-        font-family:Arial;
         text-align:center;
+        font-family:Arial;
       ">
-
-        <div style="font-size:65px">
-          🌙✨
-        </div>
-
-        <h1>Goodbye</h1>
-
-        <p style="color:#aaa">
-          Thanks for visiting Leon Sai Songs 🎵
-        </p>
-
+        <div style="font-size:65px">🌙✨</div>
+        <h1>Goodbye 👋</h1>
+        <p>Thanks for visiting Leon Sai Songs 🎵</p>
       </div>
-
     `;
 
   }
 
-}
+};
 
 
-/* START */
+/* SONG */
 
-function startSite(){
+document.getElementById("song1").onclick = function(){
 
-  homePage.style.display="none";
+  songs.style.display = "none";
+  music.style.display = "flex";
 
-  countdown.style.display="flex";
-
-  let n=3;
-
-  number.innerHTML=n;
-
-  let timer=setInterval(function(){
-
-    n--;
-
-    if(n>0){
-
-      number.innerHTML=n;
-
-    }
-
-    else{
-
-      clearInterval(timer);
-
-      countdown.style.display="none";
-
-      songs.style.display="block";
-
-    }
-
-  },1000);
-
-}
+};
 
 
-/* HOME */
+/* BACK HOME */
 
-function home(){
+document.getElementById("backHome").onclick = function(){
 
-  songs.style.display="none";
+  songs.style.display = "none";
+  home.style.display = "flex";
 
-  music.style.display="none";
-
-  homePage.style.display="flex";
-
-  outCount=0;
+  outCount = 0;
 
   start.classList.remove("big");
-
   choice.classList.remove("sure");
 
-  choice.innerHTML="choice 😊";
+  choice.textContent = "choice 😊";
 
-}
-
-
-/* OPEN MUSIC */
-
-function openMusic(){
-
-  songs.style.display="none";
-
-  music.style.display="flex";
-
-}
+};
 
 
-/* CLOSE MUSIC */
+/* MUSIC BACK */
 
-function closeMusic(){
+document.getElementById("musicBack").onclick = function(){
 
   audio.pause();
 
+  music.style.display = "none";
+  songs.style.display = "block";
+
   disc.classList.remove("playing");
+  play.textContent = "▶";
 
-  play.innerHTML="▶";
-
-  music.style.display="none";
-
-  songs.style.display="block";
-
-}
+};
 
 
-/* MUSIC */
+/* PLAY */
 
-function playMusic(){
+play.onclick = function(){
 
   if(audio.paused){
 
-    audio.play().then(function(){
+    audio.play();
 
-      play.innerHTML="Ⅱ";
+    play.textContent = "Ⅱ";
+    disc.classList.add("playing");
 
-      disc.classList.add("playing");
-
-    }).catch(function(){
-
-      alert(
-        "song.mp3 ဖိုင်ကို GitHub ထဲထည့်ထားပါ 🎵"
-      );
-
-    });
-
-  }
-
-  else{
+  }else{
 
     audio.pause();
 
-    play.innerHTML="▶";
-
+    play.textContent = "▶";
     disc.classList.remove("playing");
 
   }
 
-}
-
-
-/* END */
-
-audio.addEventListener(
-  "ended",
-  function(){
-
-    play.innerHTML="▶";
-
-    disc.classList.remove("playing");
-
-  }
-);
+};
 
 </script>
 
