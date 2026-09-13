@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Leon Sai Songs 🎵</title>
 
 <style>
@@ -19,6 +20,10 @@ html,body{
   overflow:hidden;
 }
 
+button{
+  font-family:inherit;
+}
+
 /* ================= HOME ================= */
 
 #home{
@@ -32,8 +37,6 @@ html,body{
   overflow:hidden;
   background:linear-gradient(135deg,#a8ffff,#45dce8,#82f4ef);
 }
-
-/* Floating decorations */
 
 .float{
   position:absolute;
@@ -61,7 +64,7 @@ html,body{
   }
 }
 
-/* ================= VIDEO STICKER ================= */
+/* VIDEO STICKER */
 
 .sticker{
   width:210px;
@@ -69,80 +72,36 @@ html,body{
   padding:7px;
   position:relative;
   z-index:5;
-
   background:white;
-
   border-radius:42% 58% 55% 45% / 48% 42% 58% 52%;
-
   box-shadow:
     0 15px 35px rgba(0,0,0,.20),
     0 0 0 5px rgba(255,255,255,.65);
-
   transform:rotate(-3deg);
-
-  animation:
-    stickerIn .8s ease,
-    stickerFloat 3s ease-in-out infinite;
-}
-
-@keyframes stickerIn{
-  from{
-    opacity:0;
-    transform:scale(.4) rotate(-15deg);
-  }
-  to{
-    opacity:1;
-    transform:scale(1) rotate(-3deg);
-  }
+  animation:stickerFloat 3s ease-in-out infinite;
 }
 
 @keyframes stickerFloat{
-  0%,100%{
-    margin-top:0;
-  }
-  50%{
-    margin-top:-10px;
-  }
+  0%,100%{margin-top:0}
+  50%{margin-top:-10px}
 }
-
-/* Video itself */
 
 #firstVideo{
   width:100%;
   height:100%;
-
   display:block;
-
   object-fit:cover;
-
-  border-radius:
-    38% 62% 50% 50% /
-    50% 42% 58% 50%;
-
+  border-radius:38% 62% 50% 50% / 50% 42% 58% 50%;
   background:#111;
-
-  border:0;
-
-  outline:none;
-
-  /* no controls interaction */
   pointer-events:none;
-
-  user-select:none;
 }
-
-/* little sticker shine */
 
 .sticker::after{
   content:"✨";
-
   position:absolute;
-
   right:-12px;
   top:-16px;
-
   font-size:32px;
-
   animation:sparkle 1.5s infinite;
 }
 
@@ -157,39 +116,22 @@ html,body{
   }
 }
 
-
-/* ================= ADD FILE TEXT ================= */
-
 .file-name{
   margin-top:18px;
   font-size:18px;
   font-weight:bold;
   color:#222;
-  position:relative;
-  z-index:5;
 }
-
-
-/* ================= CHOICE ================= */
 
 .choice{
   width:145px;
   height:42px;
   margin-top:9px;
-
   border:0;
   border-radius:16px;
-
   background:#fff3d8;
-
   font-size:17px;
   font-weight:bold;
-
-  cursor:pointer;
-
-  box-shadow:0 5px 15px rgba(0,0,0,.1);
-
-  transition:.3s;
 }
 
 .choice.sure{
@@ -203,9 +145,6 @@ html,body{
     box-shadow:0 0 25px rgba(255,190,40,.55);
   }
 }
-
-
-/* ================= BUTTONS ================= */
 
 .buttons{
   display:flex;
@@ -222,16 +161,14 @@ html,body{
   font-size:27px;
   text-shadow:1px 2px 2px rgba(0,0,0,.35);
   cursor:pointer;
-
-  transition:
-    .45s ease;
+  transition:.45s ease;
 }
 
 .start-btn{
   width:160px;
   height:68px;
   border-radius:22px;
-  background:#00f13b;
+  background:#00d93a;
 }
 
 .out-btn{
@@ -241,11 +178,6 @@ html,body{
   background:#ff3038;
 }
 
-.start-btn:active,
-.out-btn:active{
-  transform:scale(.88);
-}
-
 .start-btn.big{
   width:250px;
   height:115px;
@@ -253,7 +185,6 @@ html,body{
   border-radius:32px;
   box-shadow:0 0 40px rgba(0,255,70,.7);
 }
-
 
 /* ================= COUNTDOWN ================= */
 
@@ -270,22 +201,9 @@ html,body{
 #countNumber{
   font-size:190px;
   font-weight:900;
-  animation:countPop .8s ease;
 }
 
-@keyframes countPop{
-  0%{
-    transform:scale(1.7);
-    opacity:0;
-  }
-  100%{
-    transform:scale(1);
-    opacity:1;
-  }
-}
-
-
-/* ================= SONG PAGE ================= */
+/* ================= SONG LIST ================= */
 
 #songs{
   display:none;
@@ -299,12 +217,9 @@ html,body{
   height:67px;
   width:100%;
   background:#ffd17b;
-
   display:flex;
   align-items:center;
-
   position:relative;
-
   box-shadow:0 3px 12px rgba(0,0,0,.1);
 }
 
@@ -312,15 +227,10 @@ html,body{
   border:0;
   background:transparent;
   color:white;
-
   font-size:50px;
   font-weight:bold;
-
   margin-left:18px;
-
   cursor:pointer;
-
-  text-shadow:1px 2px 2px #777;
 }
 
 .out-word{
@@ -334,20 +244,12 @@ html,body{
   position:absolute;
   left:50%;
   transform:translateX(-50%);
-
   white-space:nowrap;
-
   color:white;
   font-size:29px;
   font-weight:bold;
-
-  text-shadow:
-    2px 2px #666,
-    -1px -1px #666;
+  text-shadow:2px 2px #666;
 }
-
-
-/* ================= SONG BUTTONS ================= */
 
 .song-grid{
   display:grid;
@@ -358,46 +260,34 @@ html,body{
 
 .song{
   height:80px;
-
   border:0;
   border-radius:25px;
-
   background:#fff0b8;
-
   font-size:20px;
   font-weight:bold;
-
   cursor:pointer;
-
   position:relative;
   overflow:hidden;
-
   transition:.3s;
-}
-
-.song:active{
-  transform:scale(.88);
 }
 
 .song:hover{
   transform:translateY(-6px) scale(1.03);
-  box-shadow:0 12px 25px rgba(255,190,50,.3);
+}
+
+.song:active{
+  transform:scale(.9);
 }
 
 .song::after{
   content:"";
-
   position:absolute;
   left:-80px;
   top:0;
-
   width:45px;
   height:100%;
-
   background:rgba(255,255,255,.6);
-
   transform:skewX(-20deg);
-
   animation:shine 2.5s infinite;
 }
 
@@ -406,94 +296,213 @@ html,body{
   to{left:120%}
 }
 
+/* ================= MUSIC PAGE ================= */
 
-/* ================= HEARTS ================= */
-
-.bottom-buttons{
-  display:flex;
-  justify-content:center;
-  gap:53px;
-  margin-top:2px;
-}
-
-.heart{
-  width:110px;
-  height:92px;
-
-  border:0;
-  border-radius:25px;
-
-  font-size:30px;
-
-  cursor:pointer;
-
-  transition:.3s;
-}
-
-.heart:first-child{
-  background:#00f45a;
-}
-
-.heart:last-child{
-  background:#ff5a0a;
-}
-
-
-/* ================= VIDEO.C PAGE ================= */
-
-#videoPage{
+#musicPage{
   display:none;
-
   width:100%;
   height:100vh;
-
-  padding:20px;
-
-  background:
-    linear-gradient(135deg,#74f5ef,#a19aff);
-
-  flex-direction:column;
+  position:relative;
+  overflow:hidden;
 
   align-items:center;
   justify-content:center;
+  flex-direction:column;
 
-  gap:18px;
-}
-
-.video-title{
   color:white;
-  font-size:25px;
-  font-weight:bold;
-  text-shadow:2px 2px 3px #666;
+
+  background:
+    radial-gradient(circle at 20% 20%,rgba(100,80,255,.4),transparent 30%),
+    radial-gradient(circle at 80% 70%,rgba(0,200,255,.3),transparent 30%),
+    linear-gradient(135deg,#080812,#15102d,#05050b);
 }
 
-#songVideo{
-  width:min(92vw,700px);
-  max-height:72vh;
+/* moving background lights */
 
-  background:#000;
-
-  border-radius:24px;
-
-  box-shadow:0 18px 50px rgba(0,0,0,.3);
+.light{
+  position:absolute;
+  width:250px;
+  height:250px;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:.5;
+  animation:moveLight 7s ease-in-out infinite alternate;
 }
 
-.video-back{
+.light.one{
+  background:#542dff;
+  top:-100px;
+  left:-100px;
+}
+
+.light.two{
+  background:#008cff;
+  bottom:-120px;
+  right:-100px;
+  animation-delay:-3s;
+}
+
+@keyframes moveLight{
+  from{
+    transform:translate(0,0) scale(1);
+  }
+  to{
+    transform:translate(120px,80px) scale(1.4);
+  }
+}
+
+/* back button */
+
+.music-back{
+  position:absolute;
+  top:25px;
+  left:25px;
+
+  width:55px;
+  height:55px;
+
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:18px;
+
+  background:rgba(255,255,255,.1);
+  color:white;
+
+  font-size:30px;
+  cursor:pointer;
+
+  z-index:5;
+}
+
+/* music card */
+
+.music-card{
+  width:min(90vw,430px);
+  min-height:430px;
+
+  padding:35px 25px;
+
+  border-radius:35px;
+
+  text-align:center;
+
+  background:rgba(255,255,255,.08);
+
+  border:1px solid rgba(255,255,255,.16);
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.5);
+
+  backdrop-filter:blur(12px);
+
+  position:relative;
+  z-index:2;
+}
+
+/* record */
+
+.record{
+  width:180px;
+  height:180px;
+
+  margin:0 auto 28px;
+
+  border-radius:50%;
+
+  background:
+    radial-gradient(circle,#121212 12%,#555 13%,#111 15%,#222 28%,#050505 30%,#222 48%,#050505 50%);
+
+  box-shadow:
+    0 0 0 10px rgba(255,255,255,.04),
+    0 15px 40px rgba(0,0,0,.5);
+
+  animation:spin 8s linear infinite;
+
+  animation-play-state:paused;
+}
+
+.record.playing{
+  animation-play-state:running;
+}
+
+.record::after{
+  content:"🎵";
+  position:absolute;
+  font-size:40px;
+  transform:translate(-50%,-50%);
+}
+
+/* Song title */
+
+.song-title{
+  font-size:clamp(32px,8vw,48px);
+  font-weight:900;
+  letter-spacing:2px;
+  margin-bottom:8px;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,.4),
+    0 0 30px #764cff,
+    0 0 60px #3e88ff;
+
+  animation:titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow{
+  from{
+    transform:scale(1);
+    filter:brightness(1);
+  }
+  to{
+    transform:scale(1.04);
+    filter:brightness(1.4);
+  }
+}
+
+.artist{
+  color:rgba(255,255,255,.6);
+  margin-bottom:25px;
+  font-size:15px;
+}
+
+/* audio */
+
+audio{
+  width:100%;
+  margin-top:10px;
+}
+
+/* play button */
+
+.play-btn{
+  margin-top:25px;
+
+  width:75px;
+  height:75px;
+
   border:0;
-  background:white;
+  border-radius:50%;
 
-  padding:13px 27px;
+  background:linear-gradient(135deg,#704cff,#00a8ff);
+  color:white;
 
-  border-radius:20px;
-
-  font-size:17px;
-  font-weight:bold;
+  font-size:28px;
 
   cursor:pointer;
+
+  box-shadow:
+    0 10px 30px rgba(68,87,255,.5);
+
+  transition:.25s;
 }
 
+.play-btn:active{
+  transform:scale(.9);
+}
 
-/* ================= MOBILE ================= */
+@keyframes spin{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
 
 @media(max-width:600px){
 
@@ -508,48 +517,35 @@ html,body{
   }
 
   .song{
-    font-size:18px;
+    font-size:16px;
   }
 
   .title{
-    font-size:24px;
+    font-size:22px;
   }
 
-  #countNumber{
-    font-size:180px;
+  .music-card{
+    min-height:400px;
   }
 }
+
 </style>
 </head>
 
 <body>
 
-
-<!-- ==========================================
-     FIRST PAGE
-========================================== -->
+<!-- ================= HOME ================= -->
 
 <section id="home">
 
   <div class="float f1">✨</div>
-  <div class="float f2">🎊</div>
+  <div class="float f2">💙</div>
   <div class="float f3">⭐</div>
   <div class="float f4">💫</div>
   <div class="float f5">💙</div>
 
-
-  <!--
-    video.b
-    Sticker ပုံစံ
-    Controls မပါ
-    Auto Play
-    Loop
-  -->
-
   <div class="sticker">
-
-    <video
-      id="firstVideo"
+    <video id="firstVideo"
       autoplay
       muted
       loop
@@ -559,86 +555,50 @@ html,body{
       <source src="video.b" type="video/mp4">
 
     </video>
-
   </div>
-
 
   <div class="file-name">
-  
+    add file 1
   </div>
 
-
-  <button
-    class="choice"
-    id="choiceBtn">
-
+  <button class="choice" id="choiceBtn">
     choice 😊
-
   </button>
-
 
   <div class="buttons">
 
-    <button
-      class="start-btn"
+    <button class="start-btn"
       id="startBtn"
       onclick="startWebsite()">
-
       start
-
     </button>
 
-
-    <button
-      class="out-btn"
+    <button class="out-btn"
       onclick="pressOut()">
-
       out
-
     </button>
 
   </div>
 
 </section>
 
-
-
-<!-- ==========================================
-     COUNTDOWN
-========================================== -->
+<!-- ================= COUNTDOWN ================= -->
 
 <section id="countdown">
-
-  <div id="countNumber">
-    3
-  </div>
-
+  <div id="countNumber">3</div>
 </section>
 
-
-
-<!-- ==========================================
-     SONG PAGE
-========================================== -->
+<!-- ================= SONG LIST ================= -->
 
 <section id="songs">
 
-
   <div class="header">
 
-    <button
-      class="back"
-      onclick="goHome()">
-
+    <button class="back" onclick="goHome()">
       ←
-
     </button>
 
-
-    <span class="out-word">
-      out
-    </span>
-
+    <span class="out-word">out</span>
 
     <div class="title">
       Leon sai songs
@@ -646,165 +606,101 @@ html,body{
 
   </div>
 
-
   <div class="song-grid">
 
-
-    <button
-      class="song"
-      onclick="openVideo()">
-
-      (လုယွၼ်ႉၵဝ်)
-
+    <button class="song" onclick="openMusic()">
+      ၼူၵ်ႉပိၵ်ႇလႅဝ်
     </button>
 
-
     <button class="song">?</button>
     <button class="song">?</button>
     <button class="song">?</button>
     <button class="song">?</button>
     <button class="song">?</button>
-
-  </div>
-
-
-  <div class="bottom-buttons">
-
-    <button
-      class="heart"
-      onclick="heartEffect(this)">
-
-      ❤️
-
-    </button>
-
-
-    <button
-      class="heart"
-      onclick="heartEffect(this)">
-
-      💔
-
-    </button>
 
   </div>
 
 </section>
 
+<!-- ================= MUSIC PAGE ================= -->
 
+<section id="musicPage">
 
-<!-- ==========================================
-     VIDEO.C
-========================================== -->
+  <div class="light one"></div>
+  <div class="light two"></div>
 
-<section id="videoPage">
-
-  <div class="video-title">
-    🎵 (လုယွၼ်ႉၵဝ်) 🎵
-  </div>
-
-
-  <video
-    id="songVideo"
-    controls
-    playsinline
-    preload="metadata">
-
-    <source
-      src="video.c"
-      type="video/mp4">
-
-  </video>
-
-
-  <button
-    class="video-back"
-    onclick="closeVideo()">
-
-    ← ပြန်သွားမယ်
-
+  <button class="music-back"
+    onclick="closeMusic()">
+    ←
   </button>
 
+  <div class="music-card">
+
+    <div class="record" id="record"></div>
+
+    <div class="song-title">
+      ၼူၵ်ႉပိၵ်ႇလႅဝ်
+    </div>
+
+    <div class="artist">
+      Leon Sai Songs 🎧
+    </div>
+
+    <!--
+      သီချင်းဖိုင်ကို
+      song.mp3 လို့ နာမည်ပေးပြီး
+      GitHub ထဲ upload လုပ်ပါ
+    -->
+
+    <audio id="songAudio">
+      <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="play-btn"
+      id="playBtn"
+      onclick="toggleMusic()">
+      ▶
+    </button>
+
+  </div>
+
 </section>
-
-
 
 <script>
 
-/* ==========================================
-   FIRST VIDEO
-========================================== */
+/* ELEMENTS */
 
-const firstVideo =
-  document.getElementById("firstVideo");
+const home = document.getElementById("home");
+const countdown = document.getElementById("countdown");
+const songs = document.getElementById("songs");
+const musicPage = document.getElementById("musicPage");
 
+const firstVideo = document.getElementById("firstVideo");
 
-/*
-  Website ဝင်တာနဲ့
-  video.b ကို auto play
-*/
+const startBtn = document.getElementById("startBtn");
+const choiceBtn = document.getElementById("choiceBtn");
+const countNumber = document.getElementById("countNumber");
 
-window.addEventListener(
-  "load",
-  function(){
+const songAudio = document.getElementById("songAudio");
+const playBtn = document.getElementById("playBtn");
+const record = document.getElementById("record");
 
-    firstVideo.muted = true;
+/* VIDEO AUTO PLAY */
 
-    firstVideo.loop = true;
+window.addEventListener("load",function(){
 
-    firstVideo.play().catch(
-      function(){
+  firstVideo.muted = true;
+  firstVideo.play().catch(function(){});
 
-        console.log(
-          "Browser blocked autoplay"
-        );
+});
 
-      }
-    );
-
-  }
-);
-
-
-/* ==========================================
-   ELEMENTS
-========================================== */
-
-const home =
-  document.getElementById("home");
-
-const countdown =
-  document.getElementById("countdown");
-
-const songs =
-  document.getElementById("songs");
-
-const videoPage =
-  document.getElementById("videoPage");
-
-const startBtn =
-  document.getElementById("startBtn");
-
-const choiceBtn =
-  document.getElementById("choiceBtn");
-
-const countNumber =
-  document.getElementById("countNumber");
-
-const songVideo =
-  document.getElementById("songVideo");
-
-
-/* ==========================================
-   OUT
-========================================== */
+/* OUT */
 
 let outCount = 0;
 
 function pressOut(){
 
   outCount++;
-
 
   if(outCount === 1){
 
@@ -815,370 +711,141 @@ function pressOut(){
     choiceBtn.innerHTML =
       "are you sure? 🤔";
 
-    popup("Are you sure? 💩");
-
   }
-
 
   else if(outCount === 2){
 
-    startBtn.classList.add("big");
-
     choiceBtn.innerHTML =
-      "ARE YOU SURE? 🥺😭";
-
-    popup("One more time... 😑");
+      "ARE YOU SURE? 😳";
 
   }
 
+  else{
 
-  else if(outCount >= 3){
+    document.body.style.opacity = "0";
 
-    document.body.style.transition =
-      "opacity .7s";
+    setTimeout(function(){
 
-    document.body.style.opacity =
-      "0";
+      window.location.href = "about:blank";
 
-
-    setTimeout(
-      function(){
-
-        window.location.href =
-          "about:blank";
-
-      },
-      700
-    );
+    },700);
 
   }
+
 }
 
-
-/* ==========================================
-   START
-========================================== */
+/* START */
 
 function startWebsite(){
 
   firstVideo.pause();
 
-  home.style.display =
-    "none";
-
-  countdown.style.display =
-    "flex";
-
+  home.style.display = "none";
+  countdown.style.display = "flex";
 
   let number = 3;
 
-  countNumber.innerHTML =
-    number;
+  countNumber.innerHTML = number;
 
+  const timer = setInterval(function(){
 
-  let timer =
-    setInterval(
-      function(){
+    number--;
 
-        number--;
+    if(number > 0){
 
+      countNumber.innerHTML = number;
 
-        if(number > 0){
+    }else{
 
-          countNumber.innerHTML =
-            number;
+      clearInterval(timer);
 
-          countNumber.style.animation =
-            "none";
+      countdown.style.display = "none";
+      songs.style.display = "block";
 
-          void countNumber.offsetWidth;
+    }
 
-          countNumber.style.animation =
-            "countPop .8s ease";
+  },1000);
 
-        }
-
-
-        else{
-
-          clearInterval(timer);
-
-          countdown.style.display =
-            "none";
-
-          songs.style.display =
-            "block";
-
-        }
-
-      },
-      1000
-    );
 }
 
-
-/* ==========================================
-   BACK HOME
-========================================== */
+/* HOME */
 
 function goHome(){
 
-  songs.style.display =
-    "none";
-
-  videoPage.style.display =
-    "none";
-
-  countdown.style.display =
-    "none";
-
-  home.style.display =
-    "flex";
-
+  songs.style.display = "none";
+  musicPage.style.display = "none";
+  home.style.display = "flex";
 
   outCount = 0;
 
   startBtn.classList.remove("big");
-
   choiceBtn.classList.remove("sure");
 
-  choiceBtn.innerHTML =
-    "choice 😊";
+  choiceBtn.innerHTML = "choice 😊";
 
+  firstVideo.play().catch(function(){});
 
-  songVideo.pause();
-
-
-  firstVideo.play().catch(
-    function(){}
-  );
 }
 
+/* OPEN MUSIC */
 
-/* ==========================================
-   VIDEO.C
-========================================== */
+function openMusic(){
 
-function openVideo(){
+  songs.style.display = "none";
 
-  songs.style.display =
-    "none";
+  musicPage.style.display = "flex";
 
-  videoPage.style.display =
-    "flex";
-
-  songVideo.currentTime =
-    0;
-
-  songVideo.play().catch(
-    function(){}
-  );
 }
 
+/* CLOSE MUSIC */
 
-/* ==========================================
-   CLOSE VIDEO
-========================================== */
+function closeMusic(){
 
-function closeVideo(){
+  songAudio.pause();
 
-  songVideo.pause();
+  record.classList.remove("playing");
 
-  videoPage.style.display =
-    "none";
+  playBtn.innerHTML = "▶";
 
-  songs.style.display =
-    "block";
+  musicPage.style.display = "none";
+
+  songs.style.display = "block";
+
 }
 
+/* PLAY / PAUSE */
 
-/* ==========================================
-   HEART EFFECT
-========================================== */
+function toggleMusic(){
 
-function heartEffect(button){
+  if(songAudio.paused){
 
-  button.animate(
-    [
-      {transform:"scale(1)"},
-      {transform:"scale(1.3) rotate(8deg)"},
-      {transform:"scale(1)"}
-    ],
-    {
-      duration:400
-    }
-  );
+    songAudio.play();
 
+    playBtn.innerHTML = "Ⅱ";
 
-  for(let i=0;i<8;i++){
+    record.classList.add("playing");
 
-    const heart =
-      document.createElement("div");
+  }else{
 
-    heart.innerHTML =
-      "🖕";
+    songAudio.pause();
 
-    heart.style.position =
-      "fixed";
+    playBtn.innerHTML = "▶";
 
-    const rect =
-      button.getBoundingClientRect();
-
-    heart.style.left =
-      rect.left +
-      rect.width / 2 +
-      "px";
-
-    heart.style.top =
-      rect.top +
-      "px";
-
-    heart.style.fontSize =
-      "22px";
-
-    heart.style.zIndex =
-      "9999";
-
-    heart.style.pointerEvents =
-      "none";
-
-    document.body.appendChild(
-      heart
-    );
-
-
-    const x =
-      (Math.random()-.5)*180;
-
-    const y =
-      -(Math.random()*180+50);
-
-
-    heart.animate(
-      [
-        {
-          transform:
-            "translate(0,0) scale(1)",
-          opacity:1
-        },
-
-        {
-          transform:
-            `translate(${x}px,${y}px) scale(.3)`,
-          opacity:0
-        }
-      ],
-      {
-        duration:900,
-        easing:"ease-out"
-      }
-    );
-
-
-    setTimeout(
-      function(){
-        heart.remove();
-      },
-      900
-    );
+    record.classList.remove("playing");
 
   }
+
 }
 
+/* SONG END */
 
-/* ==========================================
-   POPUP
-========================================== */
+songAudio.addEventListener("ended",function(){
 
-function popup(text){
+  playBtn.innerHTML = "▶";
 
-  const box =
-    document.createElement("div");
+  record.classList.remove("playing");
 
-  box.innerHTML =
-    text;
-
-  box.style.position =
-    "fixed";
-
-  box.style.left =
-    "50%";
-
-  box.style.top =
-    "15%";
-
-  box.style.transform =
-    "translateX(-50%) scale(.5)";
-
-  box.style.padding =
-    "14px 24px";
-
-  box.style.borderRadius =
-    "20px";
-
-  box.style.background =
-    "rgba(255,255,255,.95)";
-
-  box.style.color =
-    "#222";
-
-  box.style.fontSize =
-    "18px";
-
-  box.style.fontWeight =
-    "bold";
-
-  box.style.zIndex =
-    "10000";
-
-  box.style.boxShadow =
-    "0 10px 30px rgba(0,0,0,.2)";
-
-  document.body.appendChild(
-    box
-  );
-
-
-  box.animate(
-    [
-      {
-        transform:
-          "translateX(-50%) scale(.5)",
-        opacity:0
-      },
-
-      {
-        transform:
-          "translateX(-50%) scale(1)",
-        opacity:1
-      },
-
-      {
-        transform:
-          "translateX(-50%) scale(1)",
-        opacity:1
-      },
-
-      {
-        transform:
-          "translateX(-50%) scale(.5)",
-        opacity:0
-      }
-    ],
-    {
-      duration:1700,
-      easing:"ease-in-out"
-    }
-  );
-
-
-  setTimeout(
-    function(){
-      box.remove();
-    },
-    1700
-  );
-}
+});
 
 </script>
 
