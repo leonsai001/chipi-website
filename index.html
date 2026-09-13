@@ -12,28 +12,39 @@
 
 html,body{
   margin:0;
+  padding:0;
   width:100%;
   min-height:100%;
   font-family:Arial,sans-serif;
+  background:#070719;
+  color:white;
 }
 
 body{
-  background:#070719;
-  color:white;
   overflow-x:hidden;
 }
 
-/* ================= HOME ================= */
+button{
+  font-family:inherit;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+}
+
+
+/* ==================================================
+   FIRST PAGE
+================================================== */
 
 #home{
-  min-height:100vh;
   width:100%;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:flex-start;
-  position:relative;
-  overflow:hidden;
+
   padding:18px 15px 30px;
 
   background:
@@ -43,14 +54,16 @@ body{
     linear-gradient(145deg,#050514,#151044,#070719);
 }
 
+
 /* stars */
 
 .star{
   position:absolute;
   color:white;
   font-size:20px;
-  animation:twinkle 1.5s infinite alternate;
   pointer-events:none;
+
+  animation:twinkle 1.5s infinite alternate;
 }
 
 .s1{top:8%;left:8%}
@@ -64,14 +77,16 @@ body{
 
 @keyframes twinkle{
   from{
-    opacity:.25;
+    opacity:.2;
     transform:scale(.7);
   }
+
   to{
     opacity:1;
     transform:scale(1.4);
   }
 }
+
 
 /* floating hearts */
 
@@ -79,11 +94,12 @@ body{
   position:absolute;
   bottom:-50px;
   font-size:20px;
-  animation:heartFloat 7s linear infinite;
   opacity:0;
+
+  animation:heartFloat 7s linear infinite;
 }
 
-.h1{left:8%;animation-delay:0s}
+.h1{left:8%}
 .h2{left:30%;animation-delay:2s}
 .h3{right:25%;animation-delay:1s}
 .h4{right:7%;animation-delay:3s}
@@ -93,15 +109,18 @@ body{
     bottom:-50px;
     opacity:0;
   }
+
   15%{
     opacity:.8;
   }
+
   100%{
     bottom:110%;
     transform:rotate(360deg);
     opacity:0;
   }
 }
+
 
 /* title */
 
@@ -113,22 +132,25 @@ body{
 
 .title h1{
   margin:0;
+
   font-size:38px;
   font-weight:900;
   font-style:italic;
 
-  background:linear-gradient(
-    90deg,
-    #ff3bd4,
-    white,
-    #48c9ff,
-    #ff3bd4
-  );
+  background:
+    linear-gradient(
+      90deg,
+      #ff3bd4,
+      white,
+      #48c9ff,
+      #ff3bd4
+    );
 
   background-size:300%;
 
   -webkit-background-clip:text;
   background-clip:text;
+
   color:transparent;
 
   animation:shine 4s linear infinite;
@@ -136,7 +158,9 @@ body{
 
 .title p{
   margin:5px 0 0;
+
   color:#c9c7e9;
+
   font-size:11px;
   letter-spacing:3px;
 }
@@ -147,76 +171,115 @@ body{
   }
 }
 
-/* ================= ANIME GIRL ================= */
+
+/* ==================================================
+   ANIME GIRL
+================================================== */
 
 .anime{
   width:230px;
   height:245px;
+
   position:relative;
+
   margin-top:12px;
+
   z-index:5;
+
   animation:breathe 3s ease-in-out infinite;
 }
 
 @keyframes breathe{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-9px)}
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-9px);
+  }
 }
 
 .glow{
   position:absolute;
+
   width:190px;
   height:190px;
+
   left:20px;
   top:30px;
+
   border-radius:50%;
+
   background:#ff35d0;
+
   filter:blur(55px);
+
   opacity:.35;
 }
+
 
 /* hair */
 
 .hair{
   position:absolute;
+
   width:185px;
   height:195px;
+
   left:23px;
   top:28px;
+
   border-radius:50% 50% 45% 45%;
-  background:linear-gradient(
-    135deg,
-    #171027,
-    #593078,
-    #171027
-  );
-  box-shadow:0 0 30px rgba(150,70,255,.6);
+
+  background:
+    linear-gradient(
+      135deg,
+      #171027,
+      #593078,
+      #171027
+    );
+
+  box-shadow:
+    0 0 30px rgba(150,70,255,.6);
 }
+
 
 /* face */
 
 .face{
   position:absolute;
+
   z-index:2;
+
   width:126px;
   height:137px;
+
   left:52px;
   top:60px;
+
   border-radius:48% 48% 50% 50%;
+
   background:#ffd9c9;
 }
+
 
 /* fringe */
 
 .fringe{
   position:absolute;
+
   z-index:4;
+
   width:150px;
   height:75px;
+
   left:42px;
   top:45px;
+
   background:#21152f;
+
   border-radius:60% 60% 30% 30%;
+
   clip-path:polygon(
     0 0,
     100% 0,
@@ -230,15 +293,21 @@ body{
   );
 }
 
+
 /* eyes */
 
 .eye{
   position:absolute;
+
   z-index:5;
+
   width:28px;
   height:36px;
+
   top:106px;
+
   border-radius:50%;
+
   background:
     radial-gradient(
       circle at 50% 30%,
@@ -246,92 +315,149 @@ body{
       #7357ff 13% 48%,
       #17102a 50%
     );
-  box-shadow:0 0 10px #765cff;
+
+  box-shadow:
+    0 0 10px #765cff;
+
   animation:blink 4s infinite;
 }
 
-.eye.left{left:72px}
-.eye.right{left:130px}
+.eye.left{
+  left:72px;
+}
+
+.eye.right{
+  left:130px;
+}
 
 @keyframes blink{
   0%,45%,48%,100%{
     transform:scaleY(1);
   }
+
   46%,47%{
     transform:scaleY(.1);
   }
 }
 
+
 /* blush */
 
 .blush{
   position:absolute;
+
   z-index:5;
+
   top:144px;
+
   width:26px;
   height:11px;
+
   border-radius:50%;
+
   background:#ff779c;
+
   opacity:.55;
 }
 
-.blush.left{left:60px}
-.blush.right{left:144px}
+.blush.left{
+  left:60px;
+}
+
+.blush.right{
+  left:144px;
+}
+
 
 /* mouth */
 
 .mouth{
   position:absolute;
+
   z-index:5;
+
   top:151px;
   left:101px;
+
   width:27px;
   height:13px;
+
   border-bottom:3px solid #d66587;
+
   border-radius:0 0 50% 50%;
 }
+
 
 /* headphones */
 
 .headphone{
   position:absolute;
+
   z-index:6;
+
   width:200px;
   height:165px;
+
   left:15px;
   top:54px;
+
   border:8px solid #a84cff;
+
   border-bottom:0;
+
   border-radius:110px 110px 0 0;
-  box-shadow:0 0 20px #9b3dff;
-  pointer-events:none;
+
+  box-shadow:
+    0 0 20px #9b3dff;
 }
 
 .ear{
   position:absolute;
+
   z-index:7;
+
   top:111px;
+
   width:37px;
   height:58px;
+
   border-radius:20px;
-  background:linear-gradient(
-    135deg,
-    #ff38d1,
-    #704cff
-  );
-  box-shadow:0 0 18px #ff38d1;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff38d1,
+      #704cff
+    );
+
+  box-shadow:
+    0 0 18px #ff38d1;
 }
 
-.ear.left{left:4px}
-.ear.right{right:4px}
+.ear.left{
+  left:4px;
+}
+
+.ear.right{
+  right:4px;
+}
+
+
+/* bow */
 
 .bow{
   position:absolute;
+
   z-index:9;
+
   top:35px;
   right:5px;
+
   font-size:40px;
-  filter:drop-shadow(0 0 10px #ff3fd5);
+
+  filter:
+    drop-shadow(0 0 10px #ff3fd5);
+
   animation:bow 2s infinite alternate;
 }
 
@@ -341,18 +467,24 @@ body{
   }
 }
 
+
 /* welcome */
 
 .welcome{
   position:relative;
+
   z-index:10;
+
   text-align:center;
+
   margin-top:-5px;
 }
 
 .welcome h2{
   margin:0;
+
   font-size:21px;
+
   text-shadow:
     0 0 10px #ff43d5,
     0 0 25px #7355ff;
@@ -360,62 +492,105 @@ body{
 
 .welcome p{
   margin:5px 0;
+
   color:#aaa8cb;
+
   font-size:11px;
 }
+
 
 /* choice */
 
 #choice{
   position:relative;
+
   z-index:10;
+
   margin-top:7px;
+
   width:160px;
   height:40px;
+
   border-radius:25px;
+
   border:2px solid #ff50d9;
+
   background:rgba(255,255,255,.08);
+
   color:white;
+
   font-size:16px;
   font-weight:bold;
-  box-shadow:0 0 18px rgba(255,50,210,.5);
+
+  box-shadow:
+    0 0 18px rgba(255,50,210,.5);
 }
 
 #choice.sure{
   transform:scale(1.08);
-  background:rgba(255,50,200,.2);
+
+  background:
+    rgba(255,50,200,.2);
 }
+
 
 /* buttons */
 
 .buttons{
   position:relative;
+
   z-index:10;
+
   display:flex;
+
   gap:10px;
+
   margin-top:9px;
 }
 
 #start{
   width:155px;
   height:58px;
+
   border:0;
+
   border-radius:25px;
-  background:linear-gradient(135deg,#ff35c8,#7c42ff);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff35c8,
+      #7c42ff
+    );
+
   color:white;
+
   font-size:25px;
   font-weight:900;
-  box-shadow:0 0 28px rgba(255,45,205,.7);
+
+  box-shadow:
+    0 0 28px rgba(255,45,205,.7);
+
   animation:startGlow 1.8s infinite alternate;
 }
 
 #out{
   width:82px;
   height:58px;
+
   border:0;
+
   border-radius:25px;
-  background:linear-gradient(135deg,#367dff,#3942ce);
+
+  background:
+    linear-gradient(
+      135deg,
+      #367dff,
+      #3942ce
+    );
+
   color:white;
+
   font-size:21px;
   font-weight:bold;
 }
@@ -426,19 +601,11 @@ body{
   font-size:38px;
 }
 
-button{
-  cursor:pointer;
-  -webkit-tap-highlight-color:transparent;
-}
-
-button:active{
-  transform:scale(.92);
-}
-
 @keyframes startGlow{
   from{
     box-shadow:0 0 12px #ff35c8;
   }
+
   to{
     box-shadow:
       0 0 35px #ff35c8,
@@ -447,33 +614,44 @@ button:active{
 }
 
 
-/* ================= COUNTDOWN ================= */
+/* ==================================================
+   COUNTDOWN
+================================================== */
 
 #countdown{
   display:none;
+
   width:100%;
   height:100vh;
+
   align-items:center;
   justify-content:center;
+
   background:
     radial-gradient(circle,#6e35bb,#070716);
 }
 
 #number{
   font-size:150px;
+
   font-weight:900;
+
   text-shadow:
     0 0 25px #ff39d2,
     0 0 60px #674dff;
 }
 
 
-/* ================= SONG PAGE ================= */
+/* ==================================================
+   SONG PAGE
+================================================== */
 
 #songs{
   display:none;
-  min-height:100vh;
+
   width:100%;
+  min-height:100vh;
+
   background:
     radial-gradient(circle at 10% 20%,#7028a8,transparent 30%),
     radial-gradient(circle at 90% 80%,#1649a8,transparent 30%),
@@ -482,18 +660,31 @@ button:active{
 
 .header{
   height:70px;
+
   width:100%;
+
   display:flex;
+
   align-items:center;
-  border-bottom:1px solid rgba(255,255,255,.15);
-  background:rgba(255,255,255,.07);
+
+  position:relative;
+
+  border-bottom:
+    1px solid rgba(255,255,255,.15);
+
+  background:
+    rgba(255,255,255,.07);
 }
 
 .back{
   background:none;
+
   border:0;
+
   color:white;
+
   font-size:40px;
+
   margin-left:12px;
 }
 
@@ -504,93 +695,223 @@ button:active{
 
 .pageTitle{
   position:absolute;
+
   left:50%;
+
   transform:translateX(-50%);
+
   font-size:22px;
+
   font-weight:900;
+
   white-space:nowrap;
+
+  text-shadow:
+    0 0 15px #9c4cff;
 }
+
+
+/* song buttons */
 
 .songGrid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:25px 14px;
+
   padding:45px 7%;
 }
 
 .song{
-  min-height:75px;
+  min-height:80px;
+
   border:1px solid rgba(255,255,255,.2);
+
   border-radius:24px;
-  background:linear-gradient(
-    135deg,
-    rgba(255,50,210,.25),
-    rgba(60,80,255,.3)
-  );
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,50,210,.25),
+      rgba(60,80,255,.3)
+    );
+
   color:white;
+
   font-size:16px;
+
   font-weight:bold;
-  box-shadow:0 8px 25px rgba(0,0,0,.35);
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.35);
+
+  transition:.25s;
+}
+
+.song:hover{
+  transform:translateY(-5px);
+
+  box-shadow:
+    0 0 25px #a844ff;
+}
+
+.song:active{
+  transform:scale(.92);
 }
 
 
-/* ================= MUSIC ================= */
+/* ==================================================
+   MUSIC PAGE
+================================================== */
 
-#music{
+.musicPage{
   display:none;
+
   width:100%;
   min-height:100vh;
+
   align-items:center;
   justify-content:center;
+
   position:relative;
+
+  overflow:hidden;
+}
+
+
+/* different background for each song */
+
+#music1{
   background:
-    radial-gradient(circle at 20% 20%,#842bd1,transparent 30%),
-    radial-gradient(circle at 80% 80%,#125ec5,transparent 30%),
+    radial-gradient(circle at 20% 20%,#8b32d5,transparent 30%),
+    radial-gradient(circle at 80% 80%,#126bc5,transparent 30%),
     #050510;
 }
 
+#music2{
+  background:
+    radial-gradient(circle at 15% 25%,#d72cae,transparent 30%),
+    radial-gradient(circle at 85% 75%,#315eea,transparent 30%),
+    #080510;
+}
+
+
+/* back */
+
 .musicBack{
   position:absolute;
+
   top:20px;
   left:18px;
+
   width:55px;
   height:55px;
+
   border:0;
+
   border-radius:18px;
-  background:rgba(255,255,255,.1);
+
+  background:
+    rgba(255,255,255,.1);
+
   color:white;
+
   font-size:30px;
+
+  z-index:10;
 }
+
+
+/* music card */
 
 .musicCard{
   width:90%;
   max-width:420px;
+
   padding:30px 23px;
+
   text-align:center;
+
   border-radius:32px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 20px 70px rgba(0,0,0,.5);
+
+  background:
+    rgba(255,255,255,.08);
+
+  border:
+    1px solid rgba(255,255,255,.18);
+
+  backdrop-filter:blur(15px);
+
+  box-shadow:
+    0 20px 70px rgba(0,0,0,.5);
 }
+
+
+/* disc */
 
 .disc{
   width:170px;
   height:170px;
+
   margin:auto;
+
   border-radius:50%;
+
   background:
     repeating-radial-gradient(
       circle,
       #080808 0 5px,
       #292929 6px 8px
     );
-  box-shadow:0 0 35px rgba(255,60,220,.5);
-  animation:spin 7s linear infinite;
+
+  box-shadow:
+    0 0 35px rgba(255,60,220,.5);
+
+  position:relative;
+
+  animation:
+    spin 7s linear infinite;
+
   animation-play-state:paused;
 }
 
 .disc.playing{
   animation-play-state:running;
+}
+
+
+/* center */
+
+.disc:after{
+  content:"♫";
+
+  position:absolute;
+
+  width:45px;
+  height:45px;
+
+  left:50%;
+  top:50%;
+
+  transform:translate(-50%,-50%);
+
+  border-radius:50%;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  background:#171717;
+
+  color:white;
+
+  font-size:23px;
+
+  box-shadow:
+    0 0 12px #ff4fd7;
 }
 
 @keyframes spin{
@@ -599,10 +920,16 @@ button:active{
   }
 }
 
+
+/* title */
+
 .musicTitle{
   margin-top:25px;
+
   font-size:36px;
+
   font-weight:900;
+
   text-shadow:
     0 0 15px #ff45d7,
     0 0 30px #6650ff;
@@ -610,23 +937,44 @@ button:active{
 
 .artist{
   color:#aaa7c8;
-  margin:7px 0 20px;
+
+  margin:
+    7px 0 20px;
 }
+
+
+/* audio */
 
 audio{
   width:100%;
 }
 
+
+/* play button */
+
 .play{
   width:70px;
   height:70px;
+
   margin-top:18px;
+
   border:0;
+
   border-radius:50%;
-  background:linear-gradient(135deg,#ff36cb,#674bff);
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff36cb,
+      #674bff
+    );
+
   color:white;
+
   font-size:25px;
-  box-shadow:0 0 30px rgba(255,50,210,.6);
+
+  box-shadow:
+    0 0 30px rgba(255,50,210,.6);
 }
 
 
@@ -640,6 +988,7 @@ audio{
 
   .anime{
     transform:scale(.88);
+
     margin-top:5px;
     margin-bottom:-10px;
   }
@@ -659,9 +1008,13 @@ audio{
 </style>
 </head>
 
+
 <body>
 
-<!-- ================= FIRST PAGE ================= -->
+
+<!-- ==================================================
+     FIRST PAGE
+================================================== -->
 
 <div id="home">
 
@@ -681,12 +1034,19 @@ audio{
 
 
   <div class="title">
-    <h1>Leon Sai Songs 🎵</h1>
-    <p>WELCOME TO MY MUSIC WORLD ✦</p>
+
+    <h1>
+      Leon Sai Songs 🎵
+    </h1>
+
+    <p>
+      WELCOME TO MY MUSIC WORLD ✦
+    </p>
+
   </div>
 
 
-  <!-- ANIME -->
+  <!-- ANIME GIRL -->
 
   <div class="anime">
 
@@ -711,16 +1071,22 @@ audio{
     <div class="ear left"></div>
     <div class="ear right"></div>
 
-    <div class="bow">🎀</div>
+    <div class="bow">
+      🎀
+    </div>
 
   </div>
 
 
   <div class="welcome">
 
-    <h2>Let's enjoy the music together ✨</h2>
+    <h2>
+      Let's enjoy the music together ✨
+    </h2>
 
-    <p>PRESS START TO ENTER THE MUSIC WORLD 🎧</p>
+    <p>
+      PRESS START TO ENTER THE MUSIC WORLD 🎧
+    </p>
 
   </div>
 
@@ -745,16 +1111,24 @@ audio{
 </div>
 
 
-<!-- ================= COUNTDOWN ================= -->
+
+<!-- ==================================================
+     COUNTDOWN
+================================================== -->
 
 <div id="countdown">
 
-  <div id="number">3</div>
+  <div id="number">
+    3
+  </div>
 
 </div>
 
 
-<!-- ================= SONGS ================= -->
+
+<!-- ==================================================
+     PAGE 2 — SONG LIST
+================================================== -->
 
 <div id="songs">
 
@@ -777,49 +1151,94 @@ audio{
 
   <div class="songGrid">
 
+    <!-- SONG 1 -->
+
     <button class="song" id="song1">
       ၼူၵ်ႉပိၵ်ႉလႅဝ်
     </button>
 
-    <button class="song">?</button>
-    <button class="song">?</button>
-    <button class="song">?</button>
-    <button class="song">?</button>
-    <button class="song">?</button>
+
+    <!-- SONG 2 -->
+
+    <button class="song" id="song2">
+      ဥပေက္ခာ
+    </button>
+
+
+    <!-- နောက်ထပ်သီချင်းတွေ -->
+
+    <button class="song">
+      ?
+    </button>
+
+    <button class="song">
+      ?
+    </button>
+
+    <button class="song">
+      ?
+    </button>
+
+    <button class="song">
+      ?
+    </button>
 
   </div>
 
 </div>
 
 
-<!-- ================= MUSIC ================= -->
 
-<div id="music">
+<!-- ==================================================
+     MUSIC PAGE — ၼူၵ်ႉပိၵ်ႉလႅဝ်
+================================================== -->
 
-  <button class="musicBack" id="musicBack">
+<div class="musicPage" id="music1">
+
+  <button
+    class="musicBack"
+    id="backMusic1">
+
     ←
+
   </button>
+
 
   <div class="musicCard">
 
-    <div class="disc" id="disc"></div>
+    <div class="disc" id="disc1"></div>
+
 
     <div class="musicTitle">
       ၼူၵ်ႉပိၵ်ႉလႅဝ်
     </div>
 
+
     <div class="artist">
       Leon Sai • Music 🎧
     </div>
 
-    <!-- နောက်မှ song.mp3 ဖိုင်ထည့်ပါ -->
 
-    <audio id="audio" controls>
-      <source src="song.mp3" type="audio/mpeg">
+    <!--
+      မင်းရဲ့ ပထမသီချင်းဖိုင်ကို
+      nukpiklaew.mp3 လို့ ထည့်ပါ
+    -->
+
+    <audio id="audio1" controls>
+
+      <source
+        src="nukpiklaew.mp3"
+        type="audio/mpeg">
+
     </audio>
 
-    <button class="play" id="play">
+
+    <button
+      class="play"
+      id="play1">
+
       ▶
+
     </button>
 
   </div>
@@ -827,38 +1246,136 @@ audio{
 </div>
 
 
+
+<!-- ==================================================
+     MUSIC PAGE — ဥပေက္ခာ
+================================================== -->
+
+<div class="musicPage" id="music2">
+
+  <button
+    class="musicBack"
+    id="backMusic2">
+
+    ←
+
+  </button>
+
+
+  <div class="musicCard">
+
+    <div class="disc" id="disc2"></div>
+
+
+    <div class="musicTitle">
+      ဥပေက္ခာ
+    </div>
+
+
+    <div class="artist">
+      Leon Sai • Music 🎧
+    </div>
+
+
+    <!--
+      မင်းရဲ့ ဥပေက္ခာ သီချင်းဖိုင်ကို
+      yupikatha.mp3 လို့ ထည့်ပါ
+    -->
+
+    <audio id="audio2" controls>
+
+      <source
+        src="yupikatha.mp3"
+        type="audio/mpeg">
+
+    </audio>
+
+
+    <button
+      class="play"
+      id="play2">
+
+      ▶
+
+    </button>
+
+  </div>
+
+</div>
+
+
+
 <script>
 
-const home = document.getElementById("home");
-const countdown = document.getElementById("countdown");
-const songs = document.getElementById("songs");
-const music = document.getElementById("music");
+/* ==================================================
+   VARIABLES
+================================================== */
 
-const start = document.getElementById("start");
-const out = document.getElementById("out");
-const choice = document.getElementById("choice");
+const home =
+document.getElementById("home");
 
-const number = document.getElementById("number");
+const countdown =
+document.getElementById("countdown");
 
-const audio = document.getElementById("audio");
-const disc = document.getElementById("disc");
-const play = document.getElementById("play");
+const songs =
+document.getElementById("songs");
+
+const music1 =
+document.getElementById("music1");
+
+const music2 =
+document.getElementById("music2");
+
+const start =
+document.getElementById("start");
+
+const out =
+document.getElementById("out");
+
+const choice =
+document.getElementById("choice");
+
+const number =
+document.getElementById("number");
+
+const audio1 =
+document.getElementById("audio1");
+
+const audio2 =
+document.getElementById("audio2");
+
+const disc1 =
+document.getElementById("disc1");
+
+const disc2 =
+document.getElementById("disc2");
+
+const play1 =
+document.getElementById("play1");
+
+const play2 =
+document.getElementById("play2");
+
 
 let outCount = 0;
 
 
-/* START */
+/* ==================================================
+   START
+================================================== */
 
 start.onclick = function(){
 
   home.style.display = "none";
+
   countdown.style.display = "flex";
 
   let n = 3;
 
   number.textContent = n;
 
-  const timer = setInterval(function(){
+  const timer =
+  setInterval(function(){
 
     n--;
 
@@ -866,11 +1383,14 @@ start.onclick = function(){
 
       number.textContent = n;
 
-    }else{
+    }
+
+    else{
 
       clearInterval(timer);
 
       countdown.style.display = "none";
+
       songs.style.display = "block";
 
     }
@@ -880,7 +1400,9 @@ start.onclick = function(){
 };
 
 
-/* OUT */
+/* ==================================================
+   OUT
+================================================== */
 
 out.onclick = function(){
 
@@ -907,6 +1429,7 @@ out.onclick = function(){
   else{
 
     document.body.innerHTML = `
+
       <div style="
         width:100%;
         min-height:100vh;
@@ -919,10 +1442,21 @@ out.onclick = function(){
         text-align:center;
         font-family:Arial;
       ">
-        <div style="font-size:65px">🌙✨</div>
-        <h1>Goodbye 👋</h1>
-        <p>Thanks for visiting Leon Sai Songs 🎵</p>
+
+        <div style="font-size:65px">
+          🌙✨
+        </div>
+
+        <h1>
+          Goodbye 👋
+        </h1>
+
+        <p style="color:#aaa">
+          Thanks for visiting Leon Sai Songs 🎵
+        </p>
+
       </div>
+
     `;
 
   }
@@ -930,67 +1464,192 @@ out.onclick = function(){
 };
 
 
-/* SONG */
+/* ==================================================
+   BACK TO HOME
+================================================== */
 
-document.getElementById("song1").onclick = function(){
+document.getElementById("backHome").onclick =
+function(){
 
-  songs.style.display = "none";
-  music.style.display = "flex";
-
-};
-
-
-/* BACK HOME */
-
-document.getElementById("backHome").onclick = function(){
+  stopAllMusic();
 
   songs.style.display = "none";
+
   home.style.display = "flex";
 
   outCount = 0;
 
   start.classList.remove("big");
+
   choice.classList.remove("sure");
 
-  choice.textContent = "choice 😊";
+  choice.textContent =
+    "choice 😊";
 
 };
 
 
-/* MUSIC BACK */
+/* ==================================================
+   SONG 1
+================================================== */
 
-document.getElementById("musicBack").onclick = function(){
+document.getElementById("song1").onclick =
+function(){
 
-  audio.pause();
+  songs.style.display = "none";
 
-  music.style.display = "none";
-  songs.style.display = "block";
-
-  disc.classList.remove("playing");
-  play.textContent = "▶";
+  music1.style.display = "flex";
 
 };
 
 
-/* PLAY */
+/* ==================================================
+   SONG 2 — ဥပေက္ခာ
+================================================== */
 
-play.onclick = function(){
+document.getElementById("song2").onclick =
+function(){
 
-  if(audio.paused){
+  songs.style.display = "none";
 
-    audio.play();
+  music2.style.display = "flex";
 
-    play.textContent = "Ⅱ";
-    disc.classList.add("playing");
+};
 
-  }else{
 
-    audio.pause();
+/* ==================================================
+   MUSIC 1
+================================================== */
 
-    play.textContent = "▶";
-    disc.classList.remove("playing");
+play1.onclick = function(){
+
+  if(audio1.paused){
+
+    audio1.play();
+
+    play1.textContent = "Ⅱ";
+
+    disc1.classList.add("playing");
 
   }
+
+  else{
+
+    audio1.pause();
+
+    play1.textContent = "▶";
+
+    disc1.classList.remove("playing");
+
+  }
+
+};
+
+
+/* ==================================================
+   MUSIC 2
+================================================== */
+
+play2.onclick = function(){
+
+  if(audio2.paused){
+
+    audio2.play();
+
+    play2.textContent = "Ⅱ";
+
+    disc2.classList.add("playing");
+
+  }
+
+  else{
+
+    audio2.pause();
+
+    play2.textContent = "▶";
+
+    disc2.classList.remove("playing");
+
+  }
+
+};
+
+
+/* ==================================================
+   BACK FROM MUSIC 1
+================================================== */
+
+document.getElementById("backMusic1").onclick =
+function(){
+
+  audio1.pause();
+
+  disc1.classList.remove("playing");
+
+  play1.textContent = "▶";
+
+  music1.style.display = "none";
+
+  songs.style.display = "block";
+
+};
+
+
+/* ==================================================
+   BACK FROM MUSIC 2
+================================================== */
+
+document.getElementById("backMusic2").onclick =
+function(){
+
+  audio2.pause();
+
+  disc2.classList.remove("playing");
+
+  play2.textContent = "▶";
+
+  music2.style.display = "none";
+
+  songs.style.display = "block";
+
+};
+
+
+/* ==================================================
+   STOP ALL
+================================================== */
+
+function stopAllMusic(){
+
+  audio1.pause();
+  audio2.pause();
+
+  disc1.classList.remove("playing");
+  disc2.classList.remove("playing");
+
+  play1.textContent = "▶";
+  play2.textContent = "▶";
+
+}
+
+
+/* ==================================================
+   WHEN SONG ENDS
+================================================== */
+
+audio1.onended = function(){
+
+  play1.textContent = "▶";
+
+  disc1.classList.remove("playing");
+
+};
+
+audio2.onended = function(){
+
+  play2.textContent = "▶";
+
+  disc2.classList.remove("playing");
 
 };
 
