@@ -20,834 +20,364 @@ html,body{
   overflow:hidden;
 }
 
-button{
-  font-family:inherit;
-}
-
-/* ================= HOME ================= */
+/* ================= FIRST PAGE ================= */
 
 #home{
   width:100%;
   height:100vh;
+  position:relative;
+  overflow:hidden;
+
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(135deg,#a8ffff,#45dce8,#82f4ef);
+
+  background:
+    radial-gradient(circle at 15% 20%,#ff45c8 0,transparent 25%),
+    radial-gradient(circle at 85% 30%,#356cff 0,transparent 27%),
+    radial-gradient(circle at 50% 100%,#8b26ff 0,transparent 35%),
+    linear-gradient(145deg,#05051b,#11104b,#060722);
+
+  color:white;
 }
 
-.float{
+/* stars */
+
+.star{
   position:absolute;
-  pointer-events:none;
-  font-size:25px;
-  animation:floatUp 6s linear infinite;
+  color:white;
+  font-size:14px;
+  opacity:.8;
+  animation:twinkle 2s ease-in-out infinite alternate;
+}
+
+.s1{top:8%;left:8%}
+.s2{top:17%;left:27%;animation-delay:.4s}
+.s3{top:11%;right:13%;animation-delay:.8s}
+.s4{top:42%;left:6%;animation-delay:1s}
+.s5{top:49%;right:7%;animation-delay:.2s}
+.s6{bottom:25%;left:18%;animation-delay:1.3s}
+.s7{bottom:17%;right:18%;animation-delay:.7s}
+.s8{top:30%;right:30%;animation-delay:1.5s}
+
+@keyframes twinkle{
+  from{
+    opacity:.25;
+    transform:scale(.7);
+  }
+  to{
+    opacity:1;
+    transform:scale(1.5);
+  }
+}
+
+/* floating hearts */
+
+.heart{
+  position:absolute;
+  font-size:22px;
+  animation:heartFloat 7s linear infinite;
   opacity:0;
 }
 
-.f1{left:7%;animation-delay:0s}
-.f2{left:23%;animation-delay:1.3s}
-.f3{left:45%;animation-delay:2.5s}
-.f4{left:68%;animation-delay:.7s}
-.f5{left:88%;animation-delay:2s}
+.h1{left:8%;animation-delay:0s}
+.h2{left:25%;animation-delay:2s}
+.h3{right:18%;animation-delay:1s}
+.h4{right:5%;animation-delay:3s}
 
-@keyframes floatUp{
+@keyframes heartFloat{
   0%{
-    transform:translateY(110vh) rotate(0deg);
+    transform:translateY(105vh) rotate(0);
     opacity:0;
   }
-  15%{opacity:.8}
+
+  15%{
+    opacity:.8;
+  }
+
   100%{
     transform:translateY(-20vh) rotate(360deg);
     opacity:0;
   }
 }
 
-/* VIDEO STICKER */
+/* moon */
 
-.sticker{
-  width:210px;
-  height:210px;
-  padding:7px;
-  position:relative;
-  z-index:5;
-  background:white;
-  border-radius:42% 58% 55% 45% / 48% 42% 58% 52%;
-  box-shadow:
-    0 15px 35px rgba(0,0,0,.20),
-    0 0 0 5px rgba(255,255,255,.65);
-  transform:rotate(-3deg);
-  animation:stickerFloat 3s ease-in-out infinite;
-}
-
-@keyframes stickerFloat{
-  0%,100%{margin-top:0}
-  50%{margin-top:-10px}
-}
-
-#firstVideo{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  border-radius:38% 62% 50% 50% / 50% 42% 58% 50%;
-  background:#111;
-  pointer-events:none;
-}
-
-.sticker::after{
-  content:"✨";
+.moon{
   position:absolute;
-  right:-12px;
-  top:-16px;
-  font-size:32px;
-  animation:sparkle 1.5s infinite;
-}
-
-@keyframes sparkle{
-  0%,100%{
-    transform:scale(.8) rotate(0deg);
-    opacity:.5;
-  }
-  50%{
-    transform:scale(1.25) rotate(15deg);
-    opacity:1;
-  }
-}
-
-.file-name{
-  margin-top:18px;
-  font-size:18px;
-  font-weight:bold;
-  color:#222;
-}
-
-.choice{
-  width:145px;
-  height:42px;
-  margin-top:9px;
-  border:0;
-  border-radius:16px;
-  background:#fff3d8;
-  font-size:17px;
-  font-weight:bold;
-}
-
-.choice.sure{
-  background:#ffdc88;
-  animation:pulse 1s infinite;
-}
-
-@keyframes pulse{
-  50%{
-    transform:scale(1.08);
-    box-shadow:0 0 25px rgba(255,190,40,.55);
-  }
-}
-
-.buttons{
-  display:flex;
-  gap:7px;
-  margin-top:7px;
-  z-index:10;
-}
-
-.start-btn,
-.out-btn{
-  border:0;
-  color:white;
-  font-weight:bold;
-  font-size:27px;
-  text-shadow:1px 2px 2px rgba(0,0,0,.35);
-  cursor:pointer;
-  transition:.45s ease;
-}
-
-.start-btn{
-  width:160px;
-  height:68px;
-  border-radius:22px;
-  background:#00d93a;
-}
-
-.out-btn{
-  width:85px;
-  height:68px;
-  border-radius:22px;
-  background:#ff3038;
-}
-
-.start-btn.big{
-  width:250px;
-  height:115px;
-  font-size:43px;
-  border-radius:32px;
-  box-shadow:0 0 40px rgba(0,255,70,.7);
-}
-
-/* ================= COUNTDOWN ================= */
-
-#countdown{
-  display:none;
-  width:100%;
-  height:100vh;
-  align-items:center;
-  justify-content:center;
-  background:#0ca9eb;
-  color:white;
-}
-
-#countNumber{
-  font-size:190px;
-  font-weight:900;
-}
-
-/* ================= SONG LIST ================= */
-
-#songs{
-  display:none;
-  width:100%;
-  height:100vh;
-  background:white;
-  overflow:hidden;
-}
-
-.header{
-  height:67px;
-  width:100%;
-  background:#ffd17b;
-  display:flex;
-  align-items:center;
-  position:relative;
-  box-shadow:0 3px 12px rgba(0,0,0,.1);
-}
-
-.back{
-  border:0;
-  background:transparent;
-  color:white;
-  font-size:50px;
-  font-weight:bold;
-  margin-left:18px;
-  cursor:pointer;
-}
-
-.out-word{
-  font-size:24px;
-  font-weight:bold;
-  color:#111;
-  margin-left:3px;
-}
-
-.title{
-  position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  white-space:nowrap;
-  color:white;
-  font-size:29px;
-  font-weight:bold;
-  text-shadow:2px 2px #666;
-}
-
-.song-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:74px 42px;
-  padding:51px 10%;
-}
-
-.song{
-  height:80px;
-  border:0;
-  border-radius:25px;
-  background:#fff0b8;
-  font-size:20px;
-  font-weight:bold;
-  cursor:pointer;
-  position:relative;
-  overflow:hidden;
-  transition:.3s;
-}
-
-.song:hover{
-  transform:translateY(-6px) scale(1.03);
-}
-
-.song:active{
-  transform:scale(.9);
-}
-
-.song::after{
-  content:"";
-  position:absolute;
-  left:-80px;
-  top:0;
-  width:45px;
-  height:100%;
-  background:rgba(255,255,255,.6);
-  transform:skewX(-20deg);
-  animation:shine 2.5s infinite;
-}
-
-@keyframes shine{
-  from{left:-80px}
-  to{left:120%}
-}
-
-/* ================= MUSIC PAGE ================= */
-
-#musicPage{
-  display:none;
-  width:100%;
-  height:100vh;
-  position:relative;
-  overflow:hidden;
-
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-
-  color:white;
-
-  background:
-    radial-gradient(circle at 20% 20%,rgba(100,80,255,.4),transparent 30%),
-    radial-gradient(circle at 80% 70%,rgba(0,200,255,.3),transparent 30%),
-    linear-gradient(135deg,#080812,#15102d,#05050b);
-}
-
-/* moving background lights */
-
-.light{
-  position:absolute;
-  width:250px;
-  height:250px;
-  border-radius:50%;
-  filter:blur(80px);
-  opacity:.5;
-  animation:moveLight 7s ease-in-out infinite alternate;
-}
-
-.light.one{
-  background:#542dff;
-  top:-100px;
-  left:-100px;
-}
-
-.light.two{
-  background:#008cff;
-  bottom:-120px;
-  right:-100px;
-  animation-delay:-3s;
-}
-
-@keyframes moveLight{
-  from{
-    transform:translate(0,0) scale(1);
-  }
-  to{
-    transform:translate(120px,80px) scale(1.4);
-  }
-}
-
-/* back button */
-
-.music-back{
-  position:absolute;
-  top:25px;
-  left:25px;
+  top:38px;
+  right:28px;
 
   width:55px;
   height:55px;
+  border-radius:50%;
 
-  border:1px solid rgba(255,255,255,.2);
-  border-radius:18px;
+  background:#fff5bd;
+  box-shadow:
+    0 0 20px #fff4a0,
+    0 0 50px #7a7cff;
 
-  background:rgba(255,255,255,.1);
-  color:white;
+  overflow:hidden;
+}
 
-  font-size:30px;
-  cursor:pointer;
+.moon:after{
+  content:"";
+  position:absolute;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#08082a;
+  left:18px;
+  top:-8px;
+}
 
+/* ================= TITLE ================= */
+
+.logo{
+  margin-top:25px;
+  text-align:center;
   z-index:5;
 }
 
-/* music card */
+.logo h1{
+  margin:0;
 
-.music-card{
-  width:min(90vw,430px);
-  min-height:430px;
+  font-size:clamp(38px,10vw,65px);
+  font-weight:900;
+  font-style:italic;
+  letter-spacing:2px;
 
-  padding:35px 25px;
+  background:linear-gradient(
+    90deg,
+    #ff61d8,
+    #ffffff,
+    #55c8ff,
+    #ff61d8
+  );
 
-  border-radius:35px;
+  background-size:300% auto;
 
-  text-align:center;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
 
-  background:rgba(255,255,255,.08);
+  animation:gradientMove 4s linear infinite;
 
-  border:1px solid rgba(255,255,255,.16);
-
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.5);
-
-  backdrop-filter:blur(12px);
-
-  position:relative;
-  z-index:2;
+  text-shadow:
+    0 0 15px rgba(255,70,220,.5);
 }
 
-/* record */
+.logo p{
+  margin:0;
+  font-size:15px;
+  letter-spacing:4px;
+  color:#ddd9ff;
+}
 
-.record{
-  width:180px;
-  height:180px;
+@keyframes gradientMove{
+  to{
+    background-position:300% center;
+  }
+}
 
-  margin:0 auto 28px;
+/* ================= ANIME GIRL ================= */
+
+.anime-box{
+  position:relative;
+  width:245px;
+  height:265px;
+  margin-top:12px;
+  z-index:4;
+
+  animation:girlFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes girlFloat{
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-9px);
+  }
+}
+
+/* glow behind girl */
+
+.anime-box:before{
+  content:"";
+  position:absolute;
+  width:210px;
+  height:210px;
+
+  left:17px;
+  top:25px;
 
   border-radius:50%;
 
   background:
-    radial-gradient(circle,#121212 12%,#555 13%,#111 15%,#222 28%,#050505 30%,#222 48%,#050505 50%);
+    radial-gradient(circle,#ff66db,transparent 65%);
+
+  filter:blur(25px);
+  opacity:.55;
+}
+
+/* hair */
+
+.hair{
+  position:absolute;
+
+  width:185px;
+  height:190px;
+
+  left:30px;
+  top:27px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #15102e,
+      #39215f,
+      #171331
+    );
+
+  border-radius:50% 50% 45% 45%;
 
   box-shadow:
-    0 0 0 10px rgba(255,255,255,.04),
-    0 15px 40px rgba(0,0,0,.5);
+    0 0 25px rgba(130,90,255,.5);
 
-  animation:spin 8s linear infinite;
-
-  animation-play-state:paused;
+  z-index:1;
 }
 
-.record.playing{
-  animation-play-state:running;
-}
+/* side hair */
 
-.record::after{
-  content:"🎵";
+.hair:before,
+.hair:after{
+  content:"";
   position:absolute;
-  font-size:40px;
-  transform:translate(-50%,-50%);
+
+  width:55px;
+  height:145px;
+
+  background:#20153e;
+
+  top:80px;
+
+  border-radius:30px;
 }
 
-/* Song title */
-
-.song-title{
-  font-size:clamp(32px,8vw,48px);
-  font-weight:900;
-  letter-spacing:2px;
-  margin-bottom:8px;
-
-  text-shadow:
-    0 0 10px rgba(255,255,255,.4),
-    0 0 30px #764cff,
-    0 0 60px #3e88ff;
-
-  animation:titleGlow 2s ease-in-out infinite alternate;
+.hair:before{
+  left:-18px;
+  transform:rotate(12deg);
 }
 
-@keyframes titleGlow{
-  from{
-    transform:scale(1);
-    filter:brightness(1);
-  }
-  to{
-    transform:scale(1.04);
-    filter:brightness(1.4);
-  }
+.hair:after{
+  right:-18px;
+  transform:rotate(-12deg);
 }
 
-.artist{
-  color:rgba(255,255,255,.6);
-  margin-bottom:25px;
-  font-size:15px;
+/* face */
+
+.face{
+  position:absolute;
+
+  width:132px;
+  height:145px;
+
+  left:56px;
+  top:58px;
+
+  background:#ffd9c7;
+
+  border-radius:48% 48% 48% 48%;
+
+  z-index:3;
+
+  box-shadow:
+    inset 0 -5px 10px rgba(220,130,130,.15);
 }
 
-/* audio */
+/* fringe */
 
-audio{
-  width:100%;
-  margin-top:10px;
-}
+.fringe{
+  position:absolute;
 
-/* play button */
-
-.play-btn{
-  margin-top:25px;
-
-  width:75px;
+  width:145px;
   height:75px;
 
-  border:0;
+  left:50px;
+  top:45px;
+
+  z-index:5;
+
+  background:#20143c;
+
+  border-radius:60% 60% 30% 35%;
+
+  clip-path:polygon(
+    0 0,
+    100% 0,
+    92% 60%,
+    75% 45%,
+    62% 85%,
+    48% 48%,
+    32% 90%,
+    20% 50%,
+    5% 70%
+  );
+}
+
+/* eyes */
+
+.eye{
+  position:absolute;
+
+  width:28px;
+  height:38px;
+
+  top:105px;
+
+  background:
+    radial-gradient(circle at 50% 35%,white 0 12%,#7e50ff 13% 48%,#17122c 50%);
+
   border-radius:50%;
 
-  background:linear-gradient(135deg,#704cff,#00a8ff);
-  color:white;
+  z-index:6;
 
-  font-size:28px;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 10px 30px rgba(68,87,255,.5);
-
-  transition:.25s;
+  box-shadow:0 0 8px #8e71ff;
 }
 
-.play-btn:active{
-  transform:scale(.9);
+.eye.left{
+  left:75px;
 }
 
-@keyframes spin{
-  from{transform:rotate(0deg)}
-  to{transform:rotate(360deg)}
+.eye.right{
+  left:143px;
 }
 
-@media(max-width:600px){
+/* blink */
 
-  .sticker{
-    width:205px;
-    height:205px;
+@keyframes blink{
+  0%,45%,48%,100%{
+    transform:scaleY(1);
   }
 
-  .song-grid{
-    gap:74px 20px;
-    padding:51px 10%;
-  }
-
-  .song{
-    font-size:16px;
-  }
-
-  .title{
-    font-size:22px;
-  }
-
-  .music-card{
-    min-height:400px;
+  46%,47%{
+    transform:scaleY(.08);
   }
 }
 
-</style>
-</head>
-
-<body>
-
-<!-- ================= HOME ================= -->
-
-<section id="home">
-
-  <div class="float f1">✨</div>
-  <div class="float f2">💙</div>
-  <div class="float f3">⭐</div>
-  <div class="float f4">💫</div>
-  <div class="float f5">💙</div>
-
-  <div class="sticker">
-    <video id="firstVideo"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto">
-
-      <source src="video.b" type="video/mp4">
-
-    </video>
-  </div>
-
-  <div class="file-name">
-    add file 1
-  </div>
-
-  <button class="choice" id="choiceBtn">
-    choice 😊
-  </button>
-
-  <div class="buttons">
-
-    <button class="start-btn"
-      id="startBtn"
-      onclick="startWebsite()">
-      start
-    </button>
-
-    <button class="out-btn"
-      onclick="pressOut()">
-      out
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ================= COUNTDOWN ================= -->
-
-<section id="countdown">
-  <div id="countNumber">3</div>
-</section>
-
-<!-- ================= SONG LIST ================= -->
-
-<section id="songs">
-
-  <div class="header">
-
-    <button class="back" onclick="goHome()">
-      ←
-    </button>
-
-    <span class="out-word">out</span>
-
-    <div class="title">
-      Leon sai songs
-    </div>
-
-  </div>
-
-  <div class="song-grid">
-
-    <button class="song" onclick="openMusic()">
-      ၼူၵ်ႉပိၵ်ႇလႅဝ်
-    </button>
-
-    <button class="song">?</button>
-    <button class="song">?</button>
-    <button class="song">?</button>
-    <button class="song">?</button>
-    <button class="song">?</button>
-
-  </div>
-
-</section>
-
-<!-- ================= MUSIC PAGE ================= -->
-
-<section id="musicPage">
-
-  <div class="light one"></div>
-  <div class="light two"></div>
-
-  <button class="music-back"
-    onclick="closeMusic()">
-    ←
-  </button>
-
-  <div class="music-card">
-
-    <div class="record" id="record"></div>
-
-    <div class="song-title">
-      ၼူၵ်ႉပိၵ်ႇလႅဝ်
-    </div>
-
-    <div class="artist">
-      Leon Sai Songs 🎧
-    </div>
-
-    <!--
-      သီချင်းဖိုင်ကို
-      song.mp3 လို့ နာမည်ပေးပြီး
-      GitHub ထဲ upload လုပ်ပါ
-    -->
-
-    <audio id="songAudio">
-      <source src="song.mp3" type="audio/mpeg">
-    </audio>
-
-    <button class="play-btn"
-      id="playBtn"
-      onclick="toggleMusic()">
-      ▶
-    </button>
-
-  </div>
-
-</section>
-
-<script>
-
-/* ELEMENTS */
-
-const home = document.getElementById("home");
-const countdown = document.getElementById("countdown");
-const songs = document.getElementById("songs");
-const musicPage = document.getElementById("musicPage");
-
-const firstVideo = document.getElementById("firstVideo");
-
-const startBtn = document.getElementById("startBtn");
-const choiceBtn = document.getElementById("choiceBtn");
-const countNumber = document.getElementById("countNumber");
-
-const songAudio = document.getElementById("songAudio");
-const playBtn = document.getElementById("playBtn");
-const record = document.getElementById("record");
-
-/* VIDEO AUTO PLAY */
-
-window.addEventListener("load",function(){
-
-  firstVideo.muted = true;
-  firstVideo.play().catch(function(){});
-
-});
-
-/* OUT */
-
-let outCount = 0;
-
-function pressOut(){
-
-  outCount++;
-
-  if(outCount === 1){
-
-    startBtn.classList.add("big");
-
-    choiceBtn.classList.add("sure");
-
-    choiceBtn.innerHTML =
-      "are you sure? 🤔";
-
-  }
-
-  else if(outCount === 2){
-
-    choiceBtn.innerHTML =
-      "ARE YOU SURE? 😳";
-
-  }
-
-  else{
-
-    document.body.style.opacity = "0";
-
-    setTimeout(function(){
-
-      window.location.href = "about:blank";
-
-    },700);
-
-  }
-
+.eye{
+  animation:blink 4s infinite;
 }
 
-/* START */
+/* mouth */
 
-function startWebsite(){
+.mouth{
+  position:absolute;
 
-  firstVideo.pause();
+  width:25px;
+  height:13px;
 
-  home.style.display = "none";
-  countdown.style.display = "flex";
-
-  let number = 3;
-
-  countNumber.innerHTML = number;
-
-  const timer = setInterval(function(){
-
-    number--;
-
-    if(number > 0){
-
-      countNumber.innerHTML = number;
-
-    }else{
-
-      clearInterval(timer);
-
-      countdown.style.display = "none";
-      songs.style.display = "block";
-
-    }
-
-  },1000);
-
-}
-
-/* HOME */
-
-function goHome(){
-
-  songs.style.display = "none";
-  musicPage.style.display = "none";
-  home.style.display = "flex";
-
-  outCount = 0;
-
-  startBtn.classList.remove("big");
-  choiceBtn.classList.remove("sure");
-
-  choiceBtn.innerHTML = "choice 😊";
-
-  firstVideo.play().catch(function(){});
-
-}
-
-/* OPEN MUSIC */
-
-function openMusic(){
-
-  songs.style.display = "none";
-
-  musicPage.style.display = "flex";
-
-}
-
-/* CLOSE MUSIC */
-
-function closeMusic(){
-
-  songAudio.pause();
-
-  record.classList.remove("playing");
-
-  playBtn.innerHTML = "▶";
-
-  musicPage.style.display = "none";
-
-  songs.style.display = "block";
-
-}
-
-/* PLAY / PAUSE */
-
-function toggleMusic(){
-
-  if(songAudio.paused){
-
-    songAudio.play();
-
-    playBtn.innerHTML = "Ⅱ";
-
-    record.classList.add("playing");
-
-  }else{
-
-    songAudio.pause();
-
-    playBtn.innerHTML = "▶";
-
-    record.classList.remove("playing");
-
-  }
-
-}
-
-/* SONG END */
-
-songAudio.addEventListener("ended",function(){
-
-  playBtn.innerHTML = "▶";
-
-  record.classList.remove("playing");
-
-});
-
-</script>
-
-</body>
-</html>
+  left:110px;
+ 
